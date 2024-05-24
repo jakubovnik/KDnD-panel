@@ -1,0 +1,37 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+#navbar{
+    background-color: grey;
+    overflow: hidden;
+    border-radius: 10px;
+}
+#navbar a{
+    float: left;
+    color: white;
+    margin: auto;
+    padding: 14px 16px;
+    font-size: large;
+}
+#navbar a:last-child{
+    float: right;
+}
+#navbar a:hover{
+    background-color: black;
+}
+#magic-search{
+    padding: 5px;
+    margin: 5px;
+}
+#magic-list{
+    list-style-type: none;
+    background-color: lightblue;
+    margin: auto;
+}
+.magic{
+    display: flex;
+    background-color: beige;
+    margin: 5px;
+    justify-content: space-around;
+}
