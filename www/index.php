@@ -1,3 +1,7 @@
+<?php
+require "check_login_true.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
