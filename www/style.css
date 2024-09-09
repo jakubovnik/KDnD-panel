@@ -1,3 +1,8 @@
+*{
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 body{
     padding: 0px;
     margin: 0px;
@@ -46,7 +51,7 @@ body{
     background-color: dodgerblue;
     display: grid;
     width: auto;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     margin: 1%;
     gap: 1%;
     padding: 1%;
@@ -54,13 +59,13 @@ body{
 .item-box{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-style: solid;
     border-width: 5px;
     border-color: black;
     border-radius: 10px;
-    height: 400px;
+    height: 250px;
 }
 .item-description{
     display: none;
@@ -73,4 +78,19 @@ body{
     padding: 20px;
     text-align: center;
     z-index: 1000;
+}
+.item-numbers{
+    display: grid;
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+.item-numbers div{
+    text-align: center;
+    padding: 8px;
+    margin: 3px;
+}
+.button{
+    background-color: orange;
+    border-radius: 50%;
+    width:auto;
 }
