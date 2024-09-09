@@ -2,23 +2,30 @@ body{
     padding: 0px;
     margin: 0px;
 }
+body{
+    background-color: cadetblue;
+}
 #navbar{
     background-color: grey;
     overflow: hidden;
     border-radius: 10px;
 }
-#navbar a{
+#navbar *{
     float: left;
     color: white;
     margin: auto;
     padding: 14px 16px;
     font-size: large;
 }
+#navbar span{
+    color: gold;
+    border-color: white;
+}
 #navbar a:last-child{
     float: right;
 }
 #navbar a:hover{
-    background-color: black;
+    background-color: rgb(51, 64, 66);
 }
 #magic-search{
     padding: 5px;
@@ -34,4 +41,36 @@ body{
     background-color: beige;
     margin: 5px;
     justify-content: space-around;
+}
+#inventory{
+    background-color: dodgerblue;
+    display: grid;
+    width: auto;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 1%;
+    gap: 1%;
+    padding: 1%;
+}
+.item-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 10px;
+    height: 400px;
+}
+.item-description{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    color: crimson;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
 }

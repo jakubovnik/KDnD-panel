@@ -1,17 +1,13 @@
 <?php
 require "check_login_true.php";
+require "header.php"
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Magic List</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Magic list</title>
 </head>
 <body>
   <div id="all">
     <?php require "navbar.php";?>
-    <input type="text" id="magic-search" onkeyup="updateMagicList()" placeholder="Search magic">
+    <input type="text" id="magic-search" onkeyup="updateMagicList()" placeholder="Search by name">
     <ul id="magic-list">
       <li class="magic">
         <span class="magic-name">bruh</span>

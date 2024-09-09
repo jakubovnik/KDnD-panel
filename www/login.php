@@ -1,12 +1,8 @@
 <?php
 require "check_login_false.php";
+require "header.php"
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
     <title>Login with character</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="login">

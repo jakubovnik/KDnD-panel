@@ -30,7 +30,8 @@ mydb = mysql.connector.connect(
 )
 cursor = mydb.cursor()
 
-cursor.execute("SHOW TABLES")
+cursor.execute("SELECT * from kdnd.character")
+result = cursor.fetchall()
 
 magic_path = "C:/Users/Kubák/Documents/DnD/DnD/Magic/"
 active_magic_path = magic_path + "Active spells/"
@@ -58,5 +59,5 @@ for filename in active_spells:
         corrected_line = corrected_line.replace("%", "")
         print((corrected_line))
         spell.append(convert_to_number_or_string(corrected_line))
-
-    print()
+for x in result:
+    print(x)
