@@ -3,6 +3,20 @@
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
 }
+#message{
+    display: none;
+    position: fixed;
+    bottom: 10;
+    left: 10;
+    width: 10%;
+    background-color: white;
+    color: green;
+    border-color: brown;
+    border-width: 2px;
+    padding: 20px;
+    text-align: center;
+    z-index: 2000;
+}
 body{
     padding: 0px;
     margin: 0px;

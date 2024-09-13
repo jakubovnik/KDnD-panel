@@ -7,6 +7,7 @@ require "header.php";
 <body>
 <div id="all">
     <?php require "navbar.php";?>
+    <span id="message"></span>
     <div id="inventory">
         <div class="item-box" onclick="reveal_details(0)">
             <span class="item-name" id="item-name-0">Example item</span>
@@ -46,16 +47,16 @@ require "header.php";
                     echo '</div>';
                     echo '<div class="button" id="increase-charge-'.$row['id'].'" onclick="increase_charge('.$row['id'].')">+</div>';
                 echo '</div>';
-                echo "<span class='item-description' id='item-description-".$row['id']."'>".$row['description']."</span>";
+                echo "<span class='item-description' id='item-description-".$row['id']."' onclick='hide_details(".$row['id'].")'>".$row['description']."</span>";
             echo "</div>";
         }
         ?>
     </div>
-    <span id="message">notheng</span>
 </div>
 </body>
 </html>
 <script>
+const message = document.getElementById("message");
 var shown_id = 0;
 function reveal_details(id){
     // if(shown_id != 0){//TODO: put back once the Example item gets removed
@@ -64,29 +65,33 @@ function reveal_details(id){
     document.getElementById("item-description-"+id).style.display = "block";
     shown_id = id;
 }
-function modify_number(id, type, action){//TODO: finish this thing and then add it to all of the functions below
-    const modify_message = document.getElementById("message");
+function hide_details(id){//doesnt work and i have no idea why
+    document.getElementById("item-description-"+id).style.display = "none";
+    shown_id = 0;
+}
+function modify_number(id, type, value){
     const target = document.getElementById("item-amount-"+id);
     var request = new XMLHttpRequest();
-    var posted_text = "id="+cname_input.value+"&password="+password_input.value
+    var posted_text = "id="+id+"&type="+type+"&value="+value;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                modify_message.innerHTML = "Successfully logged in";
-                modify_message.style.color = "green";
-                setTimeout(function(){ window.location.href = "index.php" }, 800);
+                message.style.display = "block";
+                message.innerHTML = "Successfully changed "+document.getElementById("item-name-"+id).innerHTML + " to " + value;
+                message.style.color = "green";
+                setTimeout(function(){ message.style.display = "none" }, 3000);
+                return 0;
             }
             if(this.responseText == "1"){
-                modify_message.innerHTML = "Character doesn't exist";
-                modify_message.style.color = "red";
-            }
-            if(this.responseText == "2"){
-                modify_message.innerHTML = "Incorrect password";
-                modify_message.style.color = "red";
+                message.style.display = "block";
+                message.innerHTML = "something went wrong";
+                message.style.color = "red";
+                setTimeout(function(){ message.style.display = "none" }, 3000);
+                return 1;
             }
         }
     };
-    request.open("POST", "login_attempt.php", true);
+    request.open("POST", "modify_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
@@ -95,10 +100,16 @@ function decrease_amount(id){
     if(target.innerHTML == 1){
         return;
     }
+    if(modify_number(id,"amount",target.innerHTML - 1)==0){
+        return;
+    }
     target.innerHTML = target.innerHTML - 1;
 }
 function increase_amount(id){
     const target = document.getElementById("item-amount-"+id);
+    if(modify_number(id,"amount",Number(target.innerHTML) + 1)==0){
+        return;
+    }
     target.innerHTML = Number(target.innerHTML) + 1;
 }
 function decrease_charge(id){
@@ -106,11 +117,17 @@ function decrease_charge(id){
     if(target.innerHTML == 1){
         return;
     }
+    if(modify_number(id,"charges",target.innerHTML - 1)==0){
+        return;
+    }
     target.innerHTML = target.innerHTML - 1;
 }
 function increase_charge(id){
     const target = document.getElementById("item-charge-"+id);
     if(target.innerHTML == document.getElementById("item-charge-max-"+id).innerHTML){
+        return;
+    }
+    if(modify_number(id,"charges",Number(target.innerHTML) + 1)==0){
         return;
     }
     target.innerHTML = Number(target.innerHTML) + 1;
