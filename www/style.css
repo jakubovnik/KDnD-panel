@@ -1,3 +1,4 @@
+/* Default stuff */
 *{
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -12,7 +13,9 @@
     background-color: white;
     color: green;
     border-color: brown;
+    border-style: solid;
     border-width: 2px;
+    border-radius: 5px;
     padding: 20px;
     text-align: center;
     z-index: 2000;
@@ -24,10 +27,12 @@ body{
 body{
     background-color: cadetblue;
 }
+/* navbar stuff */
 #navbar{
     background-color: grey;
     overflow: hidden;
     border-radius: 10px;
+    margin: 5px;
 }
 #navbar *{
     float: left;
@@ -46,6 +51,7 @@ body{
 #navbar a:hover{
     background-color: rgb(51, 64, 66);
 }
+/* Magic exclusive */
 #magic-search{
     padding: 5px;
     margin: 5px;
@@ -61,6 +67,7 @@ body{
     margin: 5px;
     justify-content: space-around;
 }
+/* Inventory exclusive */
 #inventory{
     background-color: dodgerblue;
     display: grid;
@@ -71,6 +78,7 @@ body{
     padding: 1%;
 }
 .item-box{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -103,8 +111,14 @@ body{
     padding: 8px;
     margin: 3px;
 }
+/* Button stuff */
 .button{
     background-color: orange;
-    border-radius: 50%;
+    border-radius: 15px;
     width:auto;
+}
+.remove-button{
+    position: absolute;
+    top: 4px;
+    left: 5px;
 }
