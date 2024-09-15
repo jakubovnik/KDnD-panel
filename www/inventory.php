@@ -9,28 +9,13 @@ require "header.php";
     <?php require "navbar.php";?>
     <span id="message"></span>
     <div id="inventory">
-        <!-- <div class="item-box" onclick="reveal_details(0)">
-            <span class="item-name" id="item-name-0">Example item</span>
-            <span class="item-type" id="item-type-0">Example type</span>
-            <div class="item-numbers">
-                <div class="button" id="decrease-amount-0" onclick="decrease_amount(0)">-</div>
-                <div class="item-amount" id="item-amount-0">1</div>
-                <div class="button" id="increase-amount-0" onclick="increase_amount(0)">+</div>
-                <div class="button" id="decrease-charge-0" onclick="decrease_charge(0)">-</div>
-                <div class="item-charges">
-                    <span class="item-charge" id="item-charge-0">2</span>/<span class="item-charge-max" id="item-charge-max-0">4</span>
-                </div>
-                <div class="button" id="increase-charge-0" onclick="increase_charge(0)">+</div>
-            </div>
-            <span class="item-description" id="item-description-0">example example example example example example example example example example example</span>
-        </div> -->
         <?php
         require "dbconnect.php";
         $sql = "SELECT inventory.id, inventory.name, type.name as type, inventory.amount, inventory.charges, inventory.charges_max, inventory.description 
             FROM kdnd.inventory INNER JOIN kdnd.type ON inventory.type_id=type.id
             WHERE is_deleted=0";
         if($_SESSION['role'] != 1){
-            $sql = $sql." WHERE inventory.character_id=".$_SESSION['cid'];
+            $sql = $sql." AND inventory.character_id=".$_SESSION['cid'];
         }
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()){
@@ -59,15 +44,27 @@ require "header.php";
 </html>
 <script>
 const message = document.getElementById("message");
+var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
+function display_message(new_message, type=0){
+    clearTimeout(message_timeout);
+    message.style.display = "block";
+    if(type == 0){
+        message.style.color = "green";
+    }else if(type == 1){
+        message.style.color = "red";
+    }
+    message.innerHTML = new_message;
+    message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
+}
 var shown_id = 0;
 function reveal_details(id){
-    if(shown_id != 0){//TODO: put back once the Example item gets removed
+    if(shown_id != 0){
         document.getElementById("item-description-"+shown_id).style.display = "none";
     }
     document.getElementById("item-description-"+id).style.display = "block";
     shown_id = id;
 }
-function hide_details(id){//doesnt work and i have no idea why
+function hide_details(id){//doesnt work and i have no idea why |||UPDATE: it works now for some unknown reason :D
     document.getElementById("item-description-"+id).style.display = "none";
     shown_id = 0;
 }
@@ -78,20 +75,14 @@ function modify_number(id, type, value){
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                message.style.display = "block";
-                message.innerHTML = "Successfully changed "+document.getElementById("item-name-"+id).innerHTML + "'s " + type + " to " + value;
-                message.style.color = "green";
-                setTimeout(function(){ message.style.display = "none" }, 2000);
+                display_message("Successfully changed "+document.getElementById("item-name-"+id).innerHTML + "'s " + type + " to " + value + " (item id: " + id + ")");
                 if(type == "is_deleted"){
                     const removed_item = document.getElementById("item-box-"+id);
                     removed_item.remove();
                 }
             }
             if(this.responseText == "1"){
-                message.style.display = "block";
-                message.innerHTML = "something went wrong";
-                message.style.color = "red";
-                setTimeout(function(){ message.style.display = "none" }, 3000);
+                display_message("something went wrong with modifying", 1);
             }
         }
     };

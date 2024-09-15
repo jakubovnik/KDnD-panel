@@ -7,8 +7,8 @@
 #message{
     display: none;
     position: fixed;
-    bottom: 10;
-    left: 10;
+    top: 10px;
+    left: 10px;
     width: 10%;
     background-color: white;
     color: green;
@@ -20,12 +20,32 @@
     text-align: center;
     z-index: 2000;
 }
-body{
+body, html{
     padding: 0px;
     margin: 0px;
-}
-body{
+    height: 100%;
     background-color: cadetblue;
+}
+/* Login stuff */
+#login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+#login div{
+    margin: auto;
+    background-color: aliceblue;
+}
+#login-form{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+#login-form *{
+    margin: 10px
 }
 /* navbar stuff */
 #navbar{
@@ -70,12 +90,14 @@ body{
 /* Inventory exclusive */
 #inventory{
     background-color: dodgerblue;
+    border-radius: 10px;
     display: grid;
     width: auto;
     grid-template-columns: repeat(6, 1fr);
     margin: 1%;
     gap: 1%;
     padding: 1%;
+    min-height: 80vh;
 }
 .item-box{
     position: relative;
@@ -88,6 +110,8 @@ body{
     border-color: black;
     border-radius: 10px;
     height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 12px 24px rgba(0, 0, 0, 0.2);
 }
 .item-description{
     display: none;
@@ -116,9 +140,14 @@ body{
     background-color: orange;
     border-radius: 15px;
     width:auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 12px 24px rgba(0, 0, 0, 0.2);
 }
 .remove-button{
     position: absolute;
+    border-radius: 20px;
     top: 4px;
     left: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 12px 24px rgba(0, 0, 0, 0.2);
 }
