@@ -97,7 +97,7 @@ body, html{
     margin: 1%;
     gap: 1%;
     padding: 1%;
-    min-height: 80vh;
+    min-height: 75vh;
 }
 .item-box{
     position: relative;
@@ -135,19 +135,68 @@ body, html{
     padding: 8px;
     margin: 3px;
 }
+#add-item-background{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+#add-item-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#add-item-box *{
+    margin: 5%;
+}
+#add-item-description{
+    min-height: 20vh;
+    min-width: 40vw;
+}
 /* Button stuff */
-.button{
-    background-color: orange;
-    border-radius: 15px;
-    width:auto;
+#add-button{
+    position: fixed;
+    border-radius: 20px;
+    bottom: 50px;
+    right: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
+    width: 80px;
+    height: 80px;
+    margin: 0px;
+    z-index: 2000;
+}
+#add-item-hide{
+    position: absolute;
+    border-radius: 20px;
+    bottom: 50px;
+    right: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 12px 24px rgba(0, 0, 0, 0.2);
+    width: 80px;
+    height: 80px;
+    margin: 0px;
 }
 .remove-button{
     position: absolute;
     border-radius: 20px;
     top: 4px;
     left: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 12px 24px rgba(0, 0, 0, 0.2);
+    width: 50px;
+    height: 50px;
+}
+.button{
+    background-color: orange;
+    border-radius: 15px;
+    width:auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
 }
