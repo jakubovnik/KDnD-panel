@@ -38,6 +38,7 @@ require "header.php";
             $sql = $sql." AND inventory.character_id=".$_SESSION['cid'];
         }
         $result = $conn->query($sql);
+        // somewhere here add colors based on item type
         while($row = $result->fetch_assoc()){
             echo "<div class='item-box' id='item-box-".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
                 echo '<img src="images/remove.png" alt="rmv button" class="remove-button" id="remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
@@ -82,7 +83,7 @@ function display_message(new_message, type=0){
         message.style.color = "red";
     }
     message.innerHTML = new_message;
-    message_timeout = setTimeout(() => {message.style.display = "none";}, 10000);
+    message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
 }
 
 var shown_id = 0;
@@ -198,7 +199,7 @@ function increase_amount(id){
 }
 function decrease_charge(id){
     const target = document.getElementById("item-charge-"+id);
-    if(target.innerHTML == 1){
+    if(target.innerHTML == 0){
         return;
     }
     if(modify_number_request(id,"charges",target.innerHTML - 1)==0){

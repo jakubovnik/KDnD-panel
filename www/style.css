@@ -53,6 +53,7 @@ body, html{
     overflow: hidden;
     border-radius: 10px;
     margin: 5px;
+    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2); 
 }
 #navbar *{
     float: left;
@@ -112,6 +113,10 @@ body, html{
     height: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.item-name{
+    position: relative;
+    right: 20px;
 }
 .item-description{
     display: none;
@@ -187,7 +192,7 @@ body, html{
     position: absolute;
     border-radius: 20px;
     top: 4px;
-    left: 5px;
+    right: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
     width: 50px;
