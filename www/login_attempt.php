@@ -9,6 +9,8 @@ if ($result->num_rows == 1) {
             $_SESSION['cid'] = $row['id'];
             $_SESSION['cname'] = $row['name'];
             $_SESSION['role'] = $row['role_id'];
+            $_SESSION['circles'] = $row['circles'];
+            $_SESSION['money'] = $row['money'];
             $_SESSION['logged'] = true;
             echo "0";
         }else{
