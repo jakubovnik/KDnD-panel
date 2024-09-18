@@ -26,6 +26,26 @@ body, html{
     height: 100%;
     background-color: cadetblue;
 }
+/* Index stuff */
+#character-sheet{
+    width: 60%;
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+}
+#main-info-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#main-info-box *{
+    font-size: x-large;
+    color: gold;
+}
+#character-name{
+    font-size: xx-large;
+}
 /* Login stuff */
 #login{
     height: 100vh;
