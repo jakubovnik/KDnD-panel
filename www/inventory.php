@@ -27,45 +27,16 @@ require "header.php";
             <textarea name="add-item-description" id="add-item-description" placeholder="New Item Description"></textarea>
         </div>
         <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_add_item()">
+        <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="add_item()">
     </div>
     <div id="inventory">
-        <?php
-        require "dbconnect.php";
-        $sql = "SELECT inventory.id, inventory.name, type.name as type, inventory.amount, inventory.charges, inventory.charges_max, inventory.description 
-            FROM kdnd.inventory INNER JOIN kdnd.type ON inventory.type_id=type.id
-            WHERE is_deleted=0";
-        if($_SESSION['role'] != 1){
-            $sql = $sql." AND inventory.character_id=".$_SESSION['cid'];
-        }
-        $result = $conn->query($sql);
-        // somewhere here add colors based on item type
-        while($row = $result->fetch_assoc()){
-            echo "<div class='item-box' id='item-box-".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
-                echo '<img src="images/remove.png" alt="rmv button" class="remove-button" id="remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
-                echo "<span class='item-name' id='item-name-".$row['id']."'>".$row['name']."</span>";
-                echo "<span class='item-type' id='item-type-".$row['id']."'>".$row['type']."</span>";
-                echo '<div class="item-numbers">';
-                    echo '<div class="button" id="decrease-amount-'.$row['id'].'" onclick="decrease_amount('.$row['id'].')">-</div>';
-                    echo '<div class="item-amount" id="item-amount-'.$row['id'].'">'.$row['amount'].'</div>';
-                    echo '<div class="button" id="increase-amount-'.$row['id'].'" onclick="increase_amount('.$row['id'].')">+</div>';
-                    echo '<div class="button" id="decrease-charge-'.$row['id'].'" onclick="decrease_charge('.$row['id'].')">-</div>';
-                    echo '<div class="item-charges">';
-                        echo '<span class="item-charge" id="item-charge-'.$row['id'].'">'.$row['charges'].'</span>/
-                        <span class="item-charge-max" id="item-charge-max-'.$row['id'].'">'.$row['charges_max'].'</span>';
-                    echo '</div>';
-                    echo '<div class="button" id="increase-charge-'.$row['id'].'" onclick="increase_charge('.$row['id'].')">+</div>';
-                echo '</div>';
-            echo "</div>";
-            echo "<span class='item-description' id='item-description-".$row['id']."' onclick='hide_details(".$row['id'].")'>".$row['description']."</span>";
-        }
-        $conn->close();
-        ?>
     </div>
 </div>
 </body>
 </html>
 <script>
 const message = document.getElementById("message");
+const inventory = document.getElementById("inventory");
 const add_item_background = document.getElementById("add-item-background");
 const add_item_box = document.getElementById("add-item-box");// Propably not nescesarry
 const add_item_name = document.getElementById("add-item-name");
@@ -86,6 +57,23 @@ function display_message(new_message, type=0){
     message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
 }
 
+function refresh_inventory(){
+    var request = new XMLHttpRequest();
+    var posted_text = "";
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "1"){
+                display_message("something went wrong when refreshing inventory", 1);
+            }else{
+                inventory.innerHTML = this.responseText;
+            }
+        }
+    };
+    request.open("POST", "get_inventory.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
+}
+
 var shown_id = 0;
 function reveal_details(id){
     if(shown_id != 0){
@@ -104,6 +92,27 @@ function reveal_add_item(){
 }
 function hide_add_item(){
     add_item_background.style.display = "none";
+}
+function add_item_request(name, type_id, charges_max, description){
+    var request = new XMLHttpRequest();
+    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description;
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "0"){
+                display_message("Successfully added "+ name);
+                refresh_inventory();
+            }else if(this.responseText == "1"){
+                display_message("something went wrong with adding", 1);
+            }else{
+                display_message(this.responseText, 1);//Might return gibberish but not my problem :P
+            }
+        }
+    };
+    request.open("POST", "add_item_attempt.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
+}
+function add_item(){
     if(add_item_name.value == ""){
         display_message("Item needs a name", 1);
         return;
@@ -120,27 +129,6 @@ function hide_add_item(){
         display_message("Item needs a description", 1);
         return;
     }
-    add_item();
-}
-function add_item_request(name, type_id, charges_max, description){
-    var request = new XMLHttpRequest();
-    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description;
-    request.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            if(this.responseText == "0"){
-                display_message("Successfully added "+ name);
-            }else if(this.responseText == "1"){
-                display_message("something went wrong with adding", 1);
-            }else{
-                display_message(this.responseText, 1);//Might return gibberish but not my problem :P
-            }
-        }
-    };
-    request.open("POST", "add_item_attempt.php", true);
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send(posted_text);
-}
-function add_item(){
     add_item_request(
         add_item_name.value,
         add_item_type.value,
@@ -150,6 +138,7 @@ function add_item(){
     add_item_name.value = "";
     add_item_charge_max.value = "";
     add_item_description.value = "";
+    hide_add_item();
 }
 
 function modify_number_request(id, type, value){
@@ -217,4 +206,5 @@ function increase_charge(id){
     }
     target.innerHTML = Number(target.innerHTML) + 1;
 }
+refresh_inventory();
 </script>

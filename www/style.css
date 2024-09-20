@@ -27,6 +27,10 @@ body, html{
     background-color: cadetblue;
 }
 /* Index stuff */
+#character-info{
+    display: flex;
+    flex-direction: row;
+}
 #character-sheet{
     width: 60%;
     background-color: brown;
@@ -38,13 +42,39 @@ body, html{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding: 5%;
 }
 #main-info-box *{
     font-size: x-large;
     color: gold;
 }
+#secondary-info-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2%;
+}
+#secondary-info-box *{
+    font-size: large;
+    color: lime;
+}
 #character-name{
     font-size: xx-large;
+}
+#character-description{
+    padding: 5%;
+}
+#character-visual{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+#character-image{
+    max-width: 90%;
+    height: auto;
 }
 /* Login stuff */
 #login{
@@ -136,7 +166,8 @@ body, html{
 }
 .item-name{
     position: relative;
-    right: 20px;
+    font-size: x-large;
+    max-width: 80%;
 }
 .item-description{
     display: none;
@@ -176,9 +207,21 @@ body, html{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: grey;
+    padding: 10px;
+    border-radius: 20px;
 }
 #add-item-box *{
     margin: 5%;
+}
+#add-item-name{
+    font-size: xx-large;
+}
+#add-item-type{
+    font-size: x-large;
+}
+#add-item-charge-max{
+    font-size: x-large;
 }
 #add-item-description{
     min-height: 20vh;
@@ -208,15 +251,27 @@ body, html{
     height: 80px;
     margin: 0px;
 }
-.remove-button{
+#add-item-confirm{
     position: absolute;
     border-radius: 20px;
+    bottom: 50px;
+    left: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 12px 24px rgba(0, 0, 0, 0.2);
+    width: 80px;
+    height: 80px;
+    margin: 0px;
+}
+.remove-button{
+    position: absolute;
+    border-radius: 10px;
     top: 4px;
     right: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
+    z-index: 500;
 }
 .button{
     background-color: orange;
