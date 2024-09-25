@@ -30,7 +30,7 @@ while($row = $result->fetch_assoc()){
             echo '<div class="button" id="increase-charge-'.$row['id'].'" onclick="increase_charge('.$row['id'].')">+</div>';
         echo '</div>';
     echo "</div>";
-    echo "<span class='item-description' id='item-description-".$row['id']."' onclick='hide_details(".$row['id'].")'>".$row['description']."</span>";
+    echo "<span class='item-description' id='item-description-".$row['id']."' onclick='hide_details()'>".$row['description']."</span>";
 }
 $conn->close();
 ?>

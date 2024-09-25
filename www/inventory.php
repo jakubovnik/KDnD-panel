@@ -5,9 +5,9 @@ require "header.php";
     <title>Character's inventory</title>
 </head>
 <body>
-<div id="all">
+<div id="all" class="inventory-background">
     <?php require "navbar.php";?>
-    <span id="message"></span>
+    <span id="message" onclick="hide_message()"></span>
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background" style="display: none;">
         <div id="add-item-box">
@@ -45,7 +45,7 @@ const add_item_charge_max = document.getElementById("add-item-charge-max");
 const add_item_description = document.getElementById("add-item-description");
 
 var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
-function display_message(new_message, type=0){
+function display_message(new_message, type=0, time=2000){
     clearTimeout(message_timeout);
     message.style.display = "block";
     if(type == 0){
@@ -54,7 +54,11 @@ function display_message(new_message, type=0){
         message.style.color = "red";
     }
     message.innerHTML = new_message;
-    message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
+    message_timeout = setTimeout(() => {message.style.display = "none";}, time);
+}
+function hide_message(){
+    clearTimeout(message_timeout);
+    message.style.display = "none";
 }
 
 function refresh_inventory(){
@@ -66,6 +70,7 @@ function refresh_inventory(){
                 display_message("something went wrong when refreshing inventory", 1);
             }else{
                 inventory.innerHTML = this.responseText;
+                display_message("Inventory refreshed", 0, 1000);
             }
         }
     };
@@ -82,8 +87,8 @@ function reveal_details(id){
     document.getElementById("item-description-"+id).style.display = "block";
     shown_id = id;
 }
-function hide_details(id){//doesnt work and i have no idea why |||UPDATE: it works now for some unknown reason :D
-    document.getElementById("item-description-"+id).style.display = "none";
+function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works now for some unknown reason :D
+    document.getElementById("item-description-"+shown_id).style.display = "none";
     shown_id = 0;
 }
 
@@ -205,6 +210,15 @@ function increase_charge(id){
         return;
     }
     target.innerHTML = Number(target.innerHTML) + 1;
+}
+window.onload=function() {
+    document.onkeydown = keypress;
+}
+function keypress(event) {
+    if (event.keyCode == 27) {
+        hide_add_item();
+        hide_details();
+    }
 }
 refresh_inventory();
 </script>
