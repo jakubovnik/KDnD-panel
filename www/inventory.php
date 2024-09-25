@@ -61,9 +61,9 @@ function hide_message(){
     message.style.display = "none";
 }
 
-function refresh_inventory(){
+function refresh_inventory(sort="default"){
     var request = new XMLHttpRequest();
-    var posted_text = "";
+    var posted_text = "sort=" + sort;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "1"){
@@ -92,11 +92,14 @@ function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works
     shown_id = 0;
 }
 
+var add_item_menu = false;
 function reveal_add_item(){
     add_item_background.style.display = "flex";
+    add_item_menu = true;
 }
 function hide_add_item(){
     add_item_background.style.display = "none";
+    add_item_menu = false;
 }
 function add_item_request(name, type_id, charges_max, description){
     var request = new XMLHttpRequest();
@@ -117,21 +120,27 @@ function add_item_request(name, type_id, charges_max, description){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
-function add_item(){
+function check_form(){
     if(add_item_name.value == ""){
         display_message("Item needs a name", 1);
-        return;
+        return 1;
     }
     if(add_item_type.value == ""){
         display_message("Item needs a type", 1);
-        return;
+        return 1;
     }
     if(add_item_charge_max.value == ""){
         display_message("Item needs a max charge (just put 0 if it doesnt have charges)", 1);
-        return;
+        return 1;
     }
     if(add_item_description.value == ""){
         display_message("Item needs a description", 1);
+        return 1;
+    }
+    return 0;
+}
+function add_item(){
+    if(check_form()){
         return;
     }
     add_item_request(
@@ -218,6 +227,16 @@ function keypress(event) {
     if (event.keyCode == 27) {
         hide_add_item();
         hide_details();
+    }
+    if (event.keyCode == 13){
+        if(add_item_menu){
+            add_item();
+        }else{
+            reveal_add_item();
+        }
+    }
+    if (event.keyCode == 82){
+        refresh_inventory();
     }
 }
 refresh_inventory();

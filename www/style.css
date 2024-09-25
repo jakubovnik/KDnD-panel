@@ -8,8 +8,7 @@
     display: none;
     position: fixed;
     top: 10px;
-    left: 50vw;
-    margin-left: -5vw;
+    left: 10px;
     background-color: white;
     color: green;
     border-color: brown;
@@ -145,7 +144,7 @@ body, html{
 }
 /* Inventory exclusive */
 #inventory{
-    border-radius: 10px;
+    border-radius: 30px;
     display: grid;
     width: auto;
     grid-template-columns: repeat(6, 1fr);
@@ -153,6 +152,14 @@ body, html{
     gap: 1%;
     padding: 1%;
     min-height: 75vh;
+    max-height: 80vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#inventory::-webkit-scrollbar{
+    display: none;
 }
 .inventory-background{
     background-image: url("images/leather-texture.jpg");
@@ -173,15 +180,22 @@ body, html{
     align-items: center;
     border-style: solid;
     border-width: 5px;
-    border-color: black;
+    border-color: dimgray;
     border-radius: 10px;
     height: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
 }
+.item-box *{
+    color: aliceblue;
+}
 .item-name{
-    position: relative;
     font-size: x-large;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.65);
     max-width: 80%;
 }
 .item-description{
@@ -248,35 +262,35 @@ body, html{
 #add-button{
     position: fixed;
     border-radius: 20px;
-    bottom: 50px;
-    right: 50px;
+    bottom: 3vh;
+    right: 3vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
-    width: 80px;
-    height: 80px;
+    width: 10vh;
+    height: 10vh;
     margin: 0px;
     z-index: 2000;
 }
 #add-item-hide{
     position: absolute;
     border-radius: 20px;
-    bottom: 50px;
-    right: 50px;
+    bottom: 3vh;
+    right: 3vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
-    width: 80px;
-    height: 80px;
+    width: 10vh;
+    height: 10vh;
     margin: 0px;
 }
 #add-item-confirm{
     position: absolute;
     border-radius: 20px;
-    bottom: 50px;
-    left: 70px;
+    bottom: 3vh;
+    left: 3vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
-    width: 80px;
-    height: 80px;
+    width: 10vh;
+    height: 10vh;
     margin: 0px;
 }
 .remove-button{
