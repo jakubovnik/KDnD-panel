@@ -11,8 +11,8 @@ require "header.php";
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background" style="display: none;">
         <div id="add-item-box">
-            <input type="text" placeholder="New Item Name" id="add-item-name">
-            <select name="add-item-type" id="add-item-type">
+            <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text" oninput="this.size = this.value.length">
+            <select name="add-item-type" id="add-item-type" class="add-item-text" oninput="this.size = this.value.length">
                 <?php
                     require "dbconnect.php";
                     $sql = "SELECT * FROM kdnd.type ORDER BY id";
@@ -23,8 +23,8 @@ require "header.php";
                     $conn->close();
                 ?>
             </select>
-            <input type="number" placeholder="Max Charges" id="add-item-charge-max">
-            <textarea name="add-item-description" id="add-item-description" placeholder="New Item Description"></textarea>
+            <input type="text" placeholder="Max Charges" id="add-item-charge-max" class="add-item-text" oninput="this.size = this.value.length">
+            <textarea name="add-item-description" placeholder="New Item Description" id="add-item-description" class="add-item-text"></textarea>
         </div>
         <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_add_item()">
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="add_item()">
@@ -35,6 +35,10 @@ require "header.php";
 </body>
 </html>
 <script>
+function isPositiveNumber(str) { //copied from chatgpt
+    return /^\d+$/.test(str);
+}
+
 const message = document.getElementById("message");
 const inventory = document.getElementById("inventory");
 const add_item_background = document.getElementById("add-item-background");
@@ -96,6 +100,7 @@ var add_item_menu = false;
 function reveal_add_item(){
     add_item_background.style.display = "flex";
     add_item_menu = true;
+    document.getElementById("add-item-name").focus();
 }
 function hide_add_item(){
     add_item_background.style.display = "none";
@@ -131,6 +136,9 @@ function check_form(){
     }
     if(add_item_charge_max.value == ""){
         display_message("Item needs a max charge (just put 0 if it doesnt have charges)", 1);
+        return 1;
+    }else if(!isPositiveNumber(add_item_charge_max.value)){
+        display_message("Max charge must be a whole positive number", 1)
         return 1;
     }
     if(add_item_description.value == ""){

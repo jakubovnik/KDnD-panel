@@ -4,7 +4,7 @@ require "header.php"
 ?>
     <title>Login with character</title>
 </head>
-<body>
+<body id="login-body">
 <span id="message"></span>
 <div id="login">
     <div>

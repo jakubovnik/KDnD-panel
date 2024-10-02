@@ -80,6 +80,10 @@ body, html{
     height: auto;
 }
 /* Login stuff */
+#login-body{
+    background-image: url("images/world-map.png");
+    background-size: cover;
+}
 #login{
     height: 100vh;
     width: 100vw;
@@ -163,15 +167,8 @@ body, html{
 }
 .inventory-background{
     background-image: url("images/leather-texture.jpg");
-    background-size: cover;
+    background-size: contain;
 }
-/* #inventory-background{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0px;
-    left: 0px;
-} */
 .item-box{
     position: relative;
     display: flex;
@@ -236,14 +233,30 @@ body, html{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 15px;
+    border-radius: 20px;
     background-image: url("images/magic-circle.png");
     background-size: cover;
-    padding: 10px;
-    border-radius: 20px;
+    background-position: center;
 }
 #add-item-box *{
     margin: 5%;
-    background-color: transparent;
+}
+.add-item-text{
+    text-align: center;
+	padding: 0;
+	/* background: none; */
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	/* -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none; */
+    color: white;
+    -webkit-text-stroke: 1px goldenrod;
+    background-color: rgba(20, 82, 181, 0.6);
+    min-width: 14ch;
+    max-width: 100%;
 }
 #add-item-name{
     font-size: xx-large;
@@ -255,6 +268,7 @@ body, html{
     font-size: x-large;
 }
 #add-item-description{
+    font-size: x-large;
     min-height: 20vh;
     min-width: 28vw;
 }
