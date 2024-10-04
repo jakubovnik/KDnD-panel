@@ -12,5 +12,6 @@ if ($conn->connect_error) {
 require "dbconnect.php";
 $sql = "SELECT * FROM kdnd.type ORDER BY id";
 $result = $conn->query($sql);
+$conn.close();
 */
 ?>

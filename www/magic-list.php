@@ -30,6 +30,13 @@ require "header.php"
         <span class="magic-fail">20%</span>
         <span class="magic-cast">2</span>
       </li>
+      <?php
+      require "dbconnect.php";
+      $sql = "SELECT * FROM kdnd.magic";
+      $result = $conn->query($sql);
+      
+      $conn.close();
+      ?>
     </ul>
   </div>
 </body>
