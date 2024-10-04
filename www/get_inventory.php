@@ -13,45 +13,45 @@ if($_POST['sort'] == "default"){
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
     echo "<div class='item-box' id='item-box-".$row['id']."' onclick='reveal_details(".$row['id'].")' ";
-        echo "style='background-color: ";
-        switch ($row['type']) {
-            case 'misc':
-                echo "rgba(90, 90, 90, 0.45)";
-                break;
-            case 'weapon':
-                echo "rgba(180, 0, 0, 0.45)";
-                break;
-            case 'shield':
-                echo "rgba(0, 120, 180, 0.45)";
-                break;
-            case 'armor':
-                echo "rgba(0, 0, 180, 0.45)";
-                break;
-            case 'headwear':
-                echo "rgba(0, 0, 255, 0.45)";
-                break;
-            case 'gloves':
-                echo "rgba(0, 0, 120, 0.45)";
-                break;
-            case 'accessory':
-                echo "rgba(214, 202, 0, 0.45)";
-                break;
-            case 'consumable':
-                echo "rgba(0, 180, 0, 0.45)";
-                break;
-            case 'key item':
-                echo "rgba(180, 0, 180, 0.45)";
-                break;
-            case 'bag':
-                echo "rgba(180, 100, 0, 0.45)";
-                break;
-            case 'material':
-                echo "rgba(0, 180, 180, 0.45)";
-                break;
-            default:
-                echo "rgba(0, 0, 0, 0)";
-                break;
-        }
+        // echo "style='background-color: ";
+        // switch ($row['type']) {
+        //     case 'misc':
+        //         echo "rgba(90, 90, 90, 0.45)";
+        //         break;
+        //     case 'weapon':
+        //         echo "rgba(180, 0, 0, 0.45)";
+        //         break;
+        //     case 'shield':
+        //         echo "rgba(0, 120, 180, 0.45)";
+        //         break;
+        //     case 'armor':
+        //         echo "rgba(0, 0, 180, 0.45)";
+        //         break;
+        //     case 'headwear':
+        //         echo "rgba(0, 0, 255, 0.45)";
+        //         break;
+        //     case 'gloves':
+        //         echo "rgba(0, 0, 120, 0.45)";
+        //         break;
+        //     case 'accessory':
+        //         echo "rgba(214, 202, 0, 0.45)";
+        //         break;
+        //     case 'consumable':
+        //         echo "rgba(0, 180, 0, 0.45)";
+        //         break;
+        //     case 'key item':
+        //         echo "rgba(180, 0, 180, 0.45)";
+        //         break;
+        //     case 'bag':
+        //         echo "rgba(180, 100, 0, 0.45)";
+        //         break;
+        //     case 'material':
+        //         echo "rgba(0, 180, 180, 0.45)";
+        //         break;
+        //     default:
+        //         echo "rgba(0, 0, 0, 0)";
+        //         break;
+        // }
     echo ";'>";
         echo '<img src="images/remove.png" alt="rmv button" class="remove-button" id="remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
         echo "<span class='item-name' id='item-name-".$row['id']."'";

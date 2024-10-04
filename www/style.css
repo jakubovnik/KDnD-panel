@@ -175,6 +175,7 @@ body, html{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
     border-style: solid;
     border-width: 5px;
     border-color: dimgray;
@@ -253,18 +254,23 @@ body, html{
 	-moz-appearance: none;
 	appearance: none; */
     color: white;
-    -webkit-text-stroke: 1px goldenrod;
-    background-color: rgba(20, 82, 181, 0.6);
-    min-width: 14ch;
+    -webkit-text-stroke: 0.2px black;
+    background-color: rgba(39, 85, 159, 0.6);
     max-width: 100%;
 }
 #add-item-name{
+    min-width: 14ch;
+    size: 14ch;
     font-size: xx-large;
 }
 #add-item-type{
+    min-width: 12ch;
+    size: 10ch;
     font-size: x-large;
 }
 #add-item-charge-max{
+    min-width: 12ch;
+    size: 12ch;
     font-size: x-large;
 }
 #add-item-description{
