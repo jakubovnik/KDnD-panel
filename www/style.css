@@ -8,7 +8,7 @@
     display: none;
     position: fixed;
     top: 10px;
-    left: 10px;
+    right: 10px;
     background-color: white;
     color: green;
     border-color: brown;
@@ -135,16 +135,8 @@ body, html{
     padding: 5px;
     margin: 5px;
 }
-#magic-list{
-    list-style-type: none;
-    background-color: lightblue;
-    margin: auto;
-}
-.magic{
-    display: flex;
-    background-color: beige;
-    margin: 5px;
-    justify-content: space-around;
+.magic-origin, .magic-complexity, .magic-fail, .magic-cast{
+    text-align: center;
 }
 /* Inventory exclusive */
 #inventory{
