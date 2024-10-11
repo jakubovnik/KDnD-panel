@@ -248,4 +248,5 @@ function keypress(event) {
     }
 }
 refresh_inventory();
+refresh_interval = setInterval(refresh_inventory, 60000);
 </script>

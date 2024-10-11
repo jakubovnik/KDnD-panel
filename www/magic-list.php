@@ -9,8 +9,14 @@ require "header.php"
     <?php require "navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <input type="text" id="magic-search" onkeyup="updateMagicList()" placeholder="Search by name">
-    <table id="magic-list">
-    </table>
+    <div id="magic-all">
+        <div id="magic-list-container">
+            <table id="magic-list">
+            </table>
+        </div>
+        <div id="magic-info-container">
+        </div>
+    </div>
 </div>
 </body>
 <script>
@@ -32,8 +38,8 @@ function hide_message(){
     message.style.display = "none";
 }
 
-const magic_list = document.getElementById("magic-list");
 function updateMagicList() {
+    const magic_list = document.getElementById("magic-list");
     var input, filter, spells, a, i, txtValue;
     input = document.getElementById('magic-search');
     filter = input.value.toUpperCase();
@@ -50,6 +56,7 @@ function updateMagicList() {
     }
 }
 function refresh_magic(){
+    const magic_all = document.getElementById("magic-all");
     var request = new XMLHttpRequest();
     var posted_text = "";
     request.onreadystatechange = function(){
@@ -57,7 +64,7 @@ function refresh_magic(){
             if(this.responseText == "1"){
                 display_message("something went wrong when refreshing the magic list", 1);
             }else{
-                magic_list.innerHTML = this.responseText;
+                magic_all.innerHTML = this.responseText;
                 display_message("Magic list refreshed", 0, 1000);
             }
         }

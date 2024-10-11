@@ -22,7 +22,8 @@
 body, html{
     padding: 0px;
     margin: 0px;
-    height: 100%;
+    height: 100vh;
+    background-color: lightslategray;
 }
 #all{
     max-width: 100vw;
@@ -137,6 +138,65 @@ body, html{
 }
 .magic-origin, .magic-complexity, .magic-fail, .magic-cast{
     text-align: center;
+}
+#magic-list tr td{
+    padding: 10px;
+}
+tr:first-child{
+    position: sticky;
+    top: 0;
+    background-color: gainsboro;
+}
+tr:first-child *{
+    padding: 10px;
+    font-size: large;
+}
+#magic-all{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 85vh;
+    width: 90vw;
+    background-color: aquamarine;
+    margin: auto;
+}
+#magic-list-container{
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    min-height: 80vh;
+    min-width: 40vw;
+    max-width: 45vw;
+    max-height: 85vw;
+}
+#magic-list{
+    width: max-content;
+}
+#magic-info-container{
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    min-height: 80vh;
+    min-width: 40vw;
+    max-width: 45vw;
+    max-height: 85vw;
+    background-color: aqua;
+}
+.magic-info-detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.magic-info-detail *{
+    max-width: 15vw;
 }
 /* Inventory exclusive */
 #inventory{
