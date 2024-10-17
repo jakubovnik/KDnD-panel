@@ -14,7 +14,7 @@ echo "<tr>";
 echo "</tr>";
 
 while($row = $result->fetch_assoc()){
-    echo "<tr class='magic' id='magic-".$row['id']."'>";
+    echo "<tr class='magic' id='magic-".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
         echo "<td class='magic-name' id='magic-name-".$row['id']."'>".$row['name']."</td>";
         echo "<td class='magic-origin' id='magic-origin-".$row['id']."'>".$row['origin']."</td>";
         echo "<td class='magic-complexity' id='magic-complexity-".$row['id']."'>".$row['complexity']."</td>";
@@ -24,17 +24,22 @@ while($row = $result->fetch_assoc()){
 }
 echo "</table>";
 echo "</div>";
-echo "<div id='magic-info-container'>";
+echo "<div id='magic-info-container' onclick='hide_details()'>";
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
     echo "<div class='magic-info' id='magic-info-".$row['id']."'>";
-        echo "<p>".$row['effects']."</p>";
         echo "<div class='magic-detail-info'>";
-            echo "<p>".$row['limits']."</p>";
-            echo "<p>".$row['rules']."</p>";
-            echo "<p>".$row['other']."</p>";
+            echo "<span>".$row['name']."</span>";
+            echo "<span>".$row['effects']."</span>";
         echo "</div>";
-        echo "<p>".$row['tags']."</p>";
+        echo "<div class='magic-detail-info'>";
+            echo "<span>".$row['limits']."</span>";
+            echo "<span>".$row['rules']."</span>";
+            echo "<span>".$row['other']."</span>";
+        echo "</div>";
+        echo "<div class='magic-detail-info'>";
+            echo "<span>".$row['tags']."</span>";
+        echo "</div>";
     echo "</div>";
 }
 echo "</div>";

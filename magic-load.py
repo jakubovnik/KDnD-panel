@@ -30,8 +30,10 @@ mydb = mysql.connector.connect(
 )
 cursor = mydb.cursor()
 
-cursor.execute("SELECT * from kdnd.character")
-result = cursor.fetchall()
+# cursor.execute("SELECT * from kdnd.character")
+# result = cursor.fetchall()
+
+cursor.execute("DELETE FROM magic")
 
 magic_path = "C:/Users/Kubák/Documents/DnD/DnD/Magic/"
 active_magic_path = magic_path + "Active spells/"
@@ -41,6 +43,7 @@ active_spells = get_file_names(active_magic_path)
 modification_spells = get_file_names(modification_magic_path)
 
 spells = []
+# IMPORTING ACTIVE SPELLS
 for filename in active_spells:
     spell = [remove_last_three_characters(filename)]
     after_colon = False
@@ -69,12 +72,12 @@ for filename in active_spells:
             corrected_line = corrected_line.replace("#", "")
             corrected_line = corrected_line.replace("%", "")
             corrected_line = corrected_line.strip()
-            # print((corrected_line))
-            # spell.append(convert_to_number_or_string(corrected_line))
             spell.append(corrected_line)
         else:
             if line[0] == '#':
                 descriptions = descriptions + 1
+                if(descriptions == 6):
+                    break
                 selected_line = selected_line + 1
                 continue
             if descriptions == 1:
@@ -98,9 +101,77 @@ for filename in active_spells:
     spell.append(tags)
     other = other.strip()
     spell.append(other)
-    for thing in spell:
-        print(thing)
+    spell.append("0")
+    # for thing in spell:
+    #     print(thing)
     spells.append(spell)
+# IMPORTING MODIFICATION SPELLS
+for filename in modification_spells:
+    spell = [remove_last_three_characters(filename)]
+    after_colon = False
+    magic_file = open(modification_magic_path + filename)
+    # lines = read_lines_2_to_5(active_magic_path + filename)
+    # print(remove_last_three_characters(filename))
+    selected_line = 1
+    descriptions = 0
+    rules = ""
+    effects = ""
+    limits = ""
+    tags = ""
+    other = ""
+    for line in magic_file:
+        if selected_line == 1:
+            selected_line = selected_line + 1
+            continue
+        elif selected_line in [2, 3, 4, 5]:
+            corrected_line = ""
+            after_colon = False
+            for char in line:
+                if after_colon == True:
+                    corrected_line += char
+                if char == ":":
+                    after_colon = True
+            corrected_line = corrected_line.replace("#", "")
+            corrected_line = corrected_line.replace("%", "")
+            corrected_line = corrected_line.strip()
+            spell.append(corrected_line)
+        else:
+            if line[0] == '#':
+                descriptions = descriptions + 1
+                if(descriptions == 6):
+                    break
+                selected_line = selected_line + 1
+                continue
+            if descriptions == 1:
+                rules = rules + line
+            elif descriptions == 2:
+                effects = effects + line
+            elif descriptions == 3:
+                limits = limits + line
+            elif descriptions == 4:
+                tags = tags + line
+            elif descriptions == 5:
+                other = other + line
+        selected_line = selected_line + 1
+    rules = rules.strip()
+    spell.append(rules)
+    effects = effects.strip()
+    spell.append(effects)
+    limits = limits.strip()
+    spell.append(limits)
+    tags = tags.strip()
+    spell.append(tags)
+    other = other.strip()
+    spell.append(other)
+    spell.append("1")
+    # for thing in spell:
+    #     print(thing)
+    spells.append(spell)
+spell_amount = 0
 for spell in spells:
-    cursor.execute('INSERT INTO kdnd.magic (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "0");')
+    cursor.execute('INSERT INTO kdnd.magic (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "'+ spell[10] +'");')
+    spell_amount += 1
+    printf(spell_amount)
+    printf(" ")
 mydb.commit()
+mydb.close()

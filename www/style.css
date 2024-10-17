@@ -30,7 +30,7 @@ body, html{
     max-height: 100vh;
     height: 100vh;
 }
-/* Index stuff */
+/* Index stuff ---------------------------------------------------------------------------*/
 #character-info{
     display: flex;
     flex-direction: row;
@@ -80,7 +80,7 @@ body, html{
     max-width: 90%;
     height: auto;
 }
-/* Login stuff */
+/* Login stuff -------------------------------------------------------------------------*/
 #login-body{
     background-image: url("images/world-map.png");
     background-size: cover;
@@ -105,7 +105,7 @@ body, html{
 #login-form *{
     margin: 10px
 }
-/* navbar stuff */
+/* navbar stuff --------------------------------------------------------------------------*/
 #navbar{
     background-color: grey;
     overflow: hidden;
@@ -131,7 +131,7 @@ body, html{
 #navbar a:hover{
     background-color: rgb(51, 64, 66);
 }
-/* Magic exclusive */
+/* Magic exclusive --------------------------------------------------------------------*/
 #magic-search{
     padding: 5px;
     margin: 5px;
@@ -180,25 +180,53 @@ tr:first-child *{
     scrollbar-width: none;  /* Firefox */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
     min-height: 80vh;
     min-width: 40vw;
     max-width: 45vw;
     max-height: 85vw;
     background-color: aqua;
 }
-.magic-info-detail{
+.magic-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 80vh;
+    min-width: 40vw;
+    max-width: 45vw;
+    max-height: 85vw;
+    background-color: gray;
+    display: none;
+}
+.magic-info span, .magic-info * span{
+    border-color: brown;
+    border-style: solid;
+    border-width: 2px;
+    /* border-radius: 5px; */
+    padding: 6px;
+    white-space: pre-wrap;
+    min-width: 10vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    max-height: 25vh;
+    margin: 5px;
+}
+.magic-detail-info{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    background-color: white;
 }
-.magic-info-detail *{
+.magic-detail-info *{
     max-width: 15vw;
 }
-/* Inventory exclusive */
+/* Inventory exclusive ------------------------------------------------------------*/
 #inventory{
     border-radius: 30px;
     display: grid;
@@ -330,7 +358,7 @@ tr:first-child *{
     min-height: 20vh;
     min-width: 28vw;
 }
-/* Button stuff */
+/* Button stuff ---------------------------------------------------------------------*/
 #add-button{
     position: fixed;
     border-radius: 20px;

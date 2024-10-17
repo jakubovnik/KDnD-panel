@@ -8,13 +8,26 @@ require "header.php"
 <div id="all">
     <?php require "navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
-    <input type="text" id="magic-search" onkeyup="updateMagicList()" placeholder="Search by name">
+    <input type="text" id="magic-search-name" onkeyup="updateMagicList('name')" placeholder="Search by name">
+    <input type="text" id="magic-search-origin" onkeyup="updateMagicList('origin')" placeholder="Search by origin">
+    <input type="text" id="magic-search-complexity" onkeyup="updateMagicList('complexity')" placeholder="Search by complexity">
+    <input type="text" id="magic-search-fail" onkeyup="updateMagicList('fail')" placeholder="Search by fail rate">
+    <input type="text" id="magic-search-cast" onkeyup="updateMagicList('cast')" placeholder="Search by cast time">
     <div id="magic-all">
         <div id="magic-list-container">
             <table id="magic-list">
             </table>
         </div>
         <div id="magic-info-container">
+            <div class='magic-info' id='magic-info-0'>
+                <span>effects</span>
+                <div class='magic-detail-info'>
+                    <span>limits</span>
+                    <span>rules</span>
+                    <span>other</span>
+                </div>
+                <span>tags</span>
+            </div>
         </div>
     </div>
 </div>
@@ -38,15 +51,31 @@ function hide_message(){
     message.style.display = "none";
 }
 
-function updateMagicList() {
+var shown_id = 0;
+function reveal_details(id){
+    if(shown_id != 0){
+        document.getElementById("magic-info-"+shown_id).style.display = "none";
+    }
+    document.getElementById("magic-info-"+id).style.display = "flex";
+    shown_id = id;
+}
+function hide_details(){
+    if(shown_id == 0){
+        return;
+    }
+    document.getElementById("magic-info-"+shown_id).style.display = "none";
+    shown_id = 0;
+}
+
+function updateMagicList(type) {
     const magic_list = document.getElementById("magic-list");
     var input, filter, spells, a, i, txtValue;
-    input = document.getElementById('magic-search');
+    input = document.getElementById('magic-search-'+type);
     filter = input.value.toUpperCase();
     spells = magic_list.getElementsByClassName('magic');
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < spells.length; i++) {
-        a = spells[i].getElementsByClassName("magic-name")[0];
+        a = spells[i].getElementsByClassName("magic-"+type)[0];
         txtValue = a.innerHTML;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             spells[i].style.display = "";
@@ -73,6 +102,6 @@ function refresh_magic(){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
-refresh_magic();
+refresh_magic(); //TODO: uncomment
 </script>
 </html>
