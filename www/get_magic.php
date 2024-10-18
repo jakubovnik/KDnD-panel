@@ -29,16 +29,16 @@ $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
     echo "<div class='magic-info' id='magic-info-".$row['id']."'>";
         echo "<div class='magic-detail-info'>";
-            echo "<span>".$row['name']."</span>";
-            echo "<span>".$row['effects']."</span>";
+            echo "<span class='magic-detail-name'>".$row['name']."</span>";
+            echo "<span class='magic-detail-effects'>".$row['effects']."</span>";
         echo "</div>";
         echo "<div class='magic-detail-info'>";
-            echo "<span>".$row['limits']."</span>";
-            echo "<span>".$row['rules']."</span>";
-            echo "<span>".$row['other']."</span>";
+            echo "<span class='magic-detail-limits'>".$row['limits']."</span>";
+            echo "<span class='magic-detail-rules'>".$row['rules']."</span>";
+            echo "<span class='magic-detail-other'>".$row['other']."</span>";
         echo "</div>";
         echo "<div class='magic-detail-info'>";
-            echo "<span>".$row['tags']."</span>";
+            echo "<span class='magic-detail-tags'>".$row['tags']."</span>";
         echo "</div>";
     echo "</div>";
 }

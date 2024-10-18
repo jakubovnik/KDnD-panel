@@ -8,11 +8,13 @@ require "header.php"
 <div id="all">
     <?php require "navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
-    <input type="text" id="magic-search-name" onkeyup="updateMagicList('name')" placeholder="Search by name">
-    <input type="text" id="magic-search-origin" onkeyup="updateMagicList('origin')" placeholder="Search by origin">
-    <input type="text" id="magic-search-complexity" onkeyup="updateMagicList('complexity')" placeholder="Search by complexity">
-    <input type="text" id="magic-search-fail" onkeyup="updateMagicList('fail')" placeholder="Search by fail rate">
-    <input type="text" id="magic-search-cast" onkeyup="updateMagicList('cast')" placeholder="Search by cast time">
+    <div id="magic-search-inputs">
+        <input type="text" id="magic-search-name" onkeyup="updateMagicList('name')" placeholder="Search by name">
+        <input type="text" id="magic-search-origin" onkeyup="updateMagicList('origin')" placeholder="Search by origin">
+        <input type="text" id="magic-search-complexity" onkeyup="updateMagicList('complexity')" placeholder="Search by complexity">
+        <input type="text" id="magic-search-fail" onkeyup="updateMagicList('fail')" placeholder="Search by fail rate">
+        <input type="text" id="magic-search-cast" onkeyup="updateMagicList('cast')" placeholder="Search by cast time">
+    </div>
     <div id="magic-all">
         <div id="magic-list-container">
             <table id="magic-list">

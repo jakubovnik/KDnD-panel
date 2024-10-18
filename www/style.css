@@ -132,7 +132,14 @@ body, html{
     background-color: rgb(51, 64, 66);
 }
 /* Magic exclusive --------------------------------------------------------------------*/
-#magic-search{
+#magic-search-inputs{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#magic-search-inputs *{
     padding: 5px;
     margin: 5px;
 }
@@ -165,10 +172,13 @@ tr:first-child *{
     overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    min-height: 80vh;
+    /* min-height: 80vh;
     min-width: 40vw;
     max-width: 45vw;
-    max-height: 85vw;
+    max-height: 85vh; */
+    width: 45vw;
+    height: 85vh;
+    /* max-height: 85vh; */
 }
 #magic-list{
     width: max-content;
@@ -183,10 +193,12 @@ tr:first-child *{
     justify-content: center;
     align-items: center;
     /* padding: 10px; */
-    min-height: 80vh;
+    /* min-height: 80vh;
     min-width: 40vw;
     max-width: 45vw;
-    max-height: 85vw;
+    max-height: 85vw; */
+    width: 45vw;
+    height: 85vh;
     background-color: aqua;
 }
 .magic-info{
@@ -200,6 +212,10 @@ tr:first-child *{
     max-height: 85vw;
     background-color: gray;
     display: none;
+}
+.magic-detail-name{
+    font-size: xx-large;
+    text-align: center;
 }
 .magic-info span, .magic-info * span{
     border-color: brown;

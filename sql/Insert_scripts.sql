@@ -1,6 +1,7 @@
 INSERT INTO kdnd.role (name) VALUES
 ("Admin"),
 ("Player"),
+("Champion"),
 ("NPC");
 
 INSERT INTO kdnd.character (name,password,age,circles,description,role_id)
