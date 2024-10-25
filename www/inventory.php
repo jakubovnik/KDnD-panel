@@ -29,6 +29,7 @@ require "header.php";
         <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_add_item()">
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="add_item()">
     </div>
+    <input type="text" id="item-search-name" onkeyup="updateItemList('name')" placeholder="Search by name">
     <div id="inventory">
     </div>
 </div>
@@ -83,6 +84,24 @@ function refresh_inventory(sort="default"){
     request.send(posted_text);
 }
 
+function updateItemList(type){
+    const item_list = document.getElementById("inventory");
+    var input, filter, items, a, i, txtValue;
+    input = document.getElementById('item-search-'+type);
+    filter = input.value.toUpperCase();
+    items = item_list.getElementsByClassName('item-box');
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < items.length; i++) {
+        a = items[i].getElementsByClassName("item-"+type)[0];
+        txtValue = a.innerHTML;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            items[i].style.display = "";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
+}
+
 var shown_id = 0;
 function reveal_details(id){
     if(shown_id != 0){
@@ -92,7 +111,9 @@ function reveal_details(id){
     shown_id = id;
 }
 function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works now for some unknown reason :D
-    document.getElementById("item-description-"+shown_id).style.display = "none";
+    if(shown_id != 0){
+        document.getElementById("item-description-"+shown_id).style.display = "none";
+    }
     shown_id = 0;
 }
 

@@ -142,6 +142,7 @@ body, html{
 #magic-search-inputs *{
     padding: 5px;
     margin: 5px;
+
 }
 .magic-origin, .magic-complexity, .magic-fail, .magic-cast{
     text-align: center;
@@ -217,6 +218,9 @@ tr:first-child *{
     font-size: xx-large;
     text-align: center;
 }
+.magic-detail-stats{
+    text-align: center;
+}
 .magic-info span, .magic-info * span{
     border-color: brown;
     border-style: solid;
@@ -249,8 +253,9 @@ tr:first-child *{
     width: auto;
     grid-template-columns: repeat(6, 1fr);
     margin: 1%;
+    margin-top: 0.5%;
     gap: 1%;
-    padding: 1%;
+    padding: 0.5%;
     min-height: 75vh;
     max-height: 80vh;
     overflow-x: hidden;
@@ -308,11 +313,16 @@ tr:first-child *{
     display: grid;
     width: auto;
     grid-template-columns: repeat(3, 1fr);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 .item-numbers div{
     text-align: center;
     padding: 8px;
     margin: 3px;
+}
+#item-search-name{
+    margin: 10px;
 }
 #add-item-background{
     position: fixed;
