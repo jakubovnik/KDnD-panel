@@ -11,6 +11,7 @@ echo "<tr>";
     echo "<th>Complexity</th>";
     echo "<th>Fail-rate</th>";
     echo "<th>Cast-time</th>";
+    echo "<th>Learn magic</th>";
 echo "</tr>";
 
 while($row = $result->fetch_assoc()){
@@ -20,6 +21,9 @@ while($row = $result->fetch_assoc()){
         echo "<td class='magic-complexity' id='magic-complexity-".$row['id']."'>".$row['complexity']."</td>";
         echo "<td class='magic-fail' id='magic-fail-".$row['id']."'>".$row['fail_rate']."%</td>";
         echo "<td class='magic-cast' id='magic-cast-".$row['id']."'>".$row['cast_time']." t</td>";
+        echo "<td class='magic-learn' id='magic-learn-".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
+            echo "<img src='images/d20.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+        echo "</td>";
     echo "</tr>";
 }
 echo "</table>";

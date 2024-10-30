@@ -159,6 +159,15 @@ tr:first-child *{
     padding: 10px;
     font-size: large;
 }
+.magic-learn{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.magic-learn-button{
+    height: 4vh;
+    width: auto;
+}
 #magic-all{
     display: flex;
     flex-direction: row;
@@ -245,6 +254,56 @@ tr:first-child *{
 }
 .magic-detail-info *{
     max-width: 15vw;
+}
+#learn-magic-background{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+#learn-magic-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    border-radius: 20px;
+    background-image: url("images/magic-circle.png");
+    background-size: cover;
+    background-position: center;
+}
+#learn-magic-box *{
+    margin: 5%;
+}
+.learn-magic-text{
+    text-align: center;
+	padding: 0;
+	/* background: none; */
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	/* -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none; */
+    color: white;
+    -webkit-text-stroke: 0.2px black;
+    background-color: rgba(16, 36, 67, 0.742);
+    max-width: 100%;
+}
+#learn-magic-name, #learn-magic-id{
+    min-width: 14ch;
+    size: 14ch;
+    font-size: xx-large;
+}
+#learn-magic-number{
+    min-width: 12ch;
+    size: 10ch;
+    font-size: x-large;
 }
 /* Inventory exclusive ------------------------------------------------------------*/
 #inventory{
@@ -361,7 +420,7 @@ tr:first-child *{
 	appearance: none; */
     color: white;
     -webkit-text-stroke: 0.2px black;
-    background-color: rgba(39, 85, 159, 0.6);
+    background-color: rgba(16, 36, 67, 0.742);
     max-width: 100%;
 }
 #add-item-name{

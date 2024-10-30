@@ -65,6 +65,12 @@ function hide_message(){
     clearTimeout(message_timeout);
     message.style.display = "none";
 }
+function blurAll(){
+    var tmp = document.createElement("input");
+    document.body.appendChild(tmp);
+    tmp.focus();
+    document.body.removeChild(tmp);
+}
 
 function refresh_inventory(sort="default"){
     var request = new XMLHttpRequest();
@@ -117,13 +123,14 @@ function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works
     shown_id = 0;
 }
 
-var add_item_menu = false;
+var add_item_menu = false; //TODO: ??????? why does this exist?????? | (its for pressing enter -_-)
 function reveal_add_item(){
     add_item_background.style.display = "flex";
     add_item_menu = true;
     document.getElementById("add-item-name").focus();
 }
 function hide_add_item(){
+    blurAll();
     add_item_background.style.display = "none";
     add_item_menu = false;
 }
@@ -270,4 +277,5 @@ function keypress(event) {
 }
 refresh_inventory();
 refresh_interval = setInterval(refresh_inventory, 60000);
+document.getElementById("item-search-name").focus();
 </script>
