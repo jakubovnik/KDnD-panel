@@ -300,10 +300,18 @@ tr:first-child *{
     size: 14ch;
     font-size: xx-large;
 }
-#learn-magic-number{
-    min-width: 12ch;
-    size: 10ch;
+.learn-magic-number{
     font-size: x-large;
+    text-align: center;
+	padding: 0;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+    color: white;
+    -webkit-text-stroke: 0.2px black;
+    background-color: rgba(16, 36, 67, 0.742);
+    max-width: 100%;
+    width: min-content;
 }
 /* Inventory exclusive ------------------------------------------------------------*/
 #inventory{

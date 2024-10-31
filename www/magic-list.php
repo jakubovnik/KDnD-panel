@@ -19,9 +19,9 @@ require "header.php"
         <div id="learn-magic-box">
             <span id="learn-magic-id" class="learn-magic-text"></span>
             <span id="learn-magic-name" class="learn-magic-text"></span>
-            <input type="number" placeholder="New Complexity" id="learn-magic-complexity" class="learn-magic-number">
-            <input type="number" placeholder="New Fail Rate" id="learn-magic-fail" class="learn-magic-number">
-            <input type="number" placeholder="New Cast Time" id="learn-magic-cast" class="learn-magic-number">
+            <input type="text" placeholder="New Complexity" id="learn-magic-complexity" class="learn-magic-number">
+            <input type="text" placeholder="New Fail Rate" id="learn-magic-fail" class="learn-magic-number">
+            <input type="text" placeholder="New Cast Time" id="learn-magic-cast" class="learn-magic-number">
         </div>
         <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_learn_magic()">
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="learn_magic()">
@@ -46,6 +46,13 @@ require "header.php"
 </div>
 </body>
 <script>
+function isPositiveNumber(str) { //copied from chatgpt
+    return /^\d+$/.test(str);
+}
+function isWholeNumber(str) {
+    return /^-?\d+$/.test(str);
+}
+
 const message = document.getElementById("message");
 var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
 function display_message(new_message, type=0, time=2000){
@@ -125,10 +132,13 @@ var learn_magic_menu = false;
 const learn_magic_background = document.getElementById("learn-magic-background");
 const learn_magic_id = document.getElementById("learn-magic-id");
 const learn_magic_name = document.getElementById("learn-magic-name");
+const learn_magic_complexity = document.getElementById("learn-magic-complexity");
+const learn_magic_fail = document.getElementById("learn-magic-fail");
+const learn_magic_cast = document.getElementById("learn-magic-cast");
 function reveal_learn_magic(id){
     learn_magic_menu = true;
     learn_magic_background.style.display = "flex";
-    learn_magic_id.innerHTML = id;
+    learn_magic_id.innerHTML = "id: " + id;
     learn_magic_name.innerHTML = document.getElementById("magic-name-"+id).innerHTML;
     document.getElementById("learn-magic-complexity").focus();
 }
@@ -137,14 +147,14 @@ function hide_learn_magic(id){
     learn_magic_background.style.display = "none";
     blurAll();
 }
-function learn_magic_request(name, type_id, charges_max, description){
+function learn_magic_request(name, complexity, fail_rate, cast_time){
     var request = new XMLHttpRequest();
-    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description;
+    var posted_text = "name="+name+"&complexity="+complexity+"&fail_rate="+fail_rate+"&cast_time="+cast_time;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                display_message("Successfully added "+ name);
-                refresh_inventory();
+                display_message("Successfully learned "+ name);
+                refresh_magic();
             }else if(this.responseText == "1"){
                 display_message("something went wrong with adding", 1);
             }else{
@@ -152,28 +162,24 @@ function learn_magic_request(name, type_id, charges_max, description){
             }
         }
     };
-    request.open("POST", "add_item_attempt.php", true);
+    request.open("POST", "learn_magic_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
 function check_form(){
-    if(add_item_name.value == ""){
-        display_message("Item needs a name", 1);
+    if(!isPositiveNumber(learn_magic_complexity.value)){
+        display_message("Complexity must be a whole positive number", 1);
         return 1;
     }
-    if(add_item_type.value == ""){
-        display_message("Item needs a type", 1);
+    if(!isPositiveNumber(learn_magic_fail.value)){
+        display_message("Fail rate must be a whole positive number", 1);
+        return 1;
+    }else if(learn_magic_fail.value > 100){
+        display_message("Fail rate cannot be higher than 100");
         return 1;
     }
-    if(add_item_charge_max.value == ""){
-        display_message("Item needs a max charge (just put 0 if it doesnt have charges)", 1);
-        return 1;
-    }else if(!isPositiveNumber(add_item_charge_max.value)){
-        display_message("Max charge must be a whole positive number", 1)
-        return 1;
-    }
-    if(add_item_description.value == ""){
-        display_message("Item needs a description", 1);
+    if(!isWholeNumber(learn_magic_cast.value)){
+        display_message("Cast time must be a whole number", 1);
         return 1;
     }
     return 0;
