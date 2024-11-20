@@ -1,7 +1,10 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "SELECT * FROM kdnd.magic ORDER BY id";
+$sql = "SELECT * FROM kdnd.magic";
+if($_POST['sort'] == "default"){
+    $sql = $sql." ORDER BY id";
+}
 $result = $conn->query($sql);
 echo "<div id='magic-list-container'>";
 echo "<table id='magic-list'>";

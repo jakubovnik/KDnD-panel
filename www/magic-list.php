@@ -49,7 +49,7 @@ require "header.php"
 function isPositiveNumber(str) { //copied from chatgpt
     return /^\d+$/.test(str);
 }
-function isWholeNumber(str) {
+function isWholeNumber(str) { //copied from chatgpt
     return /^-?\d+$/.test(str);
 }
 
@@ -110,10 +110,10 @@ function updateMagicList(type) {
         }
     }
 }
-function refresh_magic(){
+function refresh_magic(sort="default"){
     const magic_all = document.getElementById("magic-all");
     var request = new XMLHttpRequest();
-    var posted_text = "";
+    var posted_text = "sort=" + sort;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "1"){
@@ -156,7 +156,7 @@ function learn_magic_request(name, complexity, fail_rate, cast_time){
                 display_message("Successfully learned "+ name);
                 refresh_magic();
             }else if(this.responseText == "1"){
-                display_message("something went wrong with adding", 1);
+                display_message("something went wrong with your learning lol git gud", 1);
             }else{
                 display_message(this.responseText, 1);//Might return gibberish but not my problem :P
             }
@@ -165,6 +165,22 @@ function learn_magic_request(name, complexity, fail_rate, cast_time){
     request.open("POST", "learn_magic_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
+}
+function learn_magic(){
+    if(check_form()){
+        return 1;
+    }
+    learn_magic_request(
+        learn_magic_name.value,
+        learn_magic_complexity.value,
+        learn_magic_fail.value,
+        learn_magic_cast.value
+    );
+    learn_magic_name.value == "";
+    learn_magic_complexity.value == "";
+    learn_magic_fail.value == "";
+    learn_magic_cast.value == "";
+    hide_learn_magic();
 }
 function check_form(){
     if(!isPositiveNumber(learn_magic_complexity.value)){
