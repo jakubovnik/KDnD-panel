@@ -36,7 +36,7 @@ require "header.php";
 </body>
 </html>
 <script>
-function isPositiveNumber(str) { //copied from chatgpt
+function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^\d+$/.test(str);
 }
 

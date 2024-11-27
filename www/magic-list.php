@@ -46,10 +46,10 @@ require "header.php"
 </div>
 </body>
 <script>
-function isPositiveNumber(str) { //copied from chatgpt
+function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^\d+$/.test(str);
 }
-function isWholeNumber(str) { //copied from chatgpt
+function isWholeNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^-?\d+$/.test(str);
 }
 
@@ -149,16 +149,20 @@ function hide_learn_magic(id){
 }
 function learn_magic_request(name, complexity, fail_rate, cast_time){
     var request = new XMLHttpRequest();
-    var posted_text = "name="+name+"&complexity="+complexity+"&fail_rate="+fail_rate+"&cast_time="+cast_time;
+    var posted_text = "magic_name="+name+"&complexity="+complexity+"&fail_rate="+fail_rate+"&cast_time="+cast_time;
+    // console.log(posted_text);
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                display_message("Successfully learned "+ name);
                 refresh_magic();
+                display_message("Successfully learned "+ name);
+            }else if(this.responseText == "00"){
+                refresh_magic();
+                display_message("Successfully updated "+ name);
             }else if(this.responseText == "1"){
                 display_message("something went wrong with your learning lol git gud", 1);
             }else{
-                display_message(this.responseText, 1);//Might return gibberish but not my problem :P
+                display_message(this.responseText, 1, 5000);//Might return gibberish but not my problem :P
             }
         }
     };
@@ -171,12 +175,12 @@ function learn_magic(){
         return 1;
     }
     learn_magic_request(
-        learn_magic_name.value,
+        learn_magic_name.innerHTML,
         learn_magic_complexity.value,
         learn_magic_fail.value,
         learn_magic_cast.value
     );
-    learn_magic_name.value == "";
+    learn_magic_name.innerHTML == "";
     learn_magic_complexity.value == "";
     learn_magic_fail.value == "";
     learn_magic_cast.value == "";
@@ -200,21 +204,21 @@ function check_form(){
     }
     return 0;
 }
-function add_item(){
-    if(check_form()){
-        return;
-    }
-    add_item_request(
-        add_item_name.value,
-        add_item_type.value,
-        add_item_charge_max.value,
-        add_item_description.value
-    );
-    add_item_name.value = "";
-    add_item_charge_max.value = "";
-    add_item_description.value = "";
-    hide_add_item();
-}
+// function add_item(){
+//     if(check_form()){
+//         return;
+//     }
+//     add_item_request(
+//         add_item_name.value,
+//         add_item_type.value,
+//         add_item_charge_max.value,
+//         add_item_description.value
+//     );
+//     add_item_name.value = "";
+//     add_item_charge_max.value = "";
+//     add_item_description.value = "";
+//     hide_add_item();
+// }
 
 window.onload=function() {
     document.onkeydown = keypress;
