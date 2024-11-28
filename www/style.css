@@ -193,6 +193,9 @@ tr:first-child *{
 #magic-list{
     width: max-content;
 }
+.learned-magic{
+    background-color: rgba(0, 0, 255, 0.3);
+}
 #magic-info-container{
     overflow-x: hidden;
     overflow-y: auto;

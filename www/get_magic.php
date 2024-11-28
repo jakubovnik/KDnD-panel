@@ -1,11 +1,19 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "SELECT * FROM kdnd.magic";
+$sql_default = "SELECT * FROM kdnd.magic";
 if($_POST['sort'] == "default"){
-    $sql = $sql." ORDER BY id";
+    $sql_default = $sql_default." ORDER BY id";
 }
-$result = $conn->query($sql);
+$sql_learned = "SELECT magic.id, character_magic.character_id, character_magic.magic_name, character_magic.complexity, character_magic.fail_rate, character_magic.cast_time 
+FROM kdnd.character_magic 
+INNER JOIN kdnd.magic 
+ON magic.name=character_magic.magic_name
+WHERE character_id='".$_SESSION['cid']."'";
+$magic_default = $conn->query($sql_default);
+$magic_learned = $conn->query($sql_learned);
+
+
 echo "<div id='magic-list-container'>";
 echo "<table id='magic-list'>";
 echo "<tr>";
@@ -17,7 +25,19 @@ echo "<tr>";
     echo "<th>Learn magic</th>";
 echo "</tr>";
 
-while($row = $result->fetch_assoc()){
+while($row = $magic_learned->fetch_assoc()){//creating learned magic list
+    echo "<tr class='magic learned-magic' id='magic-0".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
+        echo "<td class='magic-name' id='magic-name-0".$row['id']."'>".$row['magic_name']."</td>";
+        echo "<td class='magic-origin' id='magic-origin-0".$row['id']."'>".$_SESSION['cname']."</td>";
+        echo "<td class='magic-complexity' id='magic-complexity-0".$row['id']."'>".$row['complexity']."</td>";
+        echo "<td class='magic-fail' id='magic-fail-0".$row['id']."'>".$row['fail_rate']."%</td>";
+        echo "<td class='magic-cast' id='magic-cast-0".$row['id']."'>".$row['cast_time']." t</td>";
+        echo "<td class='magic-learn' id='magic-learn-0".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
+            echo "<img src='images/d20.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+        echo "</td>";
+    echo "</tr>";
+}
+while($row = $magic_default->fetch_assoc()){//creating default magic list
     echo "<tr class='magic' id='magic-".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
         echo "<td class='magic-name' id='magic-name-".$row['id']."'>".$row['name']."</td>";
         echo "<td class='magic-origin' id='magic-origin-".$row['id']."'>".$row['origin']."</td>";
@@ -32,8 +52,8 @@ while($row = $result->fetch_assoc()){
 echo "</table>";
 echo "</div>";
 echo "<div id='magic-info-container' onclick='hide_details()'>";
-$result = $conn->query($sql);
-while($row = $result->fetch_assoc()){
+$magic_default = $conn->query($sql_default);
+while($row = $magic_default->fetch_assoc()){
     echo "<div class='magic-info' id='magic-info-".$row['id']."'>";
         echo "<div class='magic-detail-info'>";
             echo "<span class='magic-detail-name'>".$row['name']."</span>";
