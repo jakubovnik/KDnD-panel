@@ -154,10 +154,10 @@ function learn_magic_request(name, complexity, fail_rate, cast_time){
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                refresh_magic();
+                setTimeout(refresh_magic, 2000);
                 display_message("Successfully learned "+ name);
             }else if(this.responseText == "00"){
-                refresh_magic();
+                setTimeout(refresh_magic, 2000);
                 display_message("Successfully updated "+ name);
             }else if(this.responseText == "1"){
                 display_message("something went wrong with your learning lol git gud", 1);
@@ -180,10 +180,10 @@ function learn_magic(){
         learn_magic_fail.value,
         learn_magic_cast.value
     );
-    learn_magic_name.innerHTML == "";
-    learn_magic_complexity.value == "";
-    learn_magic_fail.value == "";
-    learn_magic_cast.value == "";
+    learn_magic_name.innerHTML = "";
+    learn_magic_complexity.value = "";
+    learn_magic_fail.value = "";
+    learn_magic_cast.value = "";
     hide_learn_magic();
 }
 function check_form(){
