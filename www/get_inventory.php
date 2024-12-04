@@ -3,9 +3,9 @@ session_start();
 require "dbconnect.php";
 $sql = "SELECT inventory.id, inventory.name, type.name as type, inventory.amount, inventory.charges, inventory.charges_max, inventory.description 
     FROM kdnd.inventory INNER JOIN kdnd.type ON inventory.type_id=type.id
-    WHERE is_deleted=0";
+    WHERE (is_deleted=0)";
 if($_SESSION['role'] != 1){
-    $sql = $sql." AND inventory.character_id=".$_SESSION['cid'];
+    $sql = $sql." AND (inventory.character_id=".$_SESSION['cid'].")";
 }
 if($_POST['sort'] == "default"){
     $sql = $sql." ORDER BY type.name DESC,inventory.name ASC";
