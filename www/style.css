@@ -90,22 +90,23 @@ body, html{
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 }
 #login div{
     margin: auto;
-    background-color: rgba(240, 248, 255, 0.4);
+    background-color: rgba(240, 248, 255, 0.5);
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     width: 20vw;
     height: 30vh;
+    border-radius: 15px;
 }
 #login-form{
     margin: auto;
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 28vh;
 }
@@ -114,7 +115,17 @@ body, html{
     font-size: 1rem;
 }
 #login-form input{
-    
+    border: 1px solid #ccc;
+    background-color: rgba(167, 214, 255, 0.54);
+    border-radius: 4px;
+    color: black;
+    transition: border-color 0.3s, background-color 0.3s;
+    text-align: center;
+}
+#login-form input:focus{
+    outline: none;
+    border-color: #4242e294;
+    background-color: rgb(177, 255, 255);
 }
 /* navbar stuff --------------------------------------------------------------------------*/
 #navbar{
@@ -193,13 +204,11 @@ tr:first-child *{
     overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    /* min-height: 80vh;
-    min-width: 40vw;
-    max-width: 45vw;
-    max-height: 85vh; */
     width: 45vw;
     height: 85vh;
-    /* max-height: 85vh; */
+}
+#magic-list-container::-webkit-scrollbar{
+    display: none;
 }
 #magic-list{
     width: max-content;
@@ -216,14 +225,12 @@ tr:first-child *{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding: 10px; */
-    /* min-height: 80vh;
-    min-width: 40vw;
-    max-width: 45vw;
-    max-height: 85vw; */
     width: 45vw;
     height: 85vh;
     background-color: aqua;
+}
+#magic-info-container::-webkit-scrollbar{
+    display: none;
 }
 .magic-info{
     display: flex;
@@ -258,6 +265,9 @@ tr:first-child *{
     scrollbar-width: none;  /* Firefox */
     max-height: 25vh;
     margin: 5px;
+}
+.magic-info span::-webkit-scrollbar, .magic-info * span::-webkit-scrollbar{
+    display: none;
 }
 .magic-detail-info{
     display: flex;
@@ -362,21 +372,30 @@ tr:first-child *{
     border-width: 5px;
     border-color: dimgray;
     border-radius: 10px;
-    height: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
-                0 12px 24px rgba(0, 0, 0, 0.2);
+    height: 18rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 
+                0 12px 24px rgba(0, 0, 0, 0.3);
 }
 .item-box *{
     color: aliceblue;
 }
 .item-name{
-    font-size: x-large;
+    font-size: 2rem;
     border-style: solid;
     border-radius: 2px;
     border-width: 3px;
     padding: 3px;
     background-color: rgba(0, 0, 0, 0.65);
     max-width: 80%;
+}
+.long-name-item-1{
+    font-size: 1rem;
+}
+.long-name-item-2{
+    font-size: 1.4rem;
+}
+.item-type{
+    font-size: 1.3rem;
 }
 .item-description{
     display: none;
@@ -402,8 +421,32 @@ tr:first-child *{
     padding: 8px;
     margin: 3px;
 }
+#inventory-search-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vw; */
+}
 #item-search-name{
+    /* margin: 10px auto 10px auto; */
     margin: 10px;
+    width: 15rem;
+    height: 2rem;
+    border: 1px solid #ccc;
+    background-color: rgba(167, 214, 255, 0.744);
+    border-radius: 4px;
+    color: black;
+    transition: border-color 0.3s, background-color 0.3s;
+    text-align: center;
+    font-size: 1rem;
+}
+#item-search-name::placeholder{
+    color:rgb(50, 39, 39);
+}
+#item-search-name:focus{
+    outline: none;
+    border-color: #4242e294;
+    background-color: rgb(177, 255, 255);
 }
 #add-item-background{
     position: fixed;
@@ -520,12 +563,12 @@ tr:first-child *{
                 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 @media only screen and (max-width: 1000px) {
-/* default stuff */
+/* default stuff ------------------------------------------------------------------------------------ default stuff */
 #navbar *{
     padding: 7px 8px;
-    font-size: medium;
+    font-size: 2rem;
 }
-/* Login stuff */
+/* Login stuff ------------------------------------------------------------------------------------ Login stuff */
 #login-body{
     background-image: url("images/world-map.png");
     background-size: cover;
@@ -535,7 +578,7 @@ tr:first-child *{
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 }
 #login div{
     width: 70vw;
@@ -544,17 +587,72 @@ tr:first-child *{
 #login-form{
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 45vh;
 }
 #login-form *{
     margin: auto;
     font-size: 3rem;
+    /* max-width: 90%; */
 }
-/* Inventory stuff */
+/* Inventory stuff ------------------------------------------------------------------------------------ Inventory stuff */
 #inventory{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
-
+#item-search-name{
+    margin: 10px;
+    width: initial;
+    height: initial;
+    border: 1px solid #ccc;
+    font-size: 3rem;
+}
+.item-box{
+    height: 30vh;
+}
+.item-name{
+    font-size: 5rem;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.65);
+    max-width: 80%;
+}
+.long-name-item-1{
+    font-size: 2rem;
+}
+.long-name-item-2{
+    font-size: 2.8rem;
+}
+.item-type{
+    font-size: 2rem;
+}
+/* .item-description{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    color: crimson;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+} */
+.item-numbers{
+    display: grid;
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.item-numbers div{
+    text-align: center;
+    padding: 8px;
+    margin: 3px;
+}
+#item-search-name{
+    margin: 10px;
+}
 }

@@ -7,7 +7,7 @@ if($_SESSION['role'] == 1){
     echo '<a href="upload-image.php">Upload Image</a>';
 }
 echo '<span>logged in as ';
-echo $_SESSION['cname'];
+    echo $_SESSION['cname'];
 echo '</span>';
 echo '<a href="logout.php">logout</a>';
 echo '</div>';

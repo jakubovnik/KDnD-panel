@@ -17,22 +17,10 @@ require "header.php"
 </div>
 </body>
 </html>
+<script src="default.js"></script>
 <script>
 const cname_input = document.getElementById("cname");
 const password_input = document.getElementById("password");
-const message = document.getElementById("message");
-var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
-function display_message(new_message, type=0){
-    clearTimeout(message_timeout);
-    message.style.display = "block";
-    if(type == 0){
-        message.style.color = "green";
-    }else if(type == 1){
-        message.style.color = "red";
-    }
-    message.innerHTML = new_message;
-    message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
-}
 
 function loginAttempt(){
     var request = new XMLHttpRequest();

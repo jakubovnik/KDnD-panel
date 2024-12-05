@@ -29,18 +29,20 @@ require "header.php";
         <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_add_item()">
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="add_item()">
     </div>
-    <input type="text" id="item-search-name" onkeyup="updateItemList('name')" placeholder="Search by name">
+    <div id="inventory-search-box">
+        <input type="text" id="item-search-name" onkeyup="updateItemList('name')" placeholder="Search by name">
+    </div>
     <div id="inventory">
     </div>
 </div>
 </body>
 </html>
+<script src="default.js"></script>
 <script>
 function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^\d+$/.test(str);
 }
 
-const message = document.getElementById("message");
 const inventory = document.getElementById("inventory");
 const add_item_background = document.getElementById("add-item-background");
 const add_item_box = document.getElementById("add-item-box");// Propably not nescesarry
@@ -49,28 +51,6 @@ const add_item_type = document.getElementById("add-item-type");
 const add_item_charge_max = document.getElementById("add-item-charge-max");
 const add_item_description = document.getElementById("add-item-description");
 
-var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
-function display_message(new_message, type=0, time=2000){
-    clearTimeout(message_timeout);
-    message.style.display = "block";
-    if(type == 0){
-        message.style.color = "green";
-    }else if(type == 1){
-        message.style.color = "red";
-    }
-    message.innerHTML = new_message;
-    message_timeout = setTimeout(() => {message.style.display = "none";}, time);
-}
-function hide_message(){
-    clearTimeout(message_timeout);
-    message.style.display = "none";
-}
-function blurAll(){
-    var tmp = document.createElement("input");
-    document.body.appendChild(tmp);
-    tmp.focus();
-    document.body.removeChild(tmp);
-}
 
 function refresh_inventory(sort="default"){
     var request = new XMLHttpRequest();
