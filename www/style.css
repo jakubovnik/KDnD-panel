@@ -266,7 +266,7 @@ tr:first-child *{
     max-height: 25vh;
     margin: 5px;
 }
-.magic-info span::-webkit-scrollbar, .magic-info * span::-webkit-scrollbar{
+.magic-info span::-webkit-scrollbar, .magic-info * span::-webkit-scrollbar{ /* Chrome and safari */
     display: none;
 }
 .magic-detail-info{
@@ -354,8 +354,16 @@ tr:first-child *{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
-#inventory::-webkit-scrollbar{
+#inventory::-webkit-scrollbar{ /* Chrome and safari */
     display: none;
+}
+/* #inventory.item-box:last-child{
+    margin-bottom: 20rem;
+} */
+#inventory::after{
+    content: '';
+    display: block;
+    height: 40vh;
 }
 .inventory-background{
     background-image: url("images/leather-texture.jpg");
@@ -369,7 +377,7 @@ tr:first-child *{
     align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
     border-style: solid;
-    border-width: 5px;
+    border-width: 0.3rem;
     border-color: dimgray;
     border-radius: 10px;
     height: 18rem;
@@ -420,6 +428,7 @@ tr:first-child *{
     text-align: center;
     padding: 8px;
     margin: 3px;
+    box-shadow: -3px -3px 6px rgba(0, 0, 0, 0.5) inset;
 }
 #inventory-search-box{
     display: flex;
@@ -543,15 +552,15 @@ tr:first-child *{
     height: 10vh;
     margin: 0px;
 }
-.remove-button{
+.item-remove-button{
     position: absolute;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     top: 4px;
     right: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
-    width: 25px;
-    height: 25px;
+    width: 1.2rem;
+    height: 1.2rem;
     z-index: 500;
 }
 .button{
@@ -626,33 +635,25 @@ tr:first-child *{
     font-size: 2.8rem;
 }
 .item-type{
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
-/* .item-description{
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    color: crimson;
-    padding: 20px;
-    text-align: center;
-    z-index: 1000;
-} */
-.item-numbers{
+/* .item-numbers{
     display: grid;
     width: auto;
     grid-template-columns: repeat(3, 1fr);
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.6);
-}
+} */
 .item-numbers div{
-    text-align: center;
-    padding: 8px;
-    margin: 3px;
+    font-size: 2.2rem;
 }
 #item-search-name{
     margin: 10px;
+}
+/* Button stuff ------------------------------------------------------------------------------------- button stuff */
+.item-remove-button{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
 }
 }
