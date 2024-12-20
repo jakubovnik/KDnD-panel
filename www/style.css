@@ -153,7 +153,7 @@ body, html{
 #navbar a:hover{
     background-color: rgb(51, 64, 66);
 }
-/* Magic exclusive --------------------------------------------------------------------*/
+/* Magic exclusive -------------------------------------------------------------------- Magic exclusive */
 #magic-search-inputs{
     width: 100vw;
     display: flex;
@@ -164,7 +164,6 @@ body, html{
 #magic-search-inputs *{
     padding: 5px;
     margin: 5px;
-
 }
 .magic-origin, .magic-complexity, .magic-fail, .magic-cast{
     text-align: center;
@@ -337,7 +336,7 @@ tr:first-child *{
     max-width: 100%;
     width: min-content;
 }
-/* Inventory exclusive ------------------------------------------------------------*/
+/* Inventory exclusive ------------------------------------------------------------ Inventory exclusive */
 #inventory{
     border-radius: 30px;
     display: grid;
@@ -605,9 +604,31 @@ tr:first-child *{
     font-size: 3rem;
     /* max-width: 90%; */
 }
+/* Magic list stuff ----------------------------------------------------------------------------------- Magic list stuff */
+#magic-search-inputs{
+    display:none;
+}
+#magic-all{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    width: 100vw;
+    background-color: aquamarine;
+    margin-top: 1rem;
+}
+#magic-list-container{
+    margin: auto;
+    width: 95vw;
+}
+#magic-info-container{
+    display:none;
+}
 /* Inventory stuff ------------------------------------------------------------------------------------ Inventory stuff */
 #inventory{
     grid-template-columns: repeat(2, 1fr);
+    margin: 0%;
+    margin-top: 0.5%;
 }
 #item-search-name{
     margin: 10px;
