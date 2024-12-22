@@ -53,7 +53,7 @@ echo "</table>";
 echo "</div>";
 echo "<div id='magic-info-container' onclick='hide_details()'>";
 $magic_default = $conn->query($sql_default);
-while($row = $magic_default->fetch_assoc()){
+while($row = $magic_default->fetch_assoc()){//creating info elements
     echo "<div class='magic-info' id='magic-info-".$row['id']."'>";
         echo "<div class='magic-detail-info'>";
             echo "<span class='magic-detail-name'>".$row['name']."</span>";

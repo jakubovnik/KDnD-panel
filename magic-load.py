@@ -1,6 +1,12 @@
 # import linecache
 import os
 import mysql.connector
+
+# defining important variables
+magic_path = "C:/Users/Kubák/Documents/DnD/DnD/Magic/"
+active_magic_path = magic_path + "Active spells/"
+modification_magic_path = magic_path + "Modification spells/"
+
 def printf(something):
     print(something, end="")
 def remove_last_three_characters(s):
@@ -35,9 +41,6 @@ cursor = mydb.cursor()
 
 cursor.execute("DELETE FROM magic")
 
-magic_path = "C:/Users/Kubák/Documents/DnD/DnD/Magic/"
-active_magic_path = magic_path + "Active spells/"
-modification_magic_path = magic_path + "Modification spells/"
 
 active_spells = get_file_names(active_magic_path)
 modification_spells = get_file_names(modification_magic_path)

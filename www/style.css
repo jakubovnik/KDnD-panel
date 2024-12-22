@@ -106,12 +106,14 @@ body, html{
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     height: 28vh;
+    max-width: 100%;
 }
 #login-form *{
-    margin: auto;
+    max-width: 100%;
+    /* margin: auto; */
     font-size: 1rem;
 }
 #login-form input{
@@ -572,6 +574,9 @@ tr:first-child *{
 }
 @media only screen and (max-width: 1000px) {
 /* default stuff ------------------------------------------------------------------------------------ default stuff */
+#all, #login{
+    margin-bottom: 10vh; /*WEB ON PHONES CAN SUCK MY ASS, WHAT THE FUCK IS THIS SHIT. I DONT WANT YOUR DOGSHIT STUPID FUKIN DUMBASS AUTOZOOM*/
+}
 #navbar *{
     padding: 7px 8px;
     font-size: 2rem;
@@ -593,16 +598,12 @@ tr:first-child *{
     height: 50vh;
 }
 #login-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     height: 45vh;
 }
 #login-form *{
-    margin: auto;
-    font-size: 3rem;
-    /* max-width: 90%; */
+    /* margin: auto; */
+    font-size: 4rem;
+    max-width: 90%;
 }
 /* Magic list stuff ----------------------------------------------------------------------------------- Magic list stuff */
 #magic-search-inputs{
@@ -619,7 +620,7 @@ tr:first-child *{
 }
 #magic-list-container{
     margin: auto;
-    width: 95vw;
+    width: auto;
 }
 #magic-info-container{
     display:none;

@@ -2,7 +2,7 @@
 echo '<!DOCTYPE html>';
 echo '<html lang="en">';
 echo '<head>';
-// echo '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">';
+// echo '<meta name="viewport" content="user-scalable=no">'; // WEB ON PHONES CAN SUCK MY ASS, WHAT THE FUCK IS THIS SHIT. I DONT WANT YOUR DOGSHIT STUPID FUKIN DUMBASS AUTOZOOM
 echo '    <link rel="stylesheet" href="style.css">';
 echo '    <link rel="icon" type="image/x-icon" href="images/d20.png">';
 /*
