@@ -38,23 +38,24 @@ body, html{
 /* Navbar stuff ------------------------------------------------------------------------- Navbar stuff */
 #navbar-button{
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
     background-color: grey;
-    border-radius: 25%;
+    border-radius: 1rem;
     z-index: 1000;
-    /* padding: 5px; */
+    padding: 0px;
 }
 #navbar-button-image{
-    height: 8rem;
-    width: 8rem;
+    height: 3rem;
+    width: 3rem;
     margin: 1rem;
+    margin-bottom: 0.8rem;
 }
 #navbar{
     display: none;
     position: fixed;
-    top: 12rem;
-    left: 1rem;
+    top: 6rem;
+    left: 0.5rem;
     flex-direction: column;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.4);
@@ -63,10 +64,10 @@ body, html{
 }
 #navbar *{
     color: white;
-    padding: 0.8rem 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 5rem;
+    padding: 0.2rem 0.4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
     text-decoration: none;
     width: auto;
 }
@@ -87,4 +88,12 @@ body, html{
 /* Index stuff ---------------------------------------------------------------- Index stuff */
 #character-image{
     max-width: 100%;
+}
+
+/* Inventory stuff ----------------------------------------------------------------- Inventory stuff */
+#inventory-search-box{ /* this thingy is temporary until I figure out searching properly */
+    display: none;
+}
+#inventory{
+
 }

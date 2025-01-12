@@ -46,7 +46,7 @@ function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (
 
 const inventory = document.getElementById("inventory");
 const add_item_background = document.getElementById("add-item-background");
-const add_item_box = document.getElementById("add-item-box");// Propably not nescesarry
+const add_item_box = document.getElementById("add-item-box");// Propably not nescesarry but just in case kept it :P
 const add_item_name = document.getElementById("add-item-name");
 const add_item_type = document.getElementById("add-item-type");
 const add_item_charge_max = document.getElementById("add-item-charge-max");
