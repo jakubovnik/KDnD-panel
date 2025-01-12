@@ -16,8 +16,9 @@
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 0.5rem;
     text-align: center;
+    max-width: 60vw;
     z-index: 2000;
 }
 body, html{
@@ -38,28 +39,29 @@ body, html{
 /* Navbar stuff ------------------------------------------------------------------------- Navbar stuff */
 #navbar-button{
     position: fixed;
-    top: 0.5rem;
-    left: 0.5rem;
+    top: 0.3rem;
+    left: 0.3rem;
     background-color: grey;
     border-radius: 1rem;
     z-index: 1000;
     padding: 0px;
 }
 #navbar-button-image{
-    height: 3rem;
-    width: 3rem;
-    margin: 1rem;
-    margin-bottom: 0.8rem;
+    height: 2rem;
+    width: 2rem;
+    margin: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 #navbar{
     display: none;
     position: fixed;
-    top: 6rem;
+    top: 3.5rem;
     left: 0.5rem;
     flex-direction: column;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
+    z-index: 1000;
     /* align-items: center; */
 }
 #navbar *{
@@ -77,7 +79,7 @@ body, html{
 #navbar span{
     color: gold;
     border-style: solid;
-    border-width: 5px;
+    border-width: 3px;
     border-color: gold;
 }
 #navbar a:last-child{
@@ -94,6 +96,79 @@ body, html{
 #inventory-search-box{ /* this thingy is temporary until I figure out searching properly */
     display: none;
 }
+.inventory-background{
+    background-image: url("images/leather-texture.jpg");
+    background-size: cover;
+}
 #inventory{
-
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 90vh;
+    padding-top: 10vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#inventory::-webkit-scrollbar{ /* Chrome and safari */
+    display: none;
+}
+.item-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 12rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-color: dimgray;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 3px;
+}
+.item-box *{
+    color: aliceblue;
+}
+.item-numbers{
+    display: grid;
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.item-numbers div{
+    text-align: center;
+    padding: 0.2rem;
+    margin: 0.1rem;
+    box-shadow: -3px -3px 6px rgba(0, 0, 0, 0.5) inset;
+}
+.item-description{
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: aliceblue;
+    text-align: center;
+    z-index: 2000;
+}
+.item-remove-button{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0.2rem;
+    left: 0.2rem;
+}
+#add-button{
+    position: fixed;
+    width: 4rem;
+    height: 4rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
 }

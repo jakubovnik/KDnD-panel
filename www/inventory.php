@@ -104,7 +104,7 @@ function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works
     shown_id = 0;
 }
 
-var add_item_menu = false; //TODO: ??????? why does this exist?????? | (its for pressing enter -_-)
+var add_item_menu = false; //TODO: ??????? why does this exist?????? | (its for pressing enter dumbass -_-)
 function reveal_add_item(){
     add_item_background.style.display = "flex";
     add_item_menu = true;

@@ -309,9 +309,6 @@ tr:first-child *{
 #inventory::-webkit-scrollbar{ /* Chrome and safari */
     display: none;
 }
-/* #inventory.item-box:last-child{
-    margin-bottom: 20rem;
-} */
 #inventory::after{
     content: '';
     display: block;
@@ -360,9 +357,9 @@ tr:first-child *{
 .item-description{
     display: none;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
     background-color: white;
     color: crimson;
     padding: 20px;
