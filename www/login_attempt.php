@@ -14,6 +14,11 @@ if ($result->num_rows == 1) {
             $_SESSION['money'] = $row['money'];
             $_SESSION['age'] = $row['age'];
             $_SESSION['logged'] = true;
+            if($_POST['mstyle'] == "true"){
+                $_SESSION['style'] = "mobile-style.css";
+            }else{
+                $_SESSION['style'] = "style.css";
+            }
             echo "0";
         }else{
             echo "2";

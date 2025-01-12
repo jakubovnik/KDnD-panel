@@ -2,6 +2,7 @@
 require "check_login_false.php";
 require "header.php"
 ?>
+    <link rel="stylesheet" href="login-style.css">
     <title>Login with character</title>
 </head>
 <body id="login-body">
@@ -21,10 +22,14 @@ require "header.php"
 <script>
 const cname_input = document.getElementById("cname");
 const password_input = document.getElementById("password");
+var mobile_style = "false";
 
 function loginAttempt(){
+    if(window.innerWidth < 1000){
+        mobile_style = "true";
+    }
     var request = new XMLHttpRequest();
-    var posted_text = "cname="+cname_input.value+"&password="+password_input.value
+    var posted_text = "cname="+cname_input.value+"&password="+password_input.value+"&mstyle="+mobile_style;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){

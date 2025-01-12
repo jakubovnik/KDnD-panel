@@ -80,55 +80,6 @@ body, html{
     max-width: 90%;
     height: auto;
 }
-/* Login stuff -------------------------------------------------------------------------*/
-#login-body{
-    background-image: url("images/world-map.png");
-    background-size: cover;
-}
-#login{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#login div{
-    margin: auto;
-    background-color: rgba(240, 248, 255, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20vw;
-    height: 30vh;
-    border-radius: 15px;
-}
-#login-form{
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    height: 28vh;
-    max-width: 100%;
-}
-#login-form *{
-    max-width: 100%;
-    /* margin: auto; */
-    font-size: 1rem;
-}
-#login-form input{
-    border: 1px solid #ccc;
-    background-color: rgba(167, 214, 255, 0.54);
-    border-radius: 4px;
-    color: black;
-    transition: border-color 0.3s, background-color 0.3s;
-    text-align: center;
-}
-#login-form input:focus{
-    outline: none;
-    border-color: #4242e294;
-    background-color: rgb(177, 255, 255);
-}
 /* navbar stuff --------------------------------------------------------------------------*/
 #navbar{
     background-color: grey;
@@ -580,30 +531,6 @@ tr:first-child *{
 #navbar *{
     padding: 7px 8px;
     font-size: 2rem;
-}
-/* Login stuff ------------------------------------------------------------------------------------ Login stuff */
-#login-body{
-    background-image: url("images/world-map.png");
-    background-size: cover;
-}
-#login{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#login div{
-    width: 70vw;
-    height: 50vh;
-}
-#login-form{
-    height: 45vh;
-}
-#login-form *{
-    /* margin: auto; */
-    font-size: 4rem;
-    max-width: 90%;
 }
 /* Magic list stuff ----------------------------------------------------------------------------------- Magic list stuff */
 #magic-search-inputs{
