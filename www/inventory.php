@@ -38,6 +38,7 @@ require "header.php";
 </body>
 </html>
 <script src="default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
 <script>
 function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^\d+$/.test(str);

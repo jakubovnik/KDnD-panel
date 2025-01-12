@@ -35,3 +35,5 @@ require "header.php";
     </div>
 </div>
 </html>
+<script src="default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>

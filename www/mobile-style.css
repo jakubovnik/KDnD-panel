@@ -1,0 +1,90 @@
+/* Default stuff */
+*{
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
+}
+#message{
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: green;
+    border-color: brown;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    z-index: 2000;
+}
+body, html{
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: lightslategray;
+}
+#all{
+    /* max-width: 100vw; */
+    max-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+}
+/* Navbar stuff ------------------------------------------------------------------------- Navbar stuff */
+#navbar-button{
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background-color: grey;
+    border-radius: 25%;
+    z-index: 1000;
+    /* padding: 5px; */
+}
+#navbar-button-image{
+    height: 8rem;
+    width: 8rem;
+    margin: 1rem;
+}
+#navbar{
+    display: none;
+    position: fixed;
+    top: 12rem;
+    left: 1rem;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    /* align-items: center; */
+}
+#navbar *{
+    color: white;
+    padding: 0.8rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 5rem;
+    text-decoration: none;
+    width: auto;
+}
+#navbar a:hover{
+    background-color: rgb(51, 64, 66);
+}
+#navbar span{
+    color: gold;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gold;
+}
+#navbar a:last-child{
+    margin-right: 0px;
+    text-align:end;
+}
+
+/* Index stuff ---------------------------------------------------------------- Index stuff */
+#character-image{
+    max-width: 100%;
+}

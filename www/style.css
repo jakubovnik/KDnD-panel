@@ -523,16 +523,17 @@ tr:first-child *{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
 }
+/* --------------------------------------------This stuff will propably not be needed anymore-----------------------------------
 @media only screen and (max-width: 1000px) {
-/* default stuff ------------------------------------------------------------------------------------ default stuff */
+/* default stuff ------------------------------------------------------------------------------------ default stuff *\/
 #all, #login{
-    margin-bottom: 10vh; /*WEB ON PHONES CAN SUCK MY ASS, WHAT THE FUCK IS THIS SHIT. I DONT WANT YOUR DOGSHIT STUPID FUKIN DUMBASS AUTOZOOM*/
+    margin-bottom: 10vh; /*WEB ON PHONES CAN SUCK MY ASS, WHAT THE FUCK IS THIS SHIT. I DONT WANT YOUR DOGSHIT STUPID FUKIN DUMBASS AUTOZOOM*\/
 }
 #navbar *{
     padding: 7px 8px;
     font-size: 2rem;
 }
-/* Magic list stuff ----------------------------------------------------------------------------------- Magic list stuff */
+/* Magic list stuff ----------------------------------------------------------------------------------- Magic list stuff *\/
 #magic-search-inputs{
     display:none;
 }
@@ -552,7 +553,7 @@ tr:first-child *{
 #magic-info-container{
     display:none;
 }
-/* Inventory stuff ------------------------------------------------------------------------------------ Inventory stuff */
+/* Inventory stuff ------------------------------------------------------------------------------------ Inventory stuff *\/
 #inventory{
     grid-template-columns: repeat(2, 1fr);
     margin: 0%;
@@ -586,23 +587,17 @@ tr:first-child *{
 .item-type{
     font-size: 2.2rem;
 }
-/* .item-numbers{
-    display: grid;
-    width: auto;
-    grid-template-columns: repeat(3, 1fr);
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.6);
-} */
 .item-numbers div{
     font-size: 2.2rem;
 }
 #item-search-name{
     margin: 10px;
 }
-/* Button stuff ------------------------------------------------------------------------------------- button stuff */
+/* Button stuff ------------------------------------------------------------------------------------- button stuff *\/
 .item-remove-button{
     width: 3rem;
     height: 3rem;
     border-radius: 1rem;
 }
 }
+*/

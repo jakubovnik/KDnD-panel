@@ -1,4 +1,9 @@
 <?php
+if($_SESSION['style'] == "mobile-style.css"){
+    echo '<div id="navbar-button">';
+    echo '<img src="images/menu-bar.png" alt="Navbar show button" id="navbar-button-image" onclick="toggle_navbar()">';
+    echo '</div>';
+}
 echo '<div id="navbar">';
 echo '<a href="index.php">Home</a>';
 echo '<a href="inventory.php">Inventory</a>';

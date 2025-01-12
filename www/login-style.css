@@ -2,6 +2,8 @@
 #login-body{
     background-image: url("images/world-map.png");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #login{
     height: 100vh;
