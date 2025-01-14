@@ -316,7 +316,9 @@ tr:first-child *{
 }
 .inventory-background{
     background-image: url("images/leather-texture.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .item-box{
     position: relative;
@@ -364,6 +366,8 @@ tr:first-child *{
     color: crimson;
     padding: 20px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     z-index: 1000;
 }
 .item-numbers{
@@ -504,13 +508,20 @@ tr:first-child *{
 .item-remove-button{
     position: absolute;
     border-radius: 0.5rem;
-    top: 4px;
-    right: 5px;
+    top: 0.2rem;
+    left: 0.2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
     width: 1.2rem;
     height: 1.2rem;
     z-index: 500;
+}
+.item-description-button{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0.2rem;
+    right: 0.2rem;
 }
 .button{
     background-color: orange;

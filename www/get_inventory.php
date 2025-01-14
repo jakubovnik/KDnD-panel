@@ -12,9 +12,10 @@ if($_POST['sort'] == "default"){
 }
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
-    echo "<div class='item-box' id='item-box-".$row['id']."' onclick='reveal_details(".$row['id'].")' ";
-    echo ";'>";
-        echo '<img src="images/remove.png" alt="rmv button" class="item-remove-button" id="item-remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
+    echo "<div class='item-box' id='item-box-".$row['id']."'>";
+    // echo "<div class='item-box' id='item-box-".$row['id']."' onclick='reveal_details(".$row['id'].")' ";
+        echo '<img src="images/cancel.png" alt="rmv button" class="item-remove-button" id="item-remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
+        echo '<img src="images/information.png" alt="show more button" class="item-description-button" id="item-description-button-'.$row['id'].'" onclick="reveal_details('.$row['id'].')">';
         echo "<span class='item-name";
             if(strlen($row['name']) > 20){
                 echo " long-name-item-1";

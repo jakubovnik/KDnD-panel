@@ -99,6 +99,8 @@ body, html{
 .inventory-background{
     background-image: url("images/leather-texture.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #inventory{
     display: grid;
@@ -107,8 +109,9 @@ body, html{
     width: 95vw;
     margin-left: auto;
     margin-right: auto;
-    max-height: 90vh;
+    max-height: 80vh;
     padding-top: 10vh;
+    padding-bottom: 10vh;
     overflow-x: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -123,7 +126,7 @@ body, html{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 12rem;
+    height: 14rem;
     background-color: rgba(0, 0, 0, 0.25);
     border-color: dimgray;
     border-radius: 2px;
@@ -133,12 +136,31 @@ body, html{
 .item-box *{
     color: aliceblue;
 }
+.item-name{
+    font-size: 1.5rem;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.65);
+    max-width: 80%;
+}
+.long-name-item-1{
+    font-size: 0.5rem;
+}
+.long-name-item-2{
+    font-size: 1rem;
+}
+.item-type{
+    font-size: 1.2rem;
+}
 .item-numbers{
     display: grid;
     width: auto;
     grid-template-columns: repeat(3, 1fr);
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
 }
 .item-numbers div{
     text-align: center;
@@ -156,6 +178,8 @@ body, html{
     background-color: rgba(0, 0, 0, 0.5);
     color: aliceblue;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     z-index: 2000;
 }
 .item-remove-button{
@@ -165,10 +189,18 @@ body, html{
     top: 0.2rem;
     left: 0.2rem;
 }
+.item-description-button{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0.2rem;
+    right: 0.2rem;
+}
 #add-button{
     position: fixed;
     width: 4rem;
     height: 4rem;
     bottom: 0.5rem;
     right: 0.5rem;
+    z-index: 1000;
 }

@@ -11,8 +11,8 @@ require "header.php";
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background" style="display: none;">
         <div id="add-item-box">
-            <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text" oninput="this.size = this.value.length">
-            <select name="add-item-type" id="add-item-type" class="add-item-text" oninput="this.size = this.value.length">
+            <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text" oninput="this.size = this.value.length * 0.6">
+            <select name="add-item-type" id="add-item-type" class="add-item-text" oninput="this.size = this.value.length * 0.6">
                 <?php
                     require "dbconnect.php";
                     $sql = "SELECT * FROM kdnd.type ORDER BY id";
@@ -94,7 +94,7 @@ function reveal_details(id){
     if(shown_id != 0){
         document.getElementById("item-description-"+shown_id).style.display = "none";
     }
-    document.getElementById("item-description-"+id).style.display = "block";
+    document.getElementById("item-description-"+id).style.display = "flex";
     shown_id = id;
 }
 function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works now for some unknown reason :D
