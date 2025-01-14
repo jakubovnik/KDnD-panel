@@ -11,8 +11,8 @@ require "header.php";
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background" style="display: none;">
         <div id="add-item-box">
-            <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text" oninput="this.size = this.value.length * 0.6">
-            <select name="add-item-type" id="add-item-type" class="add-item-text" oninput="this.size = this.value.length * 0.6">
+            <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text">
+            <select name="add-item-type" id="add-item-type" class="add-item-text">
                 <?php
                     require "dbconnect.php";
                     $sql = "SELECT * FROM kdnd.type ORDER BY id";
@@ -104,11 +104,12 @@ function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works
     shown_id = 0;
 }
 
-var add_item_menu = false; //TODO: ??????? why does this exist?????? | (its for pressing enter dumbass -_-)
+var add_item_menu = false; //??????? why does this exist?????? | (its for pressing enter dumbass -_-)
 function reveal_add_item(){
     add_item_background.style.display = "flex";
     add_item_menu = true;
     document.getElementById("add-item-name").focus();
+    // history.pushState({add_item_menu:true}, "add_item_menu", ) TODO: make it so that the back function on phones responds to this
 }
 function hide_add_item(){
     blurAll();
@@ -237,6 +238,7 @@ function increase_charge(id){
     }
     target.innerHTML = Number(target.innerHTML) + 1;
 }
+// Functions for when keys are pressed
 window.onload=function() {
     document.onkeydown = keypress;
 }
@@ -256,6 +258,9 @@ function keypress(event) {
         refresh_inventory();
     }
 }
+// Phone back function TODO: this bruh
+
+// stuff needed after the site loads
 refresh_inventory();
 refresh_interval = setInterval(refresh_inventory, 60000);
 document.getElementById("item-search-name").focus();

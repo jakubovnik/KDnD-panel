@@ -19,7 +19,7 @@
     padding: 0.5rem;
     text-align: center;
     max-width: 60vw;
-    z-index: 2000;
+    z-index: 5000;
 }
 body, html{
     padding: 0px;
@@ -45,6 +45,7 @@ body, html{
     border-radius: 1rem;
     z-index: 1000;
     padding: 0px;
+    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2);
 }
 #navbar-button-image{
     height: 2rem;
@@ -176,7 +177,9 @@ body, html{
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: black 0px 0px 20px;
     color: aliceblue;
+    font-size: 1.5rem;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -203,4 +206,73 @@ body, html{
     bottom: 0.5rem;
     right: 0.5rem;
     z-index: 1000;
+}
+/* Item creation menu */
+#add-item-background{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+#add-item-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("images/magic-circle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-width: 80%;
+    aspect-ratio: 1/1;
+}
+#add-item-box *{
+    margin: 2%;
+}
+.add-item-text{
+    text-align: center;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+    color: white;
+    background-color: rgba(16, 36, 67, 0.742);
+    max-width: 100%;
+}
+#add-item-name{
+    width: 14ch;
+    font-size: 2rem;
+}
+#add-item-type{
+    width: 12ch;
+    font-size: 1.6rem;
+}
+#add-item-charge-max{
+    width: 12ch;
+    font-size: 1.6rem;
+}
+#add-item-description{
+    font-size: 1.2rem;
+    min-height: 15vh;
+    min-width: 40vw;
+}
+#add-item-hide{
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: 3001;
+}
+#add-item-confirm{
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: 3001;
 }

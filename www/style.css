@@ -86,7 +86,7 @@ body, html{
     overflow: hidden;
     border-radius: 10px;
     margin: 0px;
-    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2); 
+    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2);
 }
 #navbar *{
     float: left;
@@ -431,6 +431,7 @@ tr:first-child *{
     background-image: url("images/magic-circle.png");
     background-size: cover;
     background-position: center;
+    aspect-ratio: 1/1;
 }
 #add-item-box *{
     margin: 5%;
@@ -451,22 +452,19 @@ tr:first-child *{
     max-width: 100%;
 }
 #add-item-name{
-    min-width: 14ch;
-    size: 14ch;
-    font-size: xx-large;
+    width: 14ch;
+    font-size: 3rem;
 }
 #add-item-type{
-    min-width: 12ch;
-    size: 10ch;
-    font-size: x-large;
+    width: 10ch;
+    font-size: 2rem;
 }
 #add-item-charge-max{
-    min-width: 12ch;
-    size: 12ch;
-    font-size: x-large;
+    width: 12ch;
+    font-size: 2rem;
 }
 #add-item-description{
-    font-size: x-large;
+    font-size: 1.5rem;
     min-height: 20vh;
     min-width: 28vw;
 }
@@ -523,7 +521,7 @@ tr:first-child *{
     top: 0.2rem;
     right: 0.2rem;
 }
-.button{
+.button{ /* Is this still needed? Im not really sure */
     background-color: orange;
     border-radius: 15px;
     text-align: center;
