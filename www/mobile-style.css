@@ -60,7 +60,7 @@ body, html{
     left: 0.5rem;
     flex-direction: column;
     justify-content: space-around;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     z-index: 1000;
     /* align-items: center; */
@@ -128,7 +128,7 @@ body, html{
     justify-content: space-around;
     align-items: center;
     height: 14rem;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.3);
     border-color: dimgray;
     border-radius: 2px;
     border-style: solid;
@@ -176,7 +176,7 @@ body, html{
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     text-shadow: black 0px 0px 20px;
     color: aliceblue;
     font-size: 1.5rem;
