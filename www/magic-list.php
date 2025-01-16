@@ -56,12 +56,14 @@ function isWholeNumber(str) { //copied from chatgpt and works through REGEX (and
 }
 
 var shown_id = 0;
+var magic_info_container = document.getElementById("magic-info-container"); // for some unknown reason, this doesnt work inside functions
 function reveal_details(id){
     if(shown_id != 0){
         document.getElementById("magic-info-"+shown_id).style.display = "none";
     }
     document.getElementById("magic-info-"+id).style.display = "flex";
     shown_id = id;
+    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "flex";';} ?>
 }
 function hide_details(){
     if(shown_id == 0){
@@ -69,6 +71,7 @@ function hide_details(){
     }
     document.getElementById("magic-info-"+shown_id).style.display = "none";
     shown_id = 0;
+    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "none";';} ?>
 }
 
 function updateMagicList(type) {
