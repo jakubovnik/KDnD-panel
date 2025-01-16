@@ -178,12 +178,22 @@ body, html{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     text-shadow: black 0px 0px 20px;
-    color: aliceblue;
+    color: white;
     font-size: 1.5rem;
     text-align: center;
     justify-content: center;
     align-items: center;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     z-index: 2000;
+}
+.item-description::-webkit-scrollbar{ /* Chrome and safari */
+    display: none;
 }
 .item-remove-button{
     position: absolute;
@@ -275,4 +285,13 @@ body, html{
     width: 4rem;
     height: 4rem;
     z-index: 3001;
+}
+/* Magic stuff ------------------------------------------------------- Magic stuff */
+#magic-search-inputs{
+    display: none;
+}
+
+.magic-learn-button{
+    width: 2rem;
+    height: 2rem;
 }

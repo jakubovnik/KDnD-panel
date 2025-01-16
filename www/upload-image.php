@@ -13,3 +13,9 @@ require "header.php";
         <input type="submit" value="Upload Image" name="submit">
     </form>
 </body>
+<script src="default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
+<script>
+
+</script>
+</html>
