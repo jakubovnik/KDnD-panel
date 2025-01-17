@@ -174,17 +174,17 @@ body, html{
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 100vw;
+    width: 96vw;
     height: 100vh;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
     background-color: rgba(0, 0, 0, 0.6);
     text-shadow: black 0px 0px 20px;
     color: white;
     font-size: 1.5rem;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     word-wrap: break-word;
     white-space: normal;
     overflow-wrap: anywhere;
