@@ -221,5 +221,8 @@ function keypress(event) {
     }
 }
 refresh_magic();
+setTimeout(() => {
+    reveal_details(55);
+}, 100);
 </script>
 </html>

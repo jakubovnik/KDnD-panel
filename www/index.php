@@ -6,6 +6,7 @@ require "header.php";
 </head>
 <div id="all">
     <?php require "navbar.php";?>
+    <span id="message" onclick="hide_message()"></span>
     <div id="character-info">
         <div id="character-sheet">
             <div id="main-info-box">

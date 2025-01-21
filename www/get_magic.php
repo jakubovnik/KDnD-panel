@@ -16,13 +16,20 @@ $magic_learned = $conn->query($sql_learned);
 
 echo "<div id='magic-list-container'>";
 echo "<table id='magic-list'>";
-echo "<tr>";
+echo "<tr class='heading-magic'>";
     echo "<th>Name</th>";
     echo "<th>Origin</th>";
-    echo "<th>Complexity</th>";
-    echo "<th>Fail-rate</th>";
-    echo "<th>Cast-time</th>";
-    echo "<th>Learn magic</th>";
+    if($_SESSION['style'] == "mobile-style.css"){
+        echo "<th><img class='magic-list-icon' src='images/complexity.png' alt='complexity image' title='complexity'></th>";
+        echo "<th><img class='magic-list-icon' src='images/warning.png' alt='complexity image' title='complexity'></th>";
+        echo "<th><img class='magic-list-icon' src='images/time.png' alt='complexity image' title='complexity'></th>";
+        echo "<th><img class='magic-list-icon' src='images/learning.png' alt='complexity image' title='complexity'></th>";
+    }else{
+        echo "<th>Complexity</th>";
+        echo "<th>Fail-rate</th>";
+        echo "<th>Cast-time</th>";
+        echo "<th>Learn magic</th>";
+    }
 echo "</tr>";
 
 while($row = $magic_learned->fetch_assoc()){//creating learned magic list
@@ -33,7 +40,7 @@ while($row = $magic_learned->fetch_assoc()){//creating learned magic list
         echo "<td class='magic-fail' id='magic-fail-0".$row['id']."'>".$row['fail_rate']."%</td>";
         echo "<td class='magic-cast' id='magic-cast-0".$row['id']."'>".$row['cast_time']." t</td>";
         echo "<td class='magic-learn' id='magic-learn-0".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
-            echo "<img src='images/d20.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+            echo "<img src='images/idea_2.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
         echo "</td>";
     echo "</tr>";
 }
@@ -45,7 +52,7 @@ while($row = $magic_default->fetch_assoc()){//creating default magic list
         echo "<td class='magic-fail' id='magic-fail-".$row['id']."'>".$row['fail_rate']."%</td>";
         echo "<td class='magic-cast' id='magic-cast-".$row['id']."'>".$row['cast_time']." t</td>";
         echo "<td class='magic-learn' id='magic-learn-".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
-            echo "<img src='images/d20.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+            echo "<img src='images/idea_1.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
         echo "</td>";
     echo "</tr>";
 }

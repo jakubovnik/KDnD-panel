@@ -207,7 +207,6 @@ tr:first-child *{
     border-color: brown;
     border-style: solid;
     border-width: 2px;
-    /* border-radius: 5px; */
     padding: 6px;
     white-space: pre-wrap;
     min-width: 10vw;
@@ -252,6 +251,7 @@ tr:first-child *{
     background-image: url("images/magic-circle.png");
     background-size: cover;
     background-position: center;
+    aspect-ratio: 1/1;
 }
 #learn-magic-box *{
     margin: 5%;
