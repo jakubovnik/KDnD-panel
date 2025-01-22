@@ -1,11 +1,11 @@
 <?php
-require "check_login_true.php";
-require "header.php";
+require "php/check_login_true.php";
+require "php/header.php";
 ?>
     <title>Upload image for character</title>
 </head>
 <body>
-    <?php require "navbar.php";?>
+    <?php require "php/navbar.php";?>
     <form action="upload_image.php" method="post" enctype="multipart/form-data"> <!--upload forma-->
         Select image to upload:
         <input type="file" name="imgUpload" id="imgUpload">
@@ -13,8 +13,8 @@ require "header.php";
         <input type="submit" value="Upload Image" name="submit">
     </form>
 </body>
-<script src="default.js"></script>
-<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
+<script src="js/default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
 
 </script>

@@ -17,7 +17,7 @@ INSERT INTO kdnd.type (name) VALUES
 ("headwear"),
 ("gloves"),
 ("accessory"),
+("bag"),
 ("consumable"),
 ("key item"),
-("bag"),
 ("material");

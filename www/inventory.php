@@ -1,12 +1,12 @@
 <?php
-require "check_login_true.php";
-require "header.php";
+require "php/check_login_true.php";
+require "php/header.php";
 ?>
     <title>Character's inventory</title>
 </head>
 <body>
 <div id="all" class="inventory-background">
-    <?php require "navbar.php";?>
+    <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background" style="display: none;">
@@ -14,7 +14,7 @@ require "header.php";
             <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text">
             <select name="add-item-type" id="add-item-type" class="add-item-text">
                 <?php
-                    require "dbconnect.php";
+                    require "php/dbconnect.php";
                     $sql = "SELECT * FROM kdnd.type ORDER BY id";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
@@ -37,8 +37,8 @@ require "header.php";
 </div>
 </body>
 </html>
-<script src="default.js"></script>
-<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
+<script src="js/default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
 function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^\d+$/.test(str);
@@ -66,12 +66,12 @@ function refresh_inventory(sort="default"){
             }
         }
     };
-    request.open("POST", "get_inventory.php", true);
+    request.open("POST", "php/get_inventory.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
 
-function updateItemList(type){
+function updateItemList(type){ //chatgpt
     const item_list = document.getElementById("inventory");
     var input, filter, items, a, i, txtValue;
     input = document.getElementById('item-search-'+type);
@@ -131,7 +131,7 @@ function add_item_request(name, type_id, charges_max, description){
             }
         }
     };
-    request.open("POST", "add_item_attempt.php", true);
+    request.open("POST", "php/add_item_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
@@ -192,7 +192,7 @@ function modify_number_request(id, type, value){
             }
         }
     };
-    request.open("POST", "modify_attempt.php", true);
+    request.open("POST", "php/modify_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }

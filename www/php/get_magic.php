@@ -22,10 +22,10 @@ echo "<tr class='heading-magic'>";
     echo "<th onclick='set_magic_sorting(\"name\")'>Name</th>";
     echo "<th onclick='set_magic_sorting(\"origin\")'>Origin</th>";
     if($_SESSION['style'] == "mobile-style.css"){
-        echo "<th onclick='set_magic_sorting(\"complexity\")'><img class='magic-list-icon' src='images/complexity.png' alt='complexity image' title='Complexity'></th>";
-        echo "<th onclick='set_magic_sorting(\"fail_rate\")'><img class='magic-list-icon' src='images/warning.png' alt='fail rate image' title='Fail rate'></th>";
-        echo "<th onclick='set_magic_sorting(\"cast_time\")'><img class='magic-list-icon' src='images/time.png' alt='cast time image' title='Cast time'></th>";
-        echo "<th><img class='magic-list-icon' src='images/learning.png' alt='learn magic image' title='Learn magic'></th>";
+        echo "<th onclick='set_magic_sorting(\"complexity\")'><img class='magic-list-icon' src='../images/complexity.png' alt='complexity image' title='Complexity'></th>";
+        echo "<th onclick='set_magic_sorting(\"fail_rate\")'><img class='magic-list-icon' src='../images/warning.png' alt='fail rate image' title='Fail rate'></th>";
+        echo "<th onclick='set_magic_sorting(\"cast_time\")'><img class='magic-list-icon' src='../images/time.png' alt='cast time image' title='Cast time'></th>";
+        echo "<th><img class='magic-list-icon' src='../images/learning.png' alt='learn magic image' title='Learn magic'></th>";
     }else{
         echo "<th onclick='set_magic_sorting(\"complexity\")'>Complexity</th>";
         echo "<th onclick='set_magic_sorting(\"fail_rate\")'>Fail-rate</th>";
@@ -42,7 +42,7 @@ while($row = $magic_learned->fetch_assoc()){//creating learned magic list
         echo "<td class='magic-fail' id='magic-fail-0".$row['id']."'>".$row['fail_rate']."%</td>";
         echo "<td class='magic-cast' id='magic-cast-0".$row['id']."'>".$row['cast_time']." t</td>";
         echo "<td class='magic-learn' id='magic-learn-0".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
-            echo "<img src='images/idea_2.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+            echo "<img src='../images/idea_2.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
         echo "</td>";
     echo "</tr>";
 }
@@ -54,7 +54,7 @@ while($row = $magic_default->fetch_assoc()){//creating default magic list
         echo "<td class='magic-fail' id='magic-fail-".$row['id']."'>".$row['fail_rate']."%</td>";
         echo "<td class='magic-cast' id='magic-cast-".$row['id']."'>".$row['cast_time']." t</td>";
         echo "<td class='magic-learn' id='magic-learn-".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
-            echo "<img src='images/idea_1.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+            echo "<img src='../images/idea_1.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
         echo "</td>";
     echo "</tr>";
 }

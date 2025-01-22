@@ -1,6 +1,6 @@
 /* Login stuff -------------------------------------------------------------------------*/
 #login-body{
-    background-image: url("images/world-map.png");
+    background-image: url("../images/world-map.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -52,7 +52,7 @@
 @media only screen and (max-width: 1000px) {
 /* Login stuff ------------------------------------------------------------------------------------ Login stuff */
 #login-body{
-    background-image: url("images/world-map.png");
+    background-image: url("../images/world-map.png");
     background-size: cover;
 }
 #login{

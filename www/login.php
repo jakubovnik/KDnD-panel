@@ -1,6 +1,6 @@
 <?php
-require "check_login_false.php";
-require "header.php"
+require "php/check_login_false.php";
+require "php/header.php"
 ?>
     <link rel="stylesheet" href="login-style.css">
     <title>Login with character</title>
@@ -18,7 +18,7 @@ require "header.php"
 </div>
 </body>
 </html>
-<script src="default.js"></script>
+<script src="js/default.js"></script>
 <script>
 const cname_input = document.getElementById("cname");
 const password_input = document.getElementById("password");
@@ -44,7 +44,7 @@ function loginAttempt(){
             }
         }
     };
-    request.open("POST", "login_attempt.php", true);
+    request.open("POST", "php/login_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }

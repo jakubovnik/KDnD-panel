@@ -1,12 +1,12 @@
 <?php
-require "check_login_true.php";
-require "header.php"
+require "php/check_login_true.php";
+require "php/header.php"
 ?>
     <title>Magic list</title>
 </head>
 <body>
 <div id="all">
-    <?php require "navbar.php";?>
+    <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <div id="magic-search-inputs">
         <input type="text" id="magic-search-name" onkeyup="updateMagicList('name')" placeholder="Search by name">
@@ -45,8 +45,8 @@ require "header.php"
     </div>
 </div>
 </body>
-<script src="default.js"></script>
-<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
+<script src="js/default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
 function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
     return /^\d+$/.test(str);
@@ -74,7 +74,7 @@ function hide_details(){
     <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "none";';} ?>
 }
 
-function updateMagicList(type) {
+function updateMagicList(type) { //chatgpt
     const magic_list = document.getElementById("magic-list");
     var input, filter, spells, a, i, txtValue;
     input = document.getElementById('magic-search-'+type);
@@ -106,7 +106,7 @@ function refresh_magic(){
             }
         }
     };
-    request.open("POST", "get_magic.php", true);
+    request.open("POST", "php/get_magic.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
@@ -152,7 +152,7 @@ function learn_magic_request(name, complexity, fail_rate, cast_time){
             }
         }
     };
-    request.open("POST", "learn_magic_attempt.php", true);
+    request.open("POST", "php/learn_magic_attempt.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }

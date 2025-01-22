@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 /*
-require "dbconnect.php";
+require "php/dbconnect.php";
 $sql = "SELECT * FROM kdnd.type ORDER BY id";
 $result = $conn->query($sql);
 $conn.close();

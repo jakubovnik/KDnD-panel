@@ -98,7 +98,7 @@ body, html{
     display: none;
 }
 .inventory-background{
-    background-image: url("images/leather-texture.jpg");
+    background-image: url("../images/leather-texture.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -238,7 +238,7 @@ body, html{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-image: url("images/magic-circle.png");
+    background-image: url("../images/magic-circle.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -443,7 +443,7 @@ tr:first-child{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-image: url("images/magic-circle.png");
+    background-image: url("../images/magic-circle.png");
     background-size: cover;
     background-position: center;
     aspect-ratio: 1/1;

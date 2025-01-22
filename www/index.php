@@ -1,11 +1,11 @@
 <?php
-require "check_login_true.php";
-require "header.php";
+require "php/check_login_true.php";
+require "php/header.php";
 ?>
     <title>Home</title>
 </head>
 <div id="all">
-    <?php require "navbar.php";?>
+    <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <div id="character-info">
         <div id="character-sheet">
@@ -17,7 +17,7 @@ require "header.php";
             <div id="secondary-info-box">
                 <span id="character-age"><?php echo $_SESSION['age'] ?></span>
                 <span id="character-role"><?php 
-                    require "dbconnect.php";
+                    require "php/dbconnect.php";
                     $sql = "SELECT role.name FROM kdnd.role WHERE id=".$_SESSION['role'];
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
@@ -36,5 +36,5 @@ require "header.php";
     </div>
 </div>
 </html>
-<script src="default.js"></script>
-<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
+<script src="js/default.js"></script>
+<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
