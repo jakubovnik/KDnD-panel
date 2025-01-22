@@ -328,7 +328,12 @@ body, html{
     color: white;
 }
 .magic{
-    background-color: aquamarine;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.magic td{
+    border-bottom: solid;
+    border-color: rgba(0, 128, 0, 0.7);
+    border-width: 2px;
 }
 .learned-magic{
     background-color: aqua;
@@ -383,4 +388,41 @@ tr:first-child{
     color: white;
     height: 90%;
     width: 100vw;
+}
+.magic-info span, .magic-info * span{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: solid;
+    border-color: rgba(134, 255, 136, 0.4);
+    border-width: 2px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    text-align: center;
+    max-height: 20vh;
+    margin: 0.5vh;
+}
+.magic-info span::-webkit-scrollbar, .magic-info * span::-webkit-scrollbar{ /* Chrome and safari */
+    display: none;
+}
+.magic-detail-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.magic-detail-info:last-child{
+    flex-direction: row;
+}
+.magic-detail-name{
+    font-size: 2rem;
+    border-width: 20px;
+}
+.magic-detail-effects{
+    font-size: 1.2rem;
+}
+.magic-detail-stats{
+    font-size: 1.2rem;
 }

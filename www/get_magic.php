@@ -72,7 +72,7 @@ while($row = $magic_default->fetch_assoc()){//creating info elements
             echo "<span class='magic-detail-other'>".$row['other']."</span>";
         echo "</div>";
         echo "<div class='magic-detail-info'>";
-            echo "<span class='magic-detail-stats'>CX:".$row['complexity']."\nFR:".$row['fail_rate']."\nCT:".$row['cast_time']."</span>";
+            echo "<span class='magic-detail-stats'>CX: ".$row['complexity']." c\nFR: ".$row['fail_rate']."%\nCT: ".$row['cast_time']." t</span>";
             echo "<span class='magic-detail-tags'>".$row['tags']."</span>";
         echo "</div>";
     echo "</div>";
