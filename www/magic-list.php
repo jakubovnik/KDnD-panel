@@ -91,10 +91,11 @@ function updateMagicList(type) {
         }
     }
 }
-function refresh_magic(sort="default"){
+var sort_type = "default";
+function refresh_magic(){
     const magic_all = document.getElementById("magic-all");
     var request = new XMLHttpRequest();
-    var posted_text = "sort=" + sort;
+    var posted_text = "sort=" + sort_type;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "1"){
@@ -108,6 +109,10 @@ function refresh_magic(sort="default"){
     request.open("POST", "get_magic.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
+}
+function set_magic_sorting(sort = "default"){
+    sort_type = sort;
+    refresh_magic();
 }
 var learn_magic_menu = false;
 const learn_magic_background = document.getElementById("learn-magic-background");
@@ -221,8 +226,8 @@ function keypress(event) {
     }
 }
 refresh_magic();
-setTimeout(() => { // TODO: Remove this. This thing is just for testing
-    reveal_learn_magic(55);
-}, 200);
+// setTimeout(() => { // TODO: Remove this. This thing is just for testing
+//     reveal_learn_magic(55);
+// }, 200);
 </script>
 </html>

@@ -26,7 +26,7 @@ require "header.php";
             <input type="text" placeholder="Max Charges" id="add-item-charge-max" class="add-item-text" oninput="this.size = this.value.length">
             <textarea name="add-item-description" placeholder="New Item Description" id="add-item-description" class="add-item-text"></textarea>
         </div>
-        <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_add_item()">
+        <img src="images/cancel.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_add_item()">
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="add_item()">
     </div>
     <div id="inventory-search-box">

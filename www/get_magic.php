@@ -4,6 +4,8 @@ require "dbconnect.php";
 $sql_default = "SELECT * FROM kdnd.magic";
 if($_POST['sort'] == "default"){
     $sql_default = $sql_default." ORDER BY id";
+}else{
+    $sql_default = $sql_default." ORDER BY ".$_POST['sort'];
 }
 $sql_learned = "SELECT magic.id, character_magic.character_id, character_magic.magic_name, character_magic.complexity, character_magic.fail_rate, character_magic.cast_time 
 FROM kdnd.character_magic 
@@ -17,17 +19,17 @@ $magic_learned = $conn->query($sql_learned);
 echo "<div id='magic-list-container'>";
 echo "<table id='magic-list'>";
 echo "<tr class='heading-magic'>";
-    echo "<th>Name</th>";
-    echo "<th>Origin</th>";
+    echo "<th onclick='set_magic_sorting(\"name\")'>Name</th>";
+    echo "<th onclick='set_magic_sorting(\"origin\")'>Origin</th>";
     if($_SESSION['style'] == "mobile-style.css"){
-        echo "<th><img class='magic-list-icon' src='images/complexity.png' alt='complexity image' title='complexity'></th>";
-        echo "<th><img class='magic-list-icon' src='images/warning.png' alt='complexity image' title='complexity'></th>";
-        echo "<th><img class='magic-list-icon' src='images/time.png' alt='complexity image' title='complexity'></th>";
-        echo "<th><img class='magic-list-icon' src='images/learning.png' alt='complexity image' title='complexity'></th>";
+        echo "<th onclick='set_magic_sorting(\"complexity\")'><img class='magic-list-icon' src='images/complexity.png' alt='complexity image' title='Complexity'></th>";
+        echo "<th onclick='set_magic_sorting(\"fail_rate\")'><img class='magic-list-icon' src='images/warning.png' alt='fail rate image' title='Fail rate'></th>";
+        echo "<th onclick='set_magic_sorting(\"cast_time\")'><img class='magic-list-icon' src='images/time.png' alt='cast time image' title='Cast time'></th>";
+        echo "<th><img class='magic-list-icon' src='images/learning.png' alt='learn magic image' title='Learn magic'></th>";
     }else{
-        echo "<th>Complexity</th>";
-        echo "<th>Fail-rate</th>";
-        echo "<th>Cast-time</th>";
+        echo "<th onclick='set_magic_sorting(\"complexity\")'>Complexity</th>";
+        echo "<th onclick='set_magic_sorting(\"fail_rate\")'>Fail-rate</th>";
+        echo "<th onclick='set_magic_sorting(\"cast_time\")'>Cast-time</th>";
         echo "<th>Learn magic</th>";
     }
 echo "</tr>";
