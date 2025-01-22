@@ -320,8 +320,9 @@ body, html{
 }
 #magic-list{
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 1rem;
+    border-collapse: separate; /* FIXME: Figure out, how to do gaps differently, because
+    the learn icon not being centered really bugs me, since it works on desktop*/
+    border-spacing: 0 0.7rem;
 }
 .heading-magic{
     background-color: black;
@@ -336,7 +337,7 @@ body, html{
     border-width: 2px;
 }
 .learned-magic{
-    background-color: aqua;
+    background-color: rgba(125, 255, 255, 0.4);
 }
 .magic-origin, .magic-complexity, .magic-fail, .magic-cast{
     text-align: center;
@@ -354,11 +355,9 @@ tr:first-child{
     filter: invert(1);
 }
 .magic-learn{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    vertical-align: middle;
+    /* I have actually no idea how i can make this icon not ugly 
+    without breaking everything else || nvm fixed it (somewhat) */
+    height: 100%; /*dunno if this is nescesary*/
 }
 .magic-learn-button{
     width: 2rem;
@@ -425,4 +424,53 @@ tr:first-child{
 }
 .magic-detail-stats{
     font-size: 1.2rem;
+}
+/* Magic learn menu */
+#learn-magic-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+#learn-magic-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("images/magic-circle.png");
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 1/1;
+}
+.learn-magic-text{
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.2rem;
+    font-size: 2rem;
+    border-bottom: solid;
+    border-color: rgba(56, 56, 255, 0.85);
+    border-width: 3px;
+    border-radius: 4px;
+    max-width: 90vw;
+}
+.learn-magic-number{
+    border: none;
+    font-size: 1.8rem;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom: solid;
+    border-color: rgba(56, 56, 255, 0.85);
+    border-width: 3px;
+    border-radius: 4px;
+    max-width: 90vw;
+}
+.learn-magic-number::placeholder{
+    color: rgba(255, 255, 255, 0.5);
 }

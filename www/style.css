@@ -271,7 +271,7 @@ tr:first-child *{
     background-color: rgba(16, 36, 67, 0.742);
     max-width: 100%;
 }
-#learn-magic-name, #learn-magic-id{
+#learn-magic-name, #learn-magic-id{ /* Isn't this thing just .learn-magic-text?*/
     min-width: 14ch;
     size: 14ch;
     font-size: xx-large;

@@ -23,7 +23,7 @@ require "header.php"
             <input type="text" placeholder="New Fail Rate" id="learn-magic-fail" class="learn-magic-number">
             <input type="text" placeholder="New Cast Time" id="learn-magic-cast" class="learn-magic-number">
         </div>
-        <img src="images/remove.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_learn_magic()">
+        <img src="images/cancel.png" alt="Hide adding menu" id="add-item-hide" onclick="hide_learn_magic()">
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="learn_magic()">
     </div>
     <div id="magic-all">
@@ -119,7 +119,7 @@ const learn_magic_cast = document.getElementById("learn-magic-cast");
 function reveal_learn_magic(id){
     learn_magic_menu = true;
     learn_magic_background.style.display = "flex";
-    learn_magic_id.innerHTML = "id: " + id;
+    learn_magic_id.innerHTML = "ID: " + id;
     learn_magic_name.innerHTML = document.getElementById("magic-name-"+id).innerHTML;
     document.getElementById("learn-magic-complexity").focus();
 }
@@ -221,8 +221,8 @@ function keypress(event) {
     }
 }
 refresh_magic();
-// setTimeout(() => {
-//     reveal_details(55);
-// }, 100);
+setTimeout(() => { // TODO: Remove this. This thing is just for testing
+    reveal_learn_magic(55);
+}, 200);
 </script>
 </html>

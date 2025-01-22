@@ -33,8 +33,8 @@ echo "<tr class='heading-magic'>";
 echo "</tr>";
 
 while($row = $magic_learned->fetch_assoc()){//creating learned magic list
-    echo "<tr class='magic learned-magic' id='magic-0".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
-        echo "<td class='magic-name' id='magic-name-0".$row['id']."'>".$row['magic_name']."</td>";
+    echo "<tr class='magic learned-magic' id='magic-0".$row['id']."'>";
+        echo "<td class='magic-name' id='magic-name-0".$row['id']."' onclick='reveal_details(".$row['id'].")'>".$row['magic_name']."</td>";
         echo "<td class='magic-origin' id='magic-origin-0".$row['id']."'>".$_SESSION['cname']."</td>";
         echo "<td class='magic-complexity' id='magic-complexity-0".$row['id']."'>".$row['complexity']."</td>";
         echo "<td class='magic-fail' id='magic-fail-0".$row['id']."'>".$row['fail_rate']."%</td>";
@@ -45,8 +45,8 @@ while($row = $magic_learned->fetch_assoc()){//creating learned magic list
     echo "</tr>";
 }
 while($row = $magic_default->fetch_assoc()){//creating default magic list
-    echo "<tr class='magic' id='magic-".$row['id']."' onclick='reveal_details(".$row['id'].")'>";
-        echo "<td class='magic-name' id='magic-name-".$row['id']."'>".$row['name']."</td>";
+    echo "<tr class='magic' id='magic-".$row['id']."'>";
+        echo "<td class='magic-name' id='magic-name-".$row['id']."' onclick='reveal_details(".$row['id'].")'>".$row['name']."</td>";
         echo "<td class='magic-origin' id='magic-origin-".$row['id']."'>".$row['origin']."</td>";
         echo "<td class='magic-complexity' id='magic-complexity-".$row['id']."'>".$row['complexity']."</td>";
         echo "<td class='magic-fail' id='magic-fail-".$row['id']."'>".$row['fail_rate']."%</td>";
