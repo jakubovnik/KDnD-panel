@@ -248,7 +248,7 @@ tr:first-child *{
     align-items: center;
     padding: 15px;
     border-radius: 20px;
-    background-image: url("images/magic-circle.png");
+    background-image: url("../images/magic-circle.png");
     background-size: cover;
     background-position: center;
     aspect-ratio: 1/1;
@@ -315,7 +315,7 @@ tr:first-child *{
     height: 40vh;
 }
 .inventory-background{
-    background-image: url("images/leather-texture.jpg");
+    background-image: url("../images/leather-texture.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -428,7 +428,7 @@ tr:first-child *{
     align-items: center;
     padding: 15px;
     border-radius: 20px;
-    background-image: url("images/magic-circle.png");
+    background-image: url("../images/magic-circle.png");
     background-size: cover;
     background-position: center;
     aspect-ratio: 1/1;
@@ -529,81 +529,3 @@ tr:first-child *{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
                 0 12px 24px rgba(0, 0, 0, 0.2);
 }
-/* --------------------------------------------This stuff will propably not be needed anymore-----------------------------------
-@media only screen and (max-width: 1000px) {
-/* default stuff ------------------------------------------------------------------------------------ default stuff *\/
-#all, #login{
-    margin-bottom: 10vh; /*WEB ON PHONES CAN SUCK MY ASS, WHAT THE FUCK IS THIS SHIT. I DONT WANT YOUR DOGSHIT STUPID FUKIN DUMBASS AUTOZOOM*\/
-}
-#navbar *{
-    padding: 7px 8px;
-    font-size: 2rem;
-}
-/* Magic list stuff ----------------------------------------------------------------------------------- Magic list stuff *\/
-#magic-search-inputs{
-    display:none;
-}
-#magic-all{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 85vh;
-    width: 100vw;
-    background-color: aquamarine;
-    margin-top: 1rem;
-}
-#magic-list-container{
-    margin: auto;
-    width: auto;
-}
-#magic-info-container{
-    display:none;
-}
-/* Inventory stuff ------------------------------------------------------------------------------------ Inventory stuff *\/
-#inventory{
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0%;
-    margin-top: 0.5%;
-}
-#item-search-name{
-    margin: 10px;
-    width: initial;
-    height: initial;
-    border: 1px solid #ccc;
-    font-size: 3rem;
-}
-.item-box{
-    height: 30vh;
-}
-.item-name{
-    font-size: 5rem;
-    border-style: solid;
-    border-radius: 2px;
-    border-width: 3px;
-    padding: 3px;
-    background-color: rgba(0, 0, 0, 0.65);
-    max-width: 80%;
-}
-.long-name-item-1{
-    font-size: 2rem;
-}
-.long-name-item-2{
-    font-size: 2.8rem;
-}
-.item-type{
-    font-size: 2.2rem;
-}
-.item-numbers div{
-    font-size: 2.2rem;
-}
-#item-search-name{
-    margin: 10px;
-}
-/* Button stuff ------------------------------------------------------------------------------------- button stuff *\/
-.item-remove-button{
-    width: 3rem;
-    height: 3rem;
-    border-radius: 1rem;
-}
-}
-*/
