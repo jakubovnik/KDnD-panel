@@ -18,6 +18,14 @@ function hide_message(){
     clearTimeout(message_timeout);
     message.style.display = "none";
 }
+
+function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
+    return /^\d+$/.test(str);
+}
+function isWholeNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
+    return /^-?\d+$/.test(str);
+}
+
 function blurAll(){
     var tmp = document.createElement("input");
     document.body.appendChild(tmp);

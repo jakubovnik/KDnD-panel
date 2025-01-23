@@ -48,12 +48,6 @@ require "php/header.php"
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
-function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
-    return /^\d+$/.test(str);
-}
-function isWholeNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
-    return /^-?\d+$/.test(str);
-}
 
 var shown_id = 0;
 var magic_info_container = document.getElementById("magic-info-container"); // for some unknown reason, this doesnt work inside functions

@@ -40,9 +40,6 @@ require "php/header.php";
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
-function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)
-    return /^\d+$/.test(str);
-}
 
 const inventory = document.getElementById("inventory");
 const add_item_background = document.getElementById("add-item-background");
@@ -192,7 +189,7 @@ function modify_number_request(id, type, value){
             }
         }
     };
-    request.open("POST", "php/modify_attempt.php", true);
+    request.open("POST", "php/modify_item.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
