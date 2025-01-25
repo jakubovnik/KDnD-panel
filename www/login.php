@@ -2,7 +2,7 @@
 require "php/check_login_false.php";
 require "php/header.php"
 ?>
-    <link rel="stylesheet" href="login-style.css">
+    <link rel="stylesheet" href="css/login-style.css">
     <title>Login with character</title>
 </head>
 <body id="login-body">
