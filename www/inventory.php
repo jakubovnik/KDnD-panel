@@ -102,7 +102,15 @@ function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works
 }
 
 var add_item_menu = false; //??????? why does this exist?????? | (its for pressing enter dumbass -_-)
-function reveal_add_item(){
+function reveal_add_item(item_id = -1){
+    if(item_id != -1){
+        add_item_name.value = document.getElementById("item-name-"+item_id).innerHTML;
+        add_item_charge_max.value = document.getElementById("item-charge-max-"+item_id).innerHTML;
+        add_item_description.value = document.getElementById("item-description-"+item_id).innerHTML;
+        add_item_type.style.display = "none";
+    }else{
+        add_item_type.style.display = "block";
+    }
     add_item_background.style.display = "flex";
     add_item_menu = true;
     document.getElementById("add-item-name").focus();
@@ -113,9 +121,9 @@ function hide_add_item(){
     add_item_background.style.display = "none";
     add_item_menu = false;
 }
-function add_item_request(name, type_id, charges_max, description){
+function add_item_request(name, type_id, charges_max, description, item_id=-1, is_favourite=0){
     var request = new XMLHttpRequest();
-    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description;
+    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description+"&item_id="+item_id+"&is_favourite="+is_favourite;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){

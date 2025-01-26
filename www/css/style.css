@@ -521,6 +521,13 @@ tr:first-child *{
     top: 0.2rem;
     right: 0.2rem;
 }
+.item-edit-button{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    bottom: 0.2rem;
+    right: 0.2rem;
+}
 .button{ /* Is this still needed? Im not really sure */
     background-color: orange;
     border-radius: 15px;
