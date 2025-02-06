@@ -32,3 +32,21 @@ function blurAll(){
     tmp.focus();
     document.body.removeChild(tmp);
 }
+
+function get_character_id(name, output_element){
+    var request = new XMLHttpRequest();
+    var posted_text = "name=" + name;
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "-1"){
+                display_message("Character ID NOT found", 1);
+            }else{
+                output_element.innerHTML = this.responseText;
+                display_message("Character ID found", 0, 1000);
+            }
+        }
+    };
+    request.open("POST", "php/get_character_id.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
+}

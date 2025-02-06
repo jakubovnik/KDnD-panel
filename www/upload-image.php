@@ -9,9 +9,10 @@ require "php/header.php";
     <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <div>Note that the image should be in a [TODO: INSERT RATIO LATER] ratio</div>
-    <div id="character-id" style="display:none;"></div>
+    <div id="character-id"></div>
     <form id="image-upload-form" action="javascript:void(0);" enctype="multipart/form-data"> <!--upload form-->
         <input type="text" class="image-upload" name="image-upload-character" id="image-upload-character">
+        <button class="form-button" id="image-upload-character-check" onclick="check_character()">Check Character</button>
         <input type="text" class="image-upload" name="image-upload-title" id="image-upload-title">
         <input type="file" class="image-upload" name="image-upload-image" id="image-upload-image">
         <input type="text" class="image-upload" name="image-upload-description" id="image-upload-description">
@@ -30,7 +31,7 @@ var image_upload_description = document.getElementById("image-upload-description
 function image_upload_attempt(){
     let form_data = new FormData();
 
-    form_data.append("character_id", character_id.value);
+    form_data.append("character_id", character_id.innerHTML);
     form_data.append("title", image_upload_title.value);
     form_data.append("image", image_upload_image.files[0]);
     form_data.append("description", image_upload_description.value);
@@ -38,11 +39,25 @@ function image_upload_attempt(){
     let request = new XMLHttpRequest();
     request.open("POST", "php/upload_image.php", true);
 
-    request.onload = function () {
-        let response = JSON.parse(request.responseText);
-        document.getElementById("message").innerHTML = response.message;
-        if (response.status === "success") {
-            document.getElementById("preview").innerHTML = `<img src="${response.filepath}" width="200">`; //continue here
+    // request.onload = function () {
+    //     let response = JSON.parse(request.responseText);
+    //     if(response.status === "0") {
+    //         display_message("Image uploaded");
+    //         clear_form();
+    //     }
+    //     if(response.status === "1") {
+    //         display_message("Something went wrong");
+    //     }
+    // };
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "0"){
+                display_message("Image uploaded");
+                clear_form();
+            }
+            if(this.responseText == "1"){
+                display_message("Something went wrong");
+            }
         }
     };
 
@@ -56,12 +71,12 @@ function upload_image(){
     image_upload_attempt();
 }
 function check_form(){
-    if(image_upload_character.value == ""){
-        display_message("Image needs a character to assign", 1);
+    if(character_id.innerHTML == ""){
+        display_message("Image needs an ID to assign to", 1);
         return 1;
     }
-    if(image_upload_character.value == ""){
-        display_message("Image needs a character to assign", 1);
+    if(image_upload_title.value == ""){
+        display_message("Image needs a title to assign", 1);
         return 1;
     }
     if(!image_upload_image.files[0]){
@@ -73,6 +88,17 @@ function check_form(){
         return 1;
     }
     return 0;
+}
+function clear_form(){
+    character_id.innerHTML = "";
+    image_upload_character.value = "";
+    image_upload_title.value = "";
+    image_upload_image.value = null;
+    image_upload_description.value = "";
+}
+
+function check_character(){
+    get_character_id(image_upload_character.value, character_id);
 }
 </script>
 </html>
