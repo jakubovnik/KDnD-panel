@@ -76,7 +76,7 @@ body, html{
     align-items: center;
     width: 40%;
 }
-#character-image{
+.character-image{
     max-width: 90%;
     height: auto;
 }
