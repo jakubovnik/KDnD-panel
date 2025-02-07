@@ -10,9 +10,9 @@ require "php/header.php";
     <span id="message" onclick="hide_message()"></span>
     <div>Note that the image should be in a [TODO: INSERT RATIO LATER] ratio</div>
     <div id="character-id"></div>
-    <form id="image-upload-form" action="javascript:void(0);" enctype="multipart/form-data"> <!--upload form-->
+    <button class="form-button" id="image-upload-character-check" onclick="check_character()">Check Character</button>
+    <form id="image-upload-form" action="javascript:void(0);" method="POST" enctype="multipart/form-data"> <!--upload form-->
         <input type="text" class="image-upload" name="image-upload-character" id="image-upload-character">
-        <button class="form-button" id="image-upload-character-check" onclick="check_character()">Check Character</button>
         <input type="text" class="image-upload" name="image-upload-title" id="image-upload-title">
         <input type="file" class="image-upload" name="image-upload-image" id="image-upload-image">
         <input type="text" class="image-upload" name="image-upload-description" id="image-upload-description">
@@ -57,6 +57,9 @@ function image_upload_attempt(){
             }
             if(this.responseText == "1"){
                 display_message("Something went wrong");
+            }
+            if(this.responseText == "2"){
+                display_message("file is too large for some unknown reason");
             }
         }
     };
