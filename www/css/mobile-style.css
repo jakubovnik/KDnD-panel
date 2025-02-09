@@ -89,8 +89,59 @@ body, html{
 }
 
 /* Index stuff ---------------------------------------------------------------- Index stuff */
-#character-image{
-    max-width: 100%;
+#character-info, #character-sheet, #main-info-box, #secondary-info-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+#secondary-info-box{
+    flex-direction: row;
+}
+#character-name{
+    margin: 1rem;
+    padding: 0rem 0.5rem;
+    font-size: 3rem;
+    border-bottom: solid;
+    border-color: gold;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+#character-circles{
+    margin: 1rem;
+    font-size: 2rem;
+}
+#character-money{
+    margin: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#character-money-actions{
+    margin-left: 10vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+#character-money-actions *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    background-color: aliceblue;
+}
+#character-money-input{
+    border: none;
+    /* width: 9.1vw;
+    height: 9.1vw; */
+}
+.character-image{
+    width: 100%;
+    height: auto;
 }
 
 /* Inventory stuff ----------------------------------------------------------------- Inventory stuff */

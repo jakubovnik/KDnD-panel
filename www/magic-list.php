@@ -18,6 +18,7 @@ require "php/header.php"
     <div id="learn-magic-background" style="display: none;">
         <div id="learn-magic-box">
             <span id="learn-magic-id" class="learn-magic-text"></span>
+            <!-- TODO: hide the magic id since its propably not needed -->
             <span id="learn-magic-name" class="learn-magic-text"></span>
             <input type="text" placeholder="New Complexity" id="learn-magic-complexity" class="learn-magic-number">
             <input type="text" placeholder="New Fail Rate" id="learn-magic-fail" class="learn-magic-number">

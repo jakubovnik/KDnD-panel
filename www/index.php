@@ -10,28 +10,34 @@ require "php/header.php";
     <div id="character-info">
         <div id="character-sheet">
             <div id="main-info-box">
-                <span id="character-name"><?php echo $_SESSION['cname']?></span>
-                <span id="character-circles">Circles: <?php echo $_SESSION['circles']?></span>
-                <span id="character-money">Muns: <?php echo $_SESSION['money']?></span>
+                <div id="character-name"><?php echo $_SESSION['cname']?></div>
+                <div id="character-circles">Circles: <?php echo $_SESSION['circles']?></div>
+                <div id="character-money">Muns: 
+                    <div id="character-money-number"><?php echo $_SESSION['money']?></div>
+                    <div id="character-money-actions">
+                        <div id="character-money-button-1" class="character-money-button">+1</div>
+                        <div id="character-money-button--1" class="character-money-button">+1</div>
+                        <input type="text" id="character-money-input">
+                        <div id="character-money-button-10" class="character-money-button">+1</div>
+                        <div id="character-money-button--10" class="character-money-button">+1</div>
+                        <div id="character-money-button-add" class="character-money-button">+1</div>
+                    </div>
+                </div>
             </div>
             <div id="secondary-info-box">
-                <span id="character-age"><?php echo $_SESSION['age'] ?></span>
-                <span id="character-role"><?php 
+                <div id="character-age">Age: <?php echo $_SESSION['age'] ?></div>
+                <div id="character-role"><?php 
                     require "php/dbconnect.php";
                     $sql = "SELECT role.name FROM kdnd.role WHERE id=".$_SESSION['role'];
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                         echo $row['name'];
                     }
-                ?></span>
+                ?></div>
             </div>
-            <span id="character-description"><?php echo $_SESSION['description']?></span>
+            <div id="character-description"><?php echo $_SESSION['description']?></div>
         </div>
         <div id="character-visual">
-            
-            <!-- TODO: add some kind of description through php -->
-            <!-- <img src="images/Nizen.jpg" alt="nizen example" class="character-image" id="character-image"> -->
-            <!-- TODO: save images into a database -->
             <?php
                 $sql = "SELECT id, title, description FROM kdnd.character_image WHERE character_id=".$_SESSION['cid']." ORDER BY id";
                 $result = $conn->query($sql);
