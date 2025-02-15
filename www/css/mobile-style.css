@@ -136,6 +136,7 @@ body, html{
 }
 #character-money-input{
     border: none;
+    box-sizing: border-box;
 }
 .character-image{
     width: 100%;

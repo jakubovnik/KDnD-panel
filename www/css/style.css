@@ -77,6 +77,7 @@ body, html{
     margin-left: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
 }
 #character-money-actions *{
     display: flex;
@@ -89,6 +90,7 @@ body, html{
 }
 #character-money-input{
     border: none;
+    box-sizing: border-box;
 }
 #character-description{
     padding: 5%;
