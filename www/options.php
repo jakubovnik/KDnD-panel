@@ -11,9 +11,13 @@ require "php/header.php"
     <?php
         if(isset($_POST)){
             require "php/dbconnect.php";
-            $sql = "INSERT INTO kdnd.options (character_id, refresh_inventory, refresh_magic, show_message) ".
+            $sql = "REPLACE INTO kdnd.options (character_id, refresh_inventory, refresh_magic, show_message) ".
                     "VALUES ".
-                        "(".$_SESSION['cid'].", ".$_POST[''].", ".$_POST[''].", ".$_POST[''].")". //TODO: continue here
+                        "(".$_SESSION['cid'].", ".
+                        $_POST['options-form-inventory-refresh'].", ".
+                        $_POST['options-form-magic-refresh'].", ".
+                        $_POST['options-form-show-message'].")";
+            $conn->query($sql);
             $conn.close();
         }
     ?>
