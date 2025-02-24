@@ -15,6 +15,7 @@ require "php/header.php"
         <input type="text" id="magic-search-fail" onkeyup="updateMagicList('fail')" placeholder="Search by fail rate">
         <input type="text" id="magic-search-cast" onkeyup="updateMagicList('cast')" placeholder="Search by cast time">
     </div>
+    <div id="magic-character-circles"><?php echo $_SESSION['circles']?><img id="magic-character-circles-image" src="images/complexity.png" alt="complexity image" title="character circles"></div>
     <div id="learn-magic-background" style="display: none;">
         <div id="learn-magic-box">
             <span id="learn-magic-id" class="learn-magic-text"></span>

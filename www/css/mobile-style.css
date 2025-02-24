@@ -125,6 +125,10 @@ body, html{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+#character-money-input{
+    border: none;
+    box-sizing: border-box;
+}
 #character-money-actions *{
     display: flex;
     justify-content: center;
@@ -132,11 +136,11 @@ body, html{
     width: 3rem;
     height: 3rem;
     text-align: center;
-    background-color: aliceblue;
-}
-#character-money-input{
-    border: none;
-    box-sizing: border-box;
+    border-bottom: solid;
+    border-radius: 1rem;
+    border-color: green;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 .character-image{
     width: 100%;
@@ -360,6 +364,25 @@ body, html{
     height: 90vh;
     padding-top: 5vh;
     padding-bottom: 5vh;
+}
+#magic-character-circles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0.3rem;
+    right: 0.3rem;
+    background-color: silver;
+    /* color: black; */
+    border-radius: 1rem;
+    z-index: 1000;
+    padding: 0px;
+    text-align: center;
+}
+#magic-character-circles-image{
+    height: 2rem;
+    width: 2rem;
+    margin: 0.5rem;
 }
 #magic-list-container{
     display: flex;
