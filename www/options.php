@@ -9,16 +9,21 @@ require "php/header.php"
     <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <?php
-        if(isset($_POST)){
+        if(!empty($_POST)){
+            if(isset($_POST['options-form-show-message'])){
+                $show_message = "1";
+            }else{
+                $show_message = "0";
+            }
             require "php/dbconnect.php";
             $sql = "REPLACE INTO kdnd.options (character_id, refresh_inventory, refresh_magic, show_message) ".
                     "VALUES ".
-                        "(".$_SESSION['cid'].", ".
-                        $_POST['options-form-inventory-refresh'].", ".
-                        $_POST['options-form-magic-refresh'].", ".
-                        $_POST['options-form-show-message'].")";
+                        "(".$_SESSION['cid'].", '".
+                        $_POST['options-form-inventory-refresh']."', '".
+                        $_POST['options-form-magic-refresh']."', '".
+                        $show_message."')";
             $conn->query($sql);
-            $conn.close();
+            $conn->close();
         }
     ?>
     <form action="" method="post" id="options-form">
