@@ -203,7 +203,7 @@ body, html{
     justify-content: space-around;
     align-items: center;
     height: 14rem;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     border-color: dimgray;
     border-radius: 2px;
     border-style: solid;
@@ -230,6 +230,10 @@ body, html{
 }
 .item-type{
     font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .item-numbers{
     display: grid;
@@ -302,6 +306,13 @@ body, html{
     bottom: 0.2rem;
     left: 0.2rem;
     background-color: rgba(255, 217, 0, 0.4);
+    border-radius: 0.5rem;
+}
+.item-equip-button{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+    background-color: rgba(0, 128, 0, 0.7);
     border-radius: 0.5rem;
 }
 #add-button{

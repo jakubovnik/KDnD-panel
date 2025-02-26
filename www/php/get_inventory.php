@@ -1,7 +1,16 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "SELECT inventory.id, inventory.name, type.name as type, inventory.amount, inventory.charges, inventory.charges_max, inventory.description, inventory.is_favourite as is_favourite
+$sql = "SELECT inventory.id, 
+                inventory.name, 
+                type.id as type_id, 
+                type.name as type, 
+                inventory.amount, 
+                inventory.charges, 
+                inventory.charges_max, 
+                inventory.description, 
+                inventory.is_favourite as is_favourite, 
+                inventory.is_equipped as is_equipped
     FROM kdnd.inventory INNER JOIN kdnd.type ON inventory.type_id=type.id
     WHERE (is_deleted=0)";
 if($_SESSION['role'] != 1){
@@ -70,7 +79,15 @@ while($row = $result->fetch_assoc()){
                     break;
             }
             echo ";'>".$row['name']."</span>";
-        echo "<span class='item-type' id='item-type-".$row['id']."'>".$row['type']."</span>";
+        echo "<span class='item-type' id='item-type-".$row['id']."'>".$row['type'];
+            if($row['type_id'] <= 8){
+                if($row['is_equipped'] == '1'){
+                    echo '<img src="../images/shield_full.png" alt="equip button" class="item-equip-button" id="item-equip-button-'.$row['id'].'" onclick="set_equipped('.$row['id'].', 0)">';
+                }else{
+                    echo '<img src="../images/shield.png" alt="equip button" class="item-equip-button" id="item-equip-button-'.$row['id'].'" onclick="set_equipped('.$row['id'].', 1)">';
+                }
+            }
+        echo "</span>";
         echo '<div class="item-numbers">';
             echo '<div class="button" id="decrease-amount-'.$row['id'].'" onclick="decrease_amount('.$row['id'].')" style="background-color: ';
                 switch ($row['type']) {

@@ -1,9 +1,19 @@
 /* <script src="default.js"></script> */
 
 const message = document.getElementById("message");
+var show_message = true;
+var inventory_refresh_interval = 60000;
+var magic_refresh_interval = 60000;
+function setShowMessage(value){
+    show_message = value;
+}
+// TODO: more functions for setting intervals
 
 var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
 function display_message(new_message, type=0, time=2000){
+    if(!show_message){
+        return;
+    }
     clearTimeout(message_timeout);
     message.style.display = "block";
     if(type == 0){

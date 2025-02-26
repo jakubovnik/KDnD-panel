@@ -38,7 +38,7 @@ require "php/header.php";
 </body>
 </html>
 <script src="js/default.js"></script>
-<?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
+<?php require "php/js_setup.php";?>
 <script>
 
 const inventory = document.getElementById("inventory");
@@ -190,7 +190,7 @@ function modify_number_request(id, type, value){
                     const removed_item = document.getElementById("item-box-"+id);
                     removed_item.remove();
                 }
-                if(type == "is_favourite"){
+                if(type == "is_favourite" || type == "is_equipped"){
                     refresh_inventory();
                 }
             }else if(this.responseText == "1"){
@@ -211,6 +211,10 @@ function remove_item(id){
 }
 function set_favourite(id, value){
     modify_number_request(id, "is_favourite", value);
+    return;
+}
+function set_equipped(id, value){
+    modify_number_request(id, "is_equipped", value);
     return;
 }
 function decrease_amount(id){
