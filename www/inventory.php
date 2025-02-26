@@ -190,6 +190,9 @@ function modify_number_request(id, type, value){
                     const removed_item = document.getElementById("item-box-"+id);
                     removed_item.remove();
                 }
+                if(type == "is_favourite"){
+                    refresh_inventory();
+                }
             }else if(this.responseText == "1"){
                 display_message("something went wrong with modifying", 1);
             }else{
@@ -204,6 +207,10 @@ function modify_number_request(id, type, value){
 function remove_item(id){
     //TODO: make a timeout or something for reverting the deletion
     modify_number_request(id, "is_deleted", 1);
+    return;
+}
+function set_favourite(id, value){
+    modify_number_request(id, "is_favourite", value);
     return;
 }
 function decrease_amount(id){

@@ -12,15 +12,19 @@ require "php/header.php";
             <div id="main-info-box">
                 <div id="character-name"><?php echo $_SESSION['cname']?></div>
                 <div id="character-circles">Circles: <?php echo $_SESSION['circles']?></div>
-                <div id="character-money">Muns: 
-                    <div id="character-money-number"></div>
+                <div id="character-money"><div id="character-money-text">Muns: 
+                    <div id="character-money-number"></div></div>
                     <div id="character-money-actions">
-                        <div id="character-money-button--1" class="character-money-button" onclick="add_money('-1',1)">-1</div>
-                        <div id="character-money-button-1" class="character-money-button" onclick="add_money('1',1)">+1</div>
-                        <input type="text" id="character-money-input">
-                        <div id="character-money-button--10" class="character-money-button" onclick="add_money('-10',1)">-10</div>
-                        <div id="character-money-button-10" class="character-money-button" onclick="add_money('10',1)">+10</div>
-                        <div id="character-money-button-add" class="character-money-button" onclick="add_money()">add</div>
+                        <div id="character-money-actions-row">
+                            <div id="character-money-button--1" class="character-money-button" onclick="add_money('-1',1)">-1</div>
+                            <div id="character-money-button-1" class="character-money-button" onclick="add_money('1',1)">+1</div>
+                            <input type="text" id="character-money-input">
+                        </div>
+                        <div id="character-money-actions-row">
+                            <div id="character-money-button--10" class="character-money-button" onclick="add_money('-10',1)">-10</div>
+                            <div id="character-money-button-10" class="character-money-button" onclick="add_money('10',1)">+10</div>
+                            <div id="character-money-button-add" class="character-money-button" onclick="add_money()">add</div>
+                        </div>
                     </div>
                 </div>
             </div>
