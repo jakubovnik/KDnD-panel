@@ -163,9 +163,36 @@ body, html{
 #character-money-input:not(:focus){
     transition: none;
 }
+#character-visual{
+    position: relative;
+}
 .character-image{
     width: 100%;
     height: auto;
+}
+/* Equipped items */
+#equipped-items{
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    flex-direction: column;
+    max-height: 55%;
+    position: absolute;
+    top: 10%;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.equipped-item{
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0.5rem;
+    padding: 0.3rem;
+    padding-bottom: 0.1rem;
+    width: fit-content;
+    font-size: 1.3rem;
+}
+.equipped-item-description{
+    display: none;
 }
 
 /* Inventory stuff ----------------------------------------------------------------- Inventory stuff */
@@ -414,7 +441,6 @@ body, html{
     top: 0.3rem;
     right: 0.3rem;
     background-color: silver;
-    /* color: black; */
     border-radius: 1rem;
     z-index: 1000;
     padding: 0px;

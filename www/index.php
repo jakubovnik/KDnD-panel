@@ -47,8 +47,8 @@ require "php/header.php";
                 $result = $conn->query($sql);
                 $image_count = 0;
                 if($result->num_rows <= 0){
-                    echo '<div id="character-image-title-0" class="character-image-title" style="display:none">'.$row['title'].'</div>';
-                    echo '<div id="character-image-description-0" class="character-image-description" style="display:none">'.$row['description'].'</div>';
+                    echo '<div id="character-image-title-0" class="character-image-title" style="display:none">Default title</div>';
+                    echo '<div id="character-image-description-0" class="character-image-description" style="display:none">Default descriptions</div>';
                     echo '<img src="images/Nizen.jpg" alt="nizen example" class="character-image" id="character-image-0">';
                 }else{
                     while($row = $result->fetch_assoc()){
@@ -59,8 +59,13 @@ require "php/header.php";
                         $image_count = $image_count + 1;
                     }
                 }
-                
+                $conn->close();
             ?>
+            <div id="equipped-items">
+                <?php
+                    require "php/get_equipped_items.php";
+                ?>
+            </div>
         </div>
     </div>
 </div>
@@ -157,7 +162,7 @@ function show_next_image(){
     document.getElementById("character-image-"+current_image_index).style.display = "inline-block";
 }
 refresh_money_amount();
-refresh_interval = setInterval(refresh_money_amount, 5000);
+refresh_interval = setInterval(refresh_money_amount, 10000);
 <?php require "php/js_options.php";?>
 </script>
 <?php

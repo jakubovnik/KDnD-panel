@@ -72,6 +72,7 @@ body, html{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 #character-money-actions{
     position: relative;
@@ -119,6 +120,7 @@ body, html{
     padding: 5%;
 }
 #character-visual{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -128,6 +130,30 @@ body, html{
 .character-image{
     max-width: 90%;
     height: auto;
+}
+/* Equipped items */
+#equipped-items{
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    flex-direction: column;
+    max-height: 55%;
+    position: absolute;
+    top: 7%;
+    right: 3rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.equipped-item{
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0.5rem;
+    padding: 0.3rem;
+    padding-bottom: 0.1rem;
+    width: fit-content;
+    font-size: 1.3rem;
+}
+.equipped-item-description{
+    display: none;
 }
 /* navbar stuff --------------------------------------------------------------------------*/
 #navbar{
@@ -166,6 +192,24 @@ body, html{
 #magic-search-inputs *{
     padding: 5px;
     margin: 5px;
+}
+#magic-character-circles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 6rem;
+    right: 0.3rem;
+    background-color: silver;
+    border-radius: 1rem;
+    z-index: 1000;
+    padding: 0px;
+    text-align: center;
+}
+#magic-character-circles-image{
+    height: 2rem;
+    width: 2rem;
+    margin: 0.5rem;
 }
 .magic-origin, .magic-complexity, .magic-fail, .magic-cast{
     text-align: center;
@@ -404,6 +448,10 @@ tr:first-child *{
 }
 .item-type{
     font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .item-description{
     display: none;
@@ -577,12 +625,20 @@ tr:first-child *{
     bottom: 0.2rem;
     right: 0.2rem;
 }
-.button{ /* Is this still needed? Im not really sure */
-    background-color: orange;
-    border-radius: 15px;
-    text-align: center;
-    width:auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
-                0 12px 24px rgba(0, 0, 0, 0.2);
+.item-favourite-button{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    bottom: 0.2rem;
+    left: 0.2rem;
+    background-color: rgba(255, 217, 0, 0.4);
+    border-radius: 0.5rem;
+}
+.item-equip-button{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+    background-color: rgba(0, 128, 0, 0.7);
+    border-radius: 0.5rem;
 }
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
