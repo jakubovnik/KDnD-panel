@@ -1,4 +1,4 @@
-// <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="mobile.js"></script>';}?>
+// <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 var navbarVisible = 0;
 const navbar = document.getElementById("navbar");
 function toggle_navbar(){

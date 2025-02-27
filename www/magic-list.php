@@ -222,8 +222,7 @@ function keypress(event) {
     }
 }
 refresh_magic();
-// setTimeout(() => { // TODO: Remove this. This thing is just for testing
-//     reveal_learn_magic(55);
-// }, 200);
+
+<?php require "php/js_options.php";?>
 </script>
 </html>
