@@ -47,8 +47,8 @@ require "php/header.php";
                 $result = $conn->query($sql);
                 $image_count = 0;
                 if($result->num_rows <= 0){
-                    echo '<div id="character-image-title-0" class="character-image-title" style="display:none">Default title</div>';
-                    echo '<div id="character-image-description-0" class="character-image-description" style="display:none">Default descriptions</div>';
+                    echo '<div id="character-image-title-0" class="character-image-title">Default title</div>';
+                    echo '<div id="character-image-description-0" class="character-image-description">Default descriptions</div>';
                     echo '<img src="images/Nizen.jpg" alt="nizen example" class="character-image" id="character-image-0">';
                 }else{
                     while($row = $result->fetch_assoc()){
@@ -69,7 +69,6 @@ require "php/header.php";
         </div>
     </div>
 </div>
-</html>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
@@ -163,8 +162,9 @@ function show_next_image(){
 }
 refresh_money_amount();
 refresh_interval = setInterval(refresh_money_amount, 10000);
-<?php require "php/js_options.php";?>
 </script>
+<?php require "php/js_options.php";?>
 <?php
 echo "<script>set_last_image_index(".$image_count.");</script>";
 ?>
+</html>

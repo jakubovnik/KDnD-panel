@@ -36,7 +36,6 @@ require "php/header.php";
     </div>
 </div>
 </body>
-</html>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
@@ -280,5 +279,6 @@ function keypress(event) {
 refresh_inventory();
 refresh_interval = setInterval(refresh_inventory, 60000);
 document.getElementById("item-search-name").focus();
-<?php require "php/js_options.php";?>
 </script>
+<?php require "php/js_options.php";?>
+</html>
