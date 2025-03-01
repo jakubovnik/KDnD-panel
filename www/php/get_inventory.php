@@ -34,7 +34,7 @@ while($row = $result->fetch_assoc()){
         echo "<span class='item-name";
             if(strlen($row['name']) > 20){
                 echo " long-name-item-1";
-            }else if(strlen($row['name']) > 14){
+            }else if(strlen($row['name']) > 12){
                 echo " long-name-item-2";
             }
             echo "' id='item-name-".$row['id']."'";

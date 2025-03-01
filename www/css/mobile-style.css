@@ -205,16 +205,16 @@ body, html{
     justify-content: space-around;
     align-items: end;
     flex-direction: column;
-    max-height: 55%;
+    /* max-height: 55%; */
     position: absolute;
     top: 10%;
     right: 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 .equipped-item{
     text-align: right;
     color: rgb(100, 0, 0);
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
     margin: 0.5rem;
     padding: 0.3rem;
     padding-bottom: 0.1rem;
@@ -260,7 +260,7 @@ body, html{
     justify-content: space-around;
     align-items: center;
     height: 14rem;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
     border-color: dimgray;
     border-radius: 2px;
     border-style: solid;
@@ -278,12 +278,13 @@ body, html{
     background-color: rgba(0, 0, 0, 0.65);
     max-width: 80%;
     margin-top: 1rem;
+    text-align: center;
 }
 .long-name-item-1{
-    font-size: 0.5rem;
+    font-size: 0.7rem;
 }
 .long-name-item-2{
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 .item-type{
     font-size: 1.2rem;
