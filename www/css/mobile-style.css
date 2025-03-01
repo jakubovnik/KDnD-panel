@@ -45,7 +45,7 @@ body, html{
     border-radius: 1rem;
     z-index: 1000;
     padding: 0px;
-    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 10px #39000093;
 }
 #navbar-button-image{
     height: 2rem;
@@ -88,6 +88,13 @@ body, html{
 }
 
 /* Index stuff ---------------------------------------------------------------- Index stuff */
+#character-info{
+    background-image: url("../images/index-bg-mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
 #character-info, #character-sheet, #main-info-box, #secondary-info-box{
     display: flex;
     justify-content: space-around;
@@ -103,13 +110,18 @@ body, html{
     padding: 0rem 0.5rem;
     font-size: 3rem;
     border-bottom: solid;
-    border-color: gold;
+    border-color: rgb(75, 0, 0);
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(158, 158, 158, 0.9);
+    box-shadow: inset 0 0 10px #5c0000;
 }
 #character-circles{
     margin: 1rem;
     font-size: 2rem;
+    padding: 0.2rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 0.2rem;
+    box-shadow: inset 0 0 10px #5c5100;
 }
 #character-money{
     margin: 1rem;
@@ -120,6 +132,12 @@ body, html{
     align-items: center;
     text-align: center;
     font-size: 2rem;
+    background-color: rgba(162, 135, 66, 0.7);
+}
+#character-money-text{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.2rem;
+    padding: 0.2rem;
 }
 #character-money-actions{
     position: relative;
@@ -140,9 +158,9 @@ body, html{
     text-align: center;
     border: none;
     border-bottom: solid;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border-color: green;
-    background-color: rgba(0, 0, 70, 0.5);
+    background-color: rgba(0, 0, 70, 0.65);
     color: white;
 }
 #character-money-input{
@@ -163,7 +181,18 @@ body, html{
 #character-money-input:not(:focus){
     transition: none;
 }
+#secondary-info-box{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+#character-description{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+}
 #character-visual{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     position: relative;
 }
 .character-image{
@@ -184,6 +213,7 @@ body, html{
 }
 .equipped-item{
     text-align: right;
+    color: rgb(100, 0, 0);
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0.5rem;
     padding: 0.3rem;
@@ -443,7 +473,7 @@ body, html{
     background-color: silver;
     border-radius: 1rem;
     z-index: 1000;
-    padding: 0px;
+    padding-left: 0.5rem;
     text-align: center;
 }
 #magic-character-circles-image{
@@ -505,7 +535,8 @@ tr:first-child{
 .magic-learn{
     /* I have actually no idea how i can make this icon not ugly 
     without breaking everything else || nvm fixed it (somewhat) */
-    height: 100%; /*dunno if this is nescesary*/
+    height: 100%; /*TODO: dunno if this is nescesary*/
+    text-align: center;
 }
 .magic-learn-button{
     width: 2rem;

@@ -49,7 +49,7 @@ require "php/header.php";
                 if($result->num_rows <= 0){
                     echo '<div id="character-image-title-0" class="character-image-title">Default title</div>';
                     echo '<div id="character-image-description-0" class="character-image-description">Default descriptions</div>';
-                    echo '<img src="images/Nizen.jpg" alt="nizen example" class="character-image" id="character-image-0">';
+                    echo '<img src="images/temp-missing-image.png" alt="no image yet" class="character-image" id="character-image-0">';
                 }else{
                     while($row = $result->fetch_assoc()){
                         echo '<div id="character-image-title-'.$image_count.'" class="character-image-title" style="display:none">'.$row['title'].'</div>';
