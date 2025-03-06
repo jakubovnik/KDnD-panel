@@ -38,17 +38,7 @@ function image_upload_attempt(){
 
     let request = new XMLHttpRequest();
     request.open("POST", "php/upload_image.php", true);
-
-    // request.onload = function () {
-    //     let response = JSON.parse(request.responseText);
-    //     if(response.status === "0") {
-    //         display_message("Image uploaded");
-    //         clear_form();
-    //     }
-    //     if(response.status === "1") {
-    //         display_message("Something went wrong");
-    //     }
-    // };
+    
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){

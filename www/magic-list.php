@@ -223,6 +223,6 @@ function keypress(event) {
 }
 refresh_magic();
 
-</script>
 <?php require "php/js_options.php";?>
+</script>
 </html>

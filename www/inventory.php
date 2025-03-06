@@ -279,6 +279,6 @@ function keypress(event) {
 refresh_inventory();
 refresh_interval = setInterval(refresh_inventory, 60000);
 document.getElementById("item-search-name").focus();
-</script>
 <?php require "php/js_options.php";?>
+</script>
 </html>

@@ -51,11 +51,13 @@ require "php/header.php";
                     echo '<div id="character-image-description-0" class="character-image-description">Default descriptions</div>';
                     echo '<img src="images/temp-missing-image.png" alt="no image yet" class="character-image" id="character-image-0">';
                 }else{
+                    $display_none = '';
                     while($row = $result->fetch_assoc()){
-                        echo '<div id="character-image-title-'.$image_count.'" class="character-image-title" style="display:none">'.$row['title'].'</div>';
-                        echo '<div id="character-image-description-'.$image_count.'" class="character-image-description" style="display:none">'.$row['description'].'</div>';
+                        echo '<div id="character-image-title-'.$image_count.'" class="character-image-title"'.$display_none.'>'.$row['title'].'</div>';
+                        echo '<div id="character-image-description-'.$image_count.'" class="character-image-description"'.$display_none.'>'.$row['description'].'</div>';
                         echo '<img src="php/get_character_image.php?image_id='.$row['id'].'" onclick="show_next_image()"';
-                        echo ' alt="character image" class="character-image" id="character-image-'.$image_count.'" style="display:none">';
+                        echo ' alt="character image" class="character-image" id="character-image-'.$image_count.'"'.$display_none.'>';
+                        $display_none = ' style="display:none"';
                         $image_count = $image_count + 1;
                     }
                 }
@@ -143,11 +145,11 @@ function set_last_image_index(index){
     last_image_index = index;
 }
 var current_image_index = 0;
-setTimeout(() => {
-    document.getElementById("character-image-title-0").style.display = "block";
-    document.getElementById("character-image-description-0").style.display = "block";
-    document.getElementById("character-image-0").style.display = "inline-block";
-}, 100);
+// setTimeout(() => {
+//     document.getElementById("character-image-title-0").style.display = "block";
+//     document.getElementById("character-image-description-0").style.display = "block";
+//     document.getElementById("character-image-0").style.display = "inline-block";
+// }, 100);
 function show_next_image(){
     document.getElementById("character-image-title-"+current_image_index).style.display = "none";
     document.getElementById("character-image-description-"+current_image_index).style.display = "none";
@@ -162,9 +164,10 @@ function show_next_image(){
 }
 refresh_money_amount();
 refresh_interval = setInterval(refresh_money_amount, 10000);
-</script>
-<?php require "php/js_options.php";?>
+
 <?php
-echo "<script>set_last_image_index(".$image_count.");</script>";
+echo "set_last_image_index(".$image_count.");";
 ?>
+<?php require "php/js_options.php";?>
+</script>
 </html>

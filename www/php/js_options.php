@@ -2,16 +2,13 @@
 require "dbconnect.php";
 $sql = "SELECT * FROM kdnd.options WHERE character_id=".$_SESSION['cid'];
 $result = $conn->query($sql);
-if($result->num_rows <= 0){
-    exit;
+if($result->num_rows > 0){
+    $row = $result->fetch_assoc();
+    if($row['show_message'] == "1"){
+        echo "\nshow_message = 1;\n";
+    }else{
+        echo "\nshow_message = 0;\n";
+    }
 }
-$row = $result->fetch_assoc();
-echo "\n<script>";
-if($row['show_message'] == "1"){
-    echo "\nshow_message = 1;\n";
-}else{
-    echo "\nshow_message = 0;\n";
-}
-echo "</script>\n";
 $conn->close();
 ?>
