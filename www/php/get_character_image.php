@@ -6,5 +6,5 @@ while($row = $result->fetch_assoc()){
     header("Content-type: ".$row['type']);
     echo $row['image'];
 }
-$conn.close();
+$conn->close();
 ?>

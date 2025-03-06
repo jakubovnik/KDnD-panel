@@ -136,10 +136,10 @@ function learn_magic_request(name, complexity, fail_rate, cast_time){
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                setTimeout(refresh_magic, 2000);
+                setTimeout(refresh_magic, 500);
                 display_message("Successfully learned "+ name);
             }else if(this.responseText == "00"){
-                setTimeout(refresh_magic, 2000);
+                setTimeout(refresh_magic, 500);
                 display_message("Successfully updated "+ name);
             }else if(this.responseText == "1"){
                 display_message("something went wrong with your learning lol git gud", 1);
