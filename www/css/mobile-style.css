@@ -269,6 +269,9 @@ body, html{
 .item-box *{
     color: aliceblue;
 }
+.item-id{
+    display: none;
+}
 .item-name{
     font-size: 1.5rem;
     border-bottom: solid;

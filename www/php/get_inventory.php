@@ -1,7 +1,9 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "SELECT inventory.id, 
+$sql = "SELECT  character.id as character_id,
+                character.name as character_name,
+                inventory.id, 
                 inventory.name, 
                 type.id as type_id, 
                 type.name as type, 
@@ -11,18 +13,19 @@ $sql = "SELECT inventory.id,
                 inventory.description, 
                 inventory.is_favourite as is_favourite, 
                 inventory.is_equipped as is_equipped
-    FROM kdnd.inventory INNER JOIN kdnd.type ON inventory.type_id=type.id
+    FROM kdnd.inventory 
+    INNER JOIN kdnd.type ON inventory.type_id=type.id
+    INNER JOIN kdnd.character ON inventory.character_id=character.id
     WHERE (is_deleted=0)";
 if($_SESSION['role'] != 1){
     $sql = $sql." AND (inventory.character_id=".$_SESSION['cid'].")";
 }
 if($_POST['sort'] == "default"){
-    $sql = $sql." ORDER BY inventory.is_favourite DESC,type.name DESC,inventory.name ASC";
+    $sql = $sql." ORDER BY character.id ASC, inventory.is_favourite DESC, type.name DESC, inventory.name ASC";
 }
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
     echo "<div class='item-box' id='item-box-".$row['id']."'>";
-    // echo "<div class='item-box' id='item-box-".$row['id']."' onclick='reveal_details(".$row['id'].")' ";
         echo '<img src="../images/cancel.png" alt="rmv button" class="item-remove-button" id="item-remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
         echo '<img src="../images/information.png" alt="description button" class="item-description-button" id="item-description-button-'.$row['id'].'" onclick="reveal_details('.$row['id'].')">';
         echo '<img src="../images/pencil.png" alt="edit button" class="item-edit-button" id="item-edit-button-'.$row['id'].'" onclick="reveal_add_item('.$row['id'].')">';
@@ -31,6 +34,7 @@ while($row = $result->fetch_assoc()){
         }else{
             echo '<img src="../images/star.png" alt="favourite button" class="item-favourite-button" id="item-favourite-button-'.$row['id'].'" onclick="set_favourite('.$row['id'].', 1)">';
         }
+        echo "<span class='item-id' id='item-id-".$row['id']."'>".$row['id']."</span>";
         echo "<span class='item-name";
             if(strlen($row['name']) > 20){
                 echo " long-name-item-1";
@@ -79,6 +83,9 @@ while($row = $result->fetch_assoc()){
                     break;
             }
             echo ";'>".$row['name']."</span>";
+        if($_SESSION['role'] == 1){
+            echo "<span class='item-owner' id='item-owner-".$row['id']."'>".$row['character_name']."</span>";
+        }
         echo "<span class='item-type' id='item-type-".$row['id']."'>".$row['type'];
             if($row['type_id'] <= 8){
                 if($row['is_equipped'] == '1'){

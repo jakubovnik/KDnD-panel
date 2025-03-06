@@ -431,6 +431,9 @@ tr:first-child *{
 .item-box *{
     color: aliceblue;
 }
+.item-id{
+    display: none;
+}
 .item-name{
     font-size: 2rem;
     border-style: solid;
