@@ -19,7 +19,7 @@ require "php/header.php";
             <select id="create-role" class="character-create-text" name="create-role">
                 <?php
                     require "php/dbconnect.php";
-                    $sql = "SELECT * FROM kdnd.role ORDER BY id";
+                    $sql = "SELECT * FROM `role` ORDER BY id";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                         echo '<option value="'.$row['id'].'"';

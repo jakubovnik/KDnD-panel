@@ -6,7 +6,7 @@ require "dbconnect.php";
 $sql = "SELECT inventory.id, 
                 inventory.name, 
                 inventory.description
-        FROM kdnd.inventory 
+        FROM `inventory` 
         WHERE is_deleted=0 AND
                 is_equipped=1 AND
                 character_id=".$_SESSION['cid'].

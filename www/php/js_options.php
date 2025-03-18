@@ -1,6 +1,6 @@
 <?php
 require "dbconnect.php";
-$sql = "SELECT * FROM kdnd.options WHERE character_id=".$_SESSION['cid'];
+$sql = "SELECT * FROM `options` WHERE character_id=".$_SESSION['cid'];
 $result = $conn->query($sql);
 if($result->num_rows <= 0){
     exit;

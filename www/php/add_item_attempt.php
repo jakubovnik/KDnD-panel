@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "INSERT INTO kdnd.inventory (`name`, `type_id`, `amount`, `charges`, `charges_max`, `description`, `character_id`) 
+$sql = "INSERT INTO `inventory` (`name`, `type_id`, `amount`, `charges`, `charges_max`, `description`, `character_id`) 
 VALUES
 ('".$_POST['name']."',
 '".$_POST['type_id']."',

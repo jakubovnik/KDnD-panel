@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "SELECT * FROM kdnd.character where name = '".$_POST['name']."'";
+$sql = "SELECT * FROM `character` where name = '".$_POST['name']."'";
 $result = $conn->query($sql);
 $output = "";
 if ($result->num_rows == 1) {

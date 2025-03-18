@@ -8,7 +8,7 @@ if($_FILES['image']['size'] == 0){
     $imageType = $image['type'];
     $imageContent = addslashes(file_get_contents($image["tmp_name"]));
 
-    $sql = "INSERT INTO kdnd.character_image (`title`, `type`, `image`, `description`, `character_id`) 
+    $sql = "INSERT INTO `character_image` (`title`, `type`, `image`, `description`, `character_id`) 
     VALUES
     ('".$_POST['title']."',
     '".$imageType."',
