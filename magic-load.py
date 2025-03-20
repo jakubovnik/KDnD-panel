@@ -29,18 +29,18 @@ def convert_to_number_or_string(s):
         return s
 
 # wz cz doesnt support remote sql connections :(
-mydb = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "",
-    database = "kdnd"
-)
-cursor = mydb.cursor()
+# mydb = mysql.connector.connect(
+#     host = "localhost",
+#     user = "root",
+#     password = "",
+#     database = "kdnd"
+# )
+# cursor = mydb.cursor()
 
-# cursor.execute("SELECT * from kdnd.character")
-# result = cursor.fetchall()
+output_file = open("sql/obsidian_export.sql", "w")
+output_file.write("DELETE FROM magic;\n")
 
-cursor.execute("DELETE FROM magic")
+# cursor.execute("DELETE FROM magic")
 
 
 active_spells = get_file_names(active_magic_path)
@@ -173,9 +173,12 @@ for filename in modification_spells:
     spells.append(spell)
 spell_amount = 0
 for spell in spells:
-    cursor.execute('INSERT INTO kdnd.magic (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "'+ spell[10] +'");')
+    if(spell[2] == "x"):
+        spell[2] = "-152"
+    output_file.write('INSERT INTO `magic` (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "'+ spell[10] +'");\n')
+    # cursor.execute('INSERT INTO `magic` (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "'+ spell[10] +'");')
     spell_amount += 1
     printf(spell_amount)
     printf(" ")
-mydb.commit()
-mydb.close()
+# mydb.commit()
+# mydb.close()

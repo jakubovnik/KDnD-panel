@@ -13,9 +13,9 @@ $sql = "SELECT  character.id as character_id,
                 inventory.description, 
                 inventory.is_favourite as is_favourite, 
                 inventory.is_equipped as is_equipped
-    FROM kdnd.inventory 
-    INNER JOIN kdnd.type ON inventory.type_id=type.id
-    INNER JOIN kdnd.character ON inventory.character_id=character.id
+    FROM `inventory` 
+    INNER JOIN `type` ON inventory.type_id=type.id
+    INNER JOIN `character` ON inventory.character_id=character.id
     WHERE (is_deleted=0)";
 if($_SESSION['role'] != 1){
     $sql = $sql." AND (inventory.character_id=".$_SESSION['cid'].")";
