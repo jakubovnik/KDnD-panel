@@ -1,15 +1,15 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql_default = "SELECT * FROM kdnd.magic";
+$sql_default = "SELECT * FROM `magic`";
 if($_POST['sort'] == "default"){
     $sql_default = $sql_default." ORDER BY id";
 }else{
     $sql_default = $sql_default." ORDER BY ".$_POST['sort'];
 }
 $sql_learned = "SELECT magic.id, character_magic.character_id, character_magic.magic_name, character_magic.complexity, character_magic.fail_rate, character_magic.cast_time 
-FROM kdnd.character_magic 
-INNER JOIN kdnd.magic 
+FROM `character_magic` 
+INNER JOIN `magic` 
 ON magic.name=character_magic.magic_name
 WHERE character_id='".$_SESSION['cid']."'";
 $magic_default = $conn->query($sql_default);

@@ -32,7 +32,7 @@ require "php/header.php";
                 <div id="character-age">Age: <?php echo $_SESSION['age'] ?></div>
                 <div id="character-role"><?php 
                     require "php/dbconnect.php";
-                    $sql = "SELECT role.name FROM kdnd.role WHERE id=".$_SESSION['role'];
+                    $sql = "SELECT role.name FROM `role` WHERE id=".$_SESSION['role'];
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                         echo $row['name'];
@@ -43,7 +43,7 @@ require "php/header.php";
         </div>
         <div id="character-visual">
             <?php
-                $sql = "SELECT id, title, description FROM kdnd.character_image WHERE character_id=".$_SESSION['cid']." ORDER BY id";
+                $sql = "SELECT id, title, description FROM `character_image` WHERE character_id=".$_SESSION['cid']." ORDER BY id";
                 $result = $conn->query($sql);
                 $image_count = 0;
                 if($result->num_rows <= 0){

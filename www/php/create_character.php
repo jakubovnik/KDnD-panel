@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "dbconnect.php";
-$sql = "INSERT INTO kdnd.character (`name`, `password`, `age`, `circles`, `description`, `money`, `role_id`) 
+$sql = "INSERT INTO `character` (`name`, `password`, `age`, `circles`, `description`, `money`, `role_id`) 
 VALUES
 ('".$_POST['name']."',
 '".$_POST['password']."',

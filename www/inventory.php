@@ -15,7 +15,7 @@ require "php/header.php";
             <select name="add-item-type" id="add-item-type" class="add-item-text">
                 <?php
                     require "php/dbconnect.php";
-                    $sql = "SELECT * FROM kdnd.type ORDER BY id";
+                    $sql = "SELECT * FROM `type` ORDER BY id";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                         echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';

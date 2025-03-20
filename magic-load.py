@@ -28,6 +28,7 @@ def convert_to_number_or_string(s):
         # If conversion fails, return the original string
         return s
 
+# wz cz doesnt support remote sql connections :(
 mydb = mysql.connector.connect(
     host = "localhost",
     user = "root",

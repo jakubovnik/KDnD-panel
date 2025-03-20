@@ -16,7 +16,7 @@ require "php/header.php"
                 $show_message = "0";
             }
             require "php/dbconnect.php";
-            $sql = "REPLACE INTO kdnd.options (character_id, refresh_inventory, refresh_magic, show_message) ".
+            $sql = "REPLACE INTO `options` (character_id, refresh_inventory, refresh_magic, show_message) ".
                     "VALUES ".
                         "(".$_SESSION['cid'].", '".
                         $_POST['options-form-inventory-refresh']."', '".
