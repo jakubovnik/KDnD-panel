@@ -18,7 +18,6 @@ require "php/header.php";
         <input type="text" class="image-upload" name="image-upload-description" id="image-upload-description">
         <input type="submit" value="Upload Image" name="submit" onclick="upload_image()">
     </form>
-</body>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
@@ -94,4 +93,5 @@ function check_character(){
     get_character_id(image_upload_character.value, character_id);
 }
 </script>
+</body>
 </html>

@@ -46,7 +46,6 @@ require "php/header.php"
         </div>
     </div>
 </div>
-</body>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
@@ -225,4 +224,5 @@ refresh_magic();
 
 <?php require "php/js_options.php";?>
 </script>
+</body>
 </html>

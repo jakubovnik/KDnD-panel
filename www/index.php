@@ -4,7 +4,7 @@ require "php/header.php";
 ?>
     <title>Home</title>
 </head>
-<div id="all">
+<body id="all">
     <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <div id="character-info">
@@ -70,7 +70,6 @@ require "php/header.php";
             </div>
         </div>
     </div>
-</div>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
@@ -170,4 +169,5 @@ echo "set_last_image_index(".$image_count.");";
 ?>
 <?php require "php/js_options.php";?>
 </script>
+</body>
 </html>

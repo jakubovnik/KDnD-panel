@@ -34,7 +34,6 @@ require "php/header.php";
             <input type="submit" id="character-create-submit" name="character-create-submit" value="Create" onclick="createCharacterAttempt()">
         </form>
     </div>
-</body>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
@@ -125,4 +124,5 @@ function createCharacterAttempt(){
 //     window.location.reload(true);
 // }, 20000);
 </script>
+</body>
 </html>

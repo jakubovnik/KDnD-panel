@@ -16,8 +16,6 @@ require "php/header.php"
     </form>
     </div>
 </div>
-</body>
-</html>
 <script src="js/default.js"></script>
 <script>
 const cname_input = document.getElementById("cname");
@@ -49,3 +47,5 @@ function loginAttempt(){
     request.send(posted_text);
 }
 </script>
+</body>
+</html>

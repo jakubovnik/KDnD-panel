@@ -52,10 +52,10 @@ require "php/header.php"
         <input type="submit" id="options-form-submit" value="Save">
     </form>
 </div>
-</body>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
 
 </script>
+</body>
 </html>
