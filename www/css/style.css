@@ -649,4 +649,15 @@ tr:first-child *{
     background-color: rgba(0, 128, 0, 0.7);
     border-radius: 0.5rem;
 }
+/* Wiki stuff --------------------------------------------------------------------------------------- Wiki stuff */
+#wiki-search-box{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}
+#wiki-search-box *{
+    margin: 0.5rem;
+}
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */

@@ -268,11 +268,11 @@ function keypress(event) {
             reveal_add_item();
         }
     }
-    if (event.keyCode == 82){
+    if (event.keyCode == 82){ //TODO: later add a button instead
         refresh_inventory();
     }
 }
-// Phone back function TODO: this bruh
+// Phone back function TODO: this bruh || tf does this meaaan???
 
 // stuff needed after the site loads
 refresh_inventory();
