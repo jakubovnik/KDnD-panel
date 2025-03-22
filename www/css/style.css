@@ -24,7 +24,7 @@
     text-align: center;
     z-index: 2000;
 }
-body, html{
+body{
     padding: 0px;
     margin: 0px;
     height: 100vh;
@@ -172,7 +172,7 @@ body, html{
     float: left;
     color: white;
     margin: auto;
-    padding: 14px 16px;
+    padding: 0.8rem 1rem;
     font-size: 1.2rem;
     text-decoration: none;
 }
@@ -650,14 +650,53 @@ tr:first-child *{
     border-radius: 0.5rem;
 }
 /* Wiki stuff --------------------------------------------------------------------------------------- Wiki stuff */
-#wiki-search-box{
+#wiki-data{
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: black;
+    width: 100vw;
+    background-color: aqua;
+    height: 3rem;
 }
-#wiki-search-box *{
+#wiki-data *{
     margin: 0.5rem;
+}
+#wiki{
+    display: flex;
+    background-color: grey;
+    height: 85%;
+}
+#wiki-content{
+    background-color: red;
+    height: 95%;
+    width: 75%;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+#wiki-content-edit{
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    height: 90%;
+    width: 95%;
+    padding: 2.5%;
+}
+#lore-list{
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+    height: 95%;
+    width: 22%;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+.lore-item{
+    margin: 0.3rem;
+    padding: 0.1rem;
+}
+.lore-item-name{
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: white;
 }
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
