@@ -674,3 +674,9 @@ tr:first-child{
     width: 90vw;
     height: 60vh;
 }
+/* Admin stuff --------------------------------------------------------------------------- Admin stuff */
+#admin-edit-switch{
+    height: 1.4rem;
+    width: 1.4rem;
+    filter: invert(1);
+}

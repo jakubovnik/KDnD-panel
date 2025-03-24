@@ -56,3 +56,19 @@ function get_character_id(name, output_element){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
+function switch_edit_mode(){
+    var request = new XMLHttpRequest();
+    var posted_text = "huh=huh";
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "1"){
+                display_message("Something failed when switching edit modes", 1);
+            }else{
+                location.reload();
+            }
+        }
+    };
+    request.open("POST", "php/switch_edit_mode.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
+}

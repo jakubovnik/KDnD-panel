@@ -17,6 +17,13 @@ echo '<a href="options.php">Options</a>';
 echo '<span>logged in as ';
     echo $_SESSION['cname'];
 echo '</span>';
+if($_SESSION['role'] == 1 && isset($_SESSION['edit-mode'])){
+    if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+        echo '<img src="images/edit.png" alt="edit switch" id="admin-edit-switch" onclick="switch_edit_mode()">';
+    }else{
+        echo '<img src="images/book.png" alt="edit switch" id="admin-edit-switch" onclick="switch_edit_mode()">';
+    }
+}
 echo '<a href="php/logout.php">logout</a>';
 echo '</div>';
 ?>

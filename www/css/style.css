@@ -651,14 +651,25 @@ tr:first-child *{
 }
 /* Wiki stuff --------------------------------------------------------------------------------------- Wiki stuff */
 #wiki-data{
+    position: relative;
     display: flex;
     justify-content: center;
     width: 100vw;
     background-color: aqua;
     height: 3rem;
 }
-#wiki-data *{
+/* #wiki-data *{
     margin: 0.5rem;
+} */
+#wiki-search-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    height: 2.5rem;
+    position: absolute;
+    top: 0.25rem;
+    right: 1rem;
 }
 #wiki{
     display: flex;
@@ -700,3 +711,10 @@ tr:first-child *{
     color: white;
 }
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
+
+/* Admin stuff --------------------------------------------------------------------------------------- Admin stuff */
+#admin-edit-switch{
+    height: 1.2rem;
+    width: 1.2rem;
+    filter: invert(1);
+}

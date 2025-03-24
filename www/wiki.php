@@ -22,10 +22,10 @@ require "php/header.php";
             }
             $conn->close();
             if(isset($row)){
-                if($_SESSION['role'] == 1){
-                    echo '<button id="wiki-save-button" onclick="edit_wiki()">save</button>';
+                if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
                     echo '<input type="text" id="wiki-name" value="'.$row['name'].'">';
                     echo "<input type='text' id='wiki-tags' value='".$row['tags']."'>";
+                    echo '<button id="wiki-save-button" onclick="edit_wiki()">save</button>';
                 }else{
                     echo '<span id="wiki-name">'.$row['name'].'</span>';
                     echo "<span id='wiki-tags'>".$row['tags']."</span>";
@@ -34,14 +34,16 @@ require "php/header.php";
                 echo '<span id="wiki-name">Not Found</span>';
             }
         ?>
-        <input type="text" placeholder="serach lore" id="search-lore-input">
-        <button id="search-lore-type-button" onclick="switch_button()">name</button>
+        <div id="wiki-search-box">
+            <input type="text" placeholder="serach lore" id="search-lore-input">
+            <button id="search-lore-type-button" onclick="switch_button()">name</button>
+        </div>
     </div>
     <div id="wiki">
         <div id="wiki-content">
             <?php
                 if(isset($row)){
-                    if($_SESSION['role'] == 1){
+                    if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
                         echo "<textarea id='wiki-content-edit'>".$row['content']."</textarea>";
                     }else{
                         echo $row['content'];
@@ -56,7 +58,6 @@ require "php/header.php";
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
-//TODO: add the button logic and make the lore name into a primary key in the database
 lore_list = document.getElementById("lore-list");
 search_input = document.getElementById("search-lore-input");
 search_type_button = document.getElementById("search-lore-type-button");

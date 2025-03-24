@@ -13,6 +13,7 @@ if ($result->num_rows == 1) {
             $_SESSION['description'] = $row['description'];
             $_SESSION['money'] = $row['money'];
             $_SESSION['age'] = $row['age'];
+            $_SESSION['edit-mode'] = 0;
             $_SESSION['logged'] = true;
             if($_POST['mstyle'] == "true"){
                 $_SESSION['style'] = "mobile-style.css";
