@@ -4,7 +4,7 @@ require "dbconnect.php";
 $sql = "REPLACE INTO `wiki` (`name`, `content`, `tags`, `access`, `exceptions`) 
 VALUES
 ('".$_POST['name']."',
-'".$_POST['content']."',
+'".addslashes($_POST['content'])."',
 '".$_POST['tags']."',
 '".$_POST['access']."',
 '".$_POST['exceptions']."');";

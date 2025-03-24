@@ -653,9 +653,8 @@ tr:first-child *{
 #wiki-data{
     position: relative;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     width: 100vw;
-    background-color: aqua;
     height: 3rem;
 }
 /* #wiki-data *{
@@ -663,17 +662,54 @@ tr:first-child *{
 } */
 #wiki-search-box{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    background-color: red;
+    /* background-color: red; */
     height: 2.5rem;
     position: absolute;
     top: 0.25rem;
     right: 1rem;
 }
+#wiki-search-box *{
+    height: 2rem;
+}
+#wiki-name, #wiki-tags, #wiki-save-button, #wiki-search-box *{
+    margin: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    border: none;
+    border-bottom: 2px solid #2222ff;
+    background-color: rgba(217, 237, 255, 0.54);
+    border-radius: 4px;
+    color: black;
+    transition: all 0.1s ease;
+}
+#wiki-name{
+    font-size: 1.2rem;
+}
+#wiki-name, #wiki-tags{
+    width: 10vw;
+}
+#wiki-tags:focus{
+    width: 30vw;
+}
+#wiki-save-button:hover,
+#wiki-save-button:focus,
+#wiki-tags:hover,
+#wiki-tags:focus,
+#wiki-name:hover,
+#wiki-name:focus,
+#wiki-search-box *:hover,
+#wiki-search-box *:focus{
+    outline: none;
+    border-color: #2a2a96;
+    background-color: rgba(191, 255, 255, 0.767);
+}
 #wiki{
     display: flex;
-    background-color: grey;
     height: 85%;
 }
 #wiki-content{
@@ -682,20 +718,23 @@ tr:first-child *{
     width: 75%;
     margin-top: 1%;
     margin-left: 1%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* padding: 2%; */
 }
 #wiki-content-edit{
     border: none;
     background-color: transparent;
     resize: none;
     outline: none;
-    height: 90%;
-    width: 95%;
-    padding: 2.5%;
+    height: 99%;
+    width: 99%;
+    /* padding: 2.5%; */
 }
 #lore-list{
     display: flex;
     flex-direction: column;
-    background-color: blue;
+    /* background-color: blue; */
     height: 95%;
     width: 22%;
     margin-top: 1%;
