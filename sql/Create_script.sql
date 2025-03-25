@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`magic` (
   `tags` VARCHAR(100) NULL,
   `other` TEXT NULL,
   `is_mod` TINYINT UNSIGNED NOT NULL,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   PRIMARY KEY (`id`, `name`))
 ENGINE = InnoDB;
 
@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`role` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
 
 
@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`character` (
   `money` INT UNSIGNED NOT NULL DEFAULT 0,
   `role_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `role_id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  INDEX `character_role1_idx` (`role_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC),
+  INDEX `character_role1_idx` (`role_id` ASC),
   CONSTRAINT `character_role1`
     FOREIGN KEY (`role_id`)
     REFERENCES `kdnd`.`role` (`id`)
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`test` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
@@ -123,8 +123,8 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`type` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
 
 
@@ -146,9 +146,9 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`inventory` (
   `is_equipped` TINYINT UNSIGNED NOT NULL DEFAULT 0,
   `character_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `type_id`, `character_id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `inventory_type1_idx` (`type_id` ASC) VISIBLE,
-  INDEX `inventory_character1_idx` (`character_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `inventory_type1_idx` (`type_id` ASC),
+  INDEX `inventory_character1_idx` (`character_id` ASC),
   CONSTRAINT `inventory_type1`
     FOREIGN KEY (`type_id`)
     REFERENCES `kdnd`.`type` (`id`)
@@ -175,8 +175,8 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`character_image` (
   `description` TEXT NOT NULL DEFAULT 'image description',
   `character_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `character_id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `character_image_character1_idx` (`character_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `character_image_character1_idx` (`character_id` ASC),
   CONSTRAINT `character_image_character1`
     FOREIGN KEY (`character_id`)
     REFERENCES `kdnd`.`character` (`id`)
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`options` (
   `refresh_magic` INT UNSIGNED NOT NULL DEFAULT 30000,
   `show_message` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`character_id`),
-  UNIQUE INDEX `character_id_UNIQUE` (`character_id` ASC) VISIBLE,
+  UNIQUE INDEX `character_id_UNIQUE` (`character_id` ASC),
   CONSTRAINT `options_character1`
     FOREIGN KEY (`character_id`)
     REFERENCES `kdnd`.`character` (`id`)
@@ -217,8 +217,8 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`special_item` (
   `blessing` VARCHAR(150) NULL,
   `blessing_eq_only` TINYINT NULL,
   PRIMARY KEY (`inventory_id`),
-  INDEX `special_item_inventory1_idx` (`inventory_id` ASC) VISIBLE,
-  UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC) VISIBLE,
+  INDEX `special_item_inventory1_idx` (`inventory_id` ASC),
+  UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC),
   CONSTRAINT `special_item_inventory1`
     FOREIGN KEY (`inventory_id`)
     REFERENCES `kdnd`.`inventory` (`id`)
@@ -240,8 +240,8 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`wiki` (
   `access` TINYINT UNSIGNED NOT NULL DEFAULT 1,
   `exceptions` INT UNSIGNED NULL,
   PRIMARY KEY (`id`, `name`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
 
 

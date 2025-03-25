@@ -31,7 +31,14 @@ require "php/header.php";
                     echo "<span id='wiki-tags'>".$row['tags']."</span>";
                 }
             }else{
-                echo '<span id="wiki-name">Not Found</span>';
+                if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+                    echo '<input type="text" id="wiki-name" value="Name">';
+                    echo "<input type='text' id='wiki-tags' value='#unfinished'>";
+                    echo '<button id="wiki-save-button" onclick="edit_wiki()">save</button>';
+                }else{
+                    echo '<span id="wiki-name">Not found</span>';
+                    echo "<span id='wiki-tags'>BLANK</span>";
+                }
             }
         ?>
         <div id="wiki-search-box">
@@ -49,7 +56,11 @@ require "php/header.php";
                         echo $row['content'];
                     }
                 }else{
-                    echo "something went wrong (search failed or the lore doesnt exist)";
+                    if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+                        echo "<textarea id='wiki-content-edit'></textarea>";
+                    }else{
+                        echo "something went wrong (search failed or the lore doesnt exist)";
+                    }
                 }
             ?>
         </div>
