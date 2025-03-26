@@ -653,28 +653,12 @@ tr:first-child *{
 #wiki-data{
     position: relative;
     display: flex;
-    /* justify-content: center; */
     width: 100vw;
     height: 3rem;
 }
-/* #wiki-data *{
+.wiki-text-field{
     margin: 0.5rem;
-} */
-#wiki-search-box{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    /* background-color: red; */
-    height: 2.5rem;
-    position: absolute;
-    top: 0.25rem;
-    right: 1rem;
-}
-#wiki-search-box *{
-    height: 2rem;
-}
-#wiki-name, #wiki-tags, #wiki-save-button, #wiki-search-box *{
-    margin: 0.5rem;
+    padding-left: 0.2rem;
     font-size: 1rem;
     display: flex;
     justify-content: left;
@@ -696,19 +680,14 @@ tr:first-child *{
 #wiki-tags:focus{
     width: 30vw;
 }
-#wiki-save-button:hover,
-#wiki-save-button:focus,
-#wiki-tags:hover,
-#wiki-tags:focus,
-#wiki-name:hover,
-#wiki-name:focus,
-#wiki-search-box *:hover,
-#wiki-search-box *:focus{
+.wiki-text-field:hover,
+.wiki-text-field:focus{
     outline: none;
     border-color: #2a2a96;
     background-color: rgba(191, 255, 255, 0.767);
 }
 #wiki{
+    /* background-color: rebeccapurple; */
     display: flex;
     height: 85%;
 }
@@ -718,6 +697,9 @@ tr:first-child *{
     width: 74%;
     margin-top: 1%;
     margin-left: 1%;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: anywhere;
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: 4px;
@@ -733,14 +715,32 @@ tr:first-child *{
     width: 99%;
     /* padding: 2.5%; */
 }
-#lore-list{
-    display: flex;
-    flex-direction: column;
-    /* background-color: blue; */
+#lore-search-button{
+    display: none;
+}
+#lore-list-container{
+    position: relative;
     height: 95%;
     width: 22%;
     margin-top: 1%;
     margin-left: 1%;
+}
+#lore-search-box{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 10%;
+}
+#lore-search-box *{
+    height: 2rem;
+}
+#lore-list{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    /* background-color: blue; */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .lore-item{
     margin: 0.3rem;
@@ -750,12 +750,16 @@ tr:first-child *{
     text-decoration: none;
     font-size: 1.3rem;
     color: white;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.7);
+}
+.lore-restricted{
+    color: rgb(255, 101, 101);
 }
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
 
 /* Admin stuff --------------------------------------------------------------------------------------- Admin stuff */
 #admin-edit-switch{
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 1.3rem;
+    width: 1.3rem;
     filter: invert(1);
 }
