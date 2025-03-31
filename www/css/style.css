@@ -677,6 +677,10 @@ tr:first-child *{
 #wiki-name, #wiki-tags{
     width: 10vw;
 }
+#wiki-tags{
+    overflow: hidden;
+    word-break: keep-all;
+}
 #wiki-tags:focus{
     width: 30vw;
 }
@@ -754,6 +758,12 @@ tr:first-child *{
 .lore-item{
     margin: 0.3rem;
     padding: 0.1rem;
+}
+.lore-item:hover{
+    background-color: grey;
+    border-bottom: 2px #2222ff solid;
+    border-top: 2px transparent solid;
+    border-radius: 3px;
 }
 .lore-item-name{
     text-decoration: none;

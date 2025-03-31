@@ -15,7 +15,7 @@ $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
     $lore_restricted = "";
     $lore_name = $row['name'];
-    if($_SESSION['role'] > $row['access']){
+    if($_SESSION['role'] > $row['access']){ // TODO: color it so that it clearly shows if user has access or is an exception (also show it to the admin)
         if(strpos($row['exceptions'], ";".$_SESSION['cname'].";") === FALSE){
             $lore_restricted = " lore-restricted";
             $lore_name = "spoiler";
@@ -23,11 +23,7 @@ while($row = $result->fetch_assoc()){
     }
     echo '<div id="lore-item-'.$row['id'].'" class="lore-item">';
         echo "<span id='lore-item-id-".$row['id']."' style='display:none;'>".$row['id']."</span>";
-        echo '<a href="?s='.$lore_name.'" class="lore-item-name'.$lore_restricted.'"';
-        if($row['access'] == 1){
-            echo ' style="color:red;"';
-        }
-        echo '>'.$row['name'].'</a>';
+        echo '<a href="?s='.$lore_name.'" class="lore-item-name'.$lore_restricted.'">'.$row['name'].'</a>';
     echo '</div>';
 }
 $conn->close();

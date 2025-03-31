@@ -17,7 +17,7 @@ if($_POST['id'] == "-1"){
 $sql = "REPLACE INTO `wiki` (`name`, `content`, `tags`, `access`, `exceptions`$table_id_name) 
 VALUES
 ('".$_POST['name']."',
-'".addslashes($_POST['content'])."',
+'".addslashes(urldecode($_POST['content']))."',
 '".$_POST['tags']."',
 '".$_POST['access']."',
 '".$_POST['exceptions']."'$table_id_value);";

@@ -142,7 +142,7 @@ function fetch_lore_list(){
 function edit_wiki_attempt(name, content, tags, access, exceptions, id="-1"){
     var request = new XMLHttpRequest();
     var posted_text = "name=" + name + 
-                    "&content=" + content + 
+                    "&content=" + encodeURIComponent(content) + 
                     "&tags=" + tags + 
                     "&access=" + access + 
                     "&exceptions=" + exceptions +
@@ -198,7 +198,6 @@ function edit_wiki(){
             wiki_id.innerHTML
         );
     }
-    
 }
 function switch_button(){
     if(search_type_button.innerHTML == "name"){
