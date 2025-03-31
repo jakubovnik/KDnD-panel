@@ -22,7 +22,11 @@ while($row = $result->fetch_assoc()){
         }
     }
     echo '<div id="lore-item-'.$row['id'].'" class="lore-item">';
-        echo '<a href="?s='.$lore_name.'" class="lore-item-name'.$lore_restricted.'">'.$row['name'].'</a>';
+        echo '<a href="?s='.$lore_name.'" class="lore-item-name'.$lore_restricted.'"';
+        if($row['access'] == 1){
+            echo ' style="color:red;"';
+        }
+        echo '>'.$row['name'].'</a>';
     echo '</div>';
 }
 $conn->close();

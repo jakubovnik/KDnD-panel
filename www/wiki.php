@@ -188,6 +188,31 @@ search_input.addEventListener('keyup', () => {
     clearTimeout(fetchLoreTimeout);
     fetchLoreTimeout = setTimeout(fetch_lore_list, 200);
 });
+document.addEventListener("keydown", function (event) { // copied from chatgpt
+    if (event.ctrlKey && event.key.toLowerCase() === "k") {
+        event.preventDefault(); // Prevent default behavior
+
+        let input = document.activeElement;
+        if (input && (input.tagName === "INPUT" || input.tagName === "TEXTAREA")) {
+            let start = input.selectionStart;
+            let end = input.selectionEnd;
+            let text = input.value;
+
+            if (start !== end) {
+                let selectedText = text.substring(start, end);
+                let replacement = `<a href='?s='>${selectedText}</a>`;
+
+                // Use execCommand to insert text (keeps it in the undo stack)
+                document.execCommand("insertText", false, replacement);
+
+                // Move cursor after "?s="
+                let newCursorPosition = start + replacement.indexOf("?s=") + 3;
+                input.setSelectionRange(newCursorPosition, newCursorPosition);
+            }
+        }
+    }
+});
+<?php require "php/js_options.php";?>
 </script>
 </body>
 </html>

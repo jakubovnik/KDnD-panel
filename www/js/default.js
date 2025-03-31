@@ -16,6 +16,8 @@ function display_message(new_message, type=0, time=2000){
         message.style.color = "green";
     }else if(type == 1){
         message.style.color = "red";
+    }else if(type == 2){
+        message.style.color = "blue";
     }
     message.innerHTML = new_message;
     message_timeout = setTimeout(() => {message.style.display = "none";}, time);
