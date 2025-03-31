@@ -22,6 +22,7 @@ require "php/header.php";
             }
             if(isset($row)){
                 if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+                    echo "<span id='wiki-id' style='display:none;'>".$row['id']."</span>";
                     echo '<input type="text" id="wiki-name" class="wiki-text-field" value="'.$row['name'].'">';
                     echo "<input type='text' id='wiki-tags' class='wiki-text-field' value='".$row['tags']."'>";
                     echo "<select id='wiki-access' class='wiki-text-field'>";
@@ -37,13 +38,20 @@ require "php/header.php";
                     echo "</select>";
                     echo "<input type='text' id='wiki-exceptions' class='wiki-text-field' value='".$row['exceptions']."'>";
                     echo '<button id="wiki-save-button" class="wiki-text-field" onclick="edit_wiki()">save</button>';
+                    echo '<a id="wiki-new-button" class="wiki-text-field" href="?s=">+</a>';
                 }else{
+                    echo "<span id='wiki-id' style='display:none;'>".$row['id']."</span>";
                     echo '<span id="wiki-name" class="wiki-text-field">'.$row['name'].'</span>';
                     echo "<span id='wiki-tags' class='wiki-text-field' title='".$row['tags']."'>".$row['tags']."</span>";
                 }
             }else{
                 if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
-                    echo '<input type="text" id="wiki-name" class="wiki-text-field" value="Name">';
+                    echo "<span id='wiki-id' style='display:none;'></span>";
+                    if(isset($_GET['s'])){
+                        echo '<input type="text" id="wiki-name" class="wiki-text-field" value="'.$_GET['s'].'">';
+                    }else{
+                        echo '<input type="text" id="wiki-name" class="wiki-text-field" value="Name">';
+                    }
                     echo "<input type='text' id='wiki-tags' class='wiki-text-field' value='#unfinished'>";
                     echo "<select id='wiki-access' class='wiki-text-field'>";
                         $sql = "SELECT * FROM `role` ORDER BY id";
@@ -58,7 +66,9 @@ require "php/header.php";
                     echo "</select>";
                     echo "<input type='text' id='wiki-exceptions' class='wiki-text-field' value=';'>";
                     echo '<button id="wiki-save-button" class="wiki-text-field" onclick="edit_wiki()">save</button>';
+                    echo '<a id="wiki-new-button" class="wiki-text-field" href="?s=">+</a>';
                 }else{
+                    echo "<span id='wiki-id' style='display:none;'></span>";
                     echo '<span id="wiki-name" class="wiki-text-field">Not found</span>';
                     echo "<span id='wiki-tags' class='wiki-text-field'>#BLANK</span>";
                 }
@@ -129,13 +139,14 @@ function fetch_lore_list(){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
-function edit_wiki_attempt(name, content, tags, access, exceptions){
+function edit_wiki_attempt(name, content, tags, access, exceptions, id="-1"){
     var request = new XMLHttpRequest();
     var posted_text = "name=" + name + 
                     "&content=" + content + 
                     "&tags=" + tags + 
                     "&access=" + access + 
-                    "&exceptions=" + exceptions;
+                    "&exceptions=" + exceptions +
+                    "&id=" + id;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "1"){
@@ -155,6 +166,7 @@ function edit_wiki(){
     wiki_tags = document.getElementById("wiki-tags");
     wiki_access = document.getElementById("wiki-access");
     wiki_exceptions = document.getElementById("wiki-exceptions");
+    wiki_id = document.getElementById("wiki-id");
     if(wiki_name.value == ""){
         display_message("please fill in the name", 1);
         return;
@@ -167,13 +179,26 @@ function edit_wiki(){
         display_message("god damn, this bitch empty", 1);
         return;
     }
-    edit_wiki_attempt(//TODO: finish this so that there is no more hardcoded testing
-        wiki_name.value,
-        wiki_content.value,
-        wiki_tags.value,
-        wiki_access.value,
-        wiki_exceptions.value
-    );
+    if(wiki_id.innerHTML == ""){
+        edit_wiki_attempt(
+            wiki_name.value,
+            wiki_content.value,
+            wiki_tags.value,
+            wiki_access.value,
+            wiki_exceptions.value
+        );
+    }else{
+        if(!window.confirm("Overwrite existing lore?")){return;}
+        edit_wiki_attempt(
+            wiki_name.value,
+            wiki_content.value,
+            wiki_tags.value,
+            wiki_access.value,
+            wiki_exceptions.value,
+            wiki_id.innerHTML
+        );
+    }
+    
 }
 function switch_button(){
     if(search_type_button.innerHTML == "name"){
@@ -188,7 +213,12 @@ search_input.addEventListener('keyup', () => {
     clearTimeout(fetchLoreTimeout);
     fetchLoreTimeout = setTimeout(fetch_lore_list, 200);
 });
+// Here are all the shortcuts
 document.addEventListener("keydown", function (event) { // copied from chatgpt (but also improved by me (somewhat (i guess)))
+    if (event.ctrlKey && event.key === "Enter") {
+        event.preventDefault();
+        edit_wiki();
+    }
     if (event.ctrlKey && event.key.toLowerCase() === "k") {
         event.preventDefault(); // Prevent default behavior
         let input = document.activeElement;

@@ -22,6 +22,7 @@ while($row = $result->fetch_assoc()){
         }
     }
     echo '<div id="lore-item-'.$row['id'].'" class="lore-item">';
+        echo "<span id='lore-item-id-".$row['id']."' style='display:none;'>".$row['id']."</span>";
         echo '<a href="?s='.$lore_name.'" class="lore-item-name'.$lore_restricted.'"';
         if($row['access'] == 1){
             echo ' style="color:red;"';
