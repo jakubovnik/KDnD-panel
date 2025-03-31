@@ -74,3 +74,9 @@ function switch_edit_mode(){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key.toLowerCase() === "e") {
+        event.preventDefault();
+        switch_edit_mode();
+    }
+});
