@@ -188,25 +188,56 @@ search_input.addEventListener('keyup', () => {
     clearTimeout(fetchLoreTimeout);
     fetchLoreTimeout = setTimeout(fetch_lore_list, 200);
 });
-document.addEventListener("keydown", function (event) { // copied from chatgpt
+document.addEventListener("keydown", function (event) { // copied from chatgpt (but also improved by me (somewhat (i guess)))
     if (event.ctrlKey && event.key.toLowerCase() === "k") {
         event.preventDefault(); // Prevent default behavior
-
         let input = document.activeElement;
-        if (input && (input.tagName === "INPUT" || input.tagName === "TEXTAREA")) {
+        if (input && input.tagName === "TEXTAREA") {
             let start = input.selectionStart;
             let end = input.selectionEnd;
             let text = input.value;
-
             if (start !== end) {
                 let selectedText = text.substring(start, end);
                 let replacement = `<a href='?s='>${selectedText}</a>`;
-
                 // Use execCommand to insert text (keeps it in the undo stack)
                 document.execCommand("insertText", false, replacement);
-
                 // Move cursor after "?s="
                 let newCursorPosition = start + replacement.indexOf("?s=") + 3;
+                input.setSelectionRange(newCursorPosition, newCursorPosition);
+            }
+        }
+    }
+    if (event.ctrlKey && event.key === ",") {
+        event.preventDefault(); // Prevent default behavior
+        let input = document.activeElement;
+        if (input && input.tagName === "TEXTAREA") {
+            let start = input.selectionStart;
+            let end = input.selectionEnd;
+            let text = input.value;
+            // Find the word if no selection is made
+            if (start === end) {
+                let wordStart = start;
+                let wordEnd = start;
+                // Move backwards to find start of word
+                while (wordStart > 0 && /\w/.test(text[wordStart - 1])) {
+                    wordStart--;
+                }
+                // Move forwards to find end of word
+                while (wordEnd < text.length && /\w/.test(text[wordEnd])) {
+                    wordEnd++;
+                }
+                // Update selection range to cover the whole word
+                start = wordStart;
+                end = wordEnd;
+            }
+            if (start !== end) {
+                let selectedText = text.substring(start, end);
+                let replacement = `<${selectedText}></${selectedText}>`;
+                // Use execCommand to preserve undo functionality
+                input.setSelectionRange(start,end);
+                document.execCommand("insertText", false, replacement);
+                // Calculate the new cursor position (right after the opening tag)
+                let newCursorPosition = start + selectedText.length + 2; // `<tagName>` length
                 input.setSelectionRange(newCursorPosition, newCursorPosition);
             }
         }
