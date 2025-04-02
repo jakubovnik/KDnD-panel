@@ -756,7 +756,7 @@ tr:first-child *{
     overflow-y: auto;
 }
 .lore-item{
-    margin: 0.3rem;
+    margin: 0.2rem;
     padding: 0.1rem;
 }
 .lore-item:hover{
@@ -764,6 +764,13 @@ tr:first-child *{
     border-bottom: 2px #2222ff solid;
     border-top: 2px transparent solid;
     border-radius: 3px;
+}
+.lore-item-access{
+    font-size: 1.1rem;
+    color: greenyellow;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
 }
 .lore-item-name{
     text-decoration: none;
@@ -773,6 +780,9 @@ tr:first-child *{
 }
 .lore-restricted{
     color: rgb(255, 101, 101);
+}
+.lore-exception{
+    color: aquamarine;
 }
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
 

@@ -19,10 +19,15 @@ while($row = $result->fetch_assoc()){
         if(strpos($row['exceptions'], ";".$_SESSION['cname'].";") === FALSE){
             $lore_restricted = " lore-restricted";
             // $lore_name = "spoiler"; //This here makes more sense proffesionally, however, it is not as funny as the alternative
+        }else{
+            $lore_restricted = " lore-exception";
         }
     }
     echo '<div id="lore-item-'.$row['id'].'" class="lore-item">';
         echo "<span id='lore-item-id-".$row['id']."' style='display:none;'>".$row['id']."</span>";
+        if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+            echo '<span id="lore-item-access-'.$row['id'].'" class="lore-item-access" title="'.$row['exceptions'].'">'.$row['access'].'</span>';
+        }
         echo '<a href="?s='.$lore_name.'" class="lore-item-name'.$lore_restricted.'">'.$row['name'].'</a>';
     echo '</div>';
 }

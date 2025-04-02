@@ -91,9 +91,9 @@ require "php/header.php";
                     }elseif($spoiler == 0){
                         echo $row['content'];
                     }else{
-                        echo "YOOOOOO ur not supposed to be here<br>
-                        here's Kasane Teto though:<br>
-                        <a href='https://youtu.be/vx4iWiDQOuk?si=470sf7WY8q7f3OTG&t=30' style='max-width: 100%;'><img src='images/teto-fumo.gif'></a>";
+                        echo "YOOOOOO ur not supposed to be here. This page contains, like, soooo many spoilers O_O oooOOOOOooooo scaaary.<br>
+                        Anyways, here's our saviour, the almighty Kasane Teto:<br>
+                        <a href='https://youtu.be/vx4iWiDQOuk?si=470sf7WY8q7f3OTG&t=30'><img src='images/teto-fumo.gif' style='width: 100%; height:auto;'></a>";
                     }
                 }else{
                     if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){

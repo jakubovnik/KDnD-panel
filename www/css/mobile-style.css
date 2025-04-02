@@ -780,8 +780,15 @@ tr:first-child{
     height: 80vh;
 }
 .lore-item{
-    margin: 0.3rem;
+    margin: 0.2rem;
     padding: 0.1rem;
+}
+.lore-item-access{
+    font-size: 1.1rem;
+    color: greenyellow;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
 }
 .lore-item-name{
     text-decoration: none;
@@ -791,6 +798,9 @@ tr:first-child{
 }
 .lore-restricted{
     color: rgb(255, 101, 101);
+}
+.lore-exception{
+    color: aquamarine;
 }
 /* Create Character --------------------------------------------------------------------------- Create Character */
 #character-create-box{
