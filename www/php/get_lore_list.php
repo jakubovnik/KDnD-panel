@@ -18,7 +18,7 @@ while($row = $result->fetch_assoc()){
     if($_SESSION['role'] > $row['access']){ // TODO: color it so that it clearly shows if user has access or is an exception (also show it to the admin)
         if(strpos($row['exceptions'], ";".$_SESSION['cname'].";") === FALSE){
             $lore_restricted = " lore-restricted";
-            $lore_name = "spoiler";
+            // $lore_name = "spoiler"; //This here makes more sense proffesionally, however, it is not as funny as the alternative
         }
     }
     echo '<div id="lore-item-'.$row['id'].'" class="lore-item">';

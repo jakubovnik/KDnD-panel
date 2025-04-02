@@ -80,10 +80,20 @@ require "php/header.php";
         <div id="wiki-content">
             <?php
                 if(isset($row)){
+                    $spoiler = 0;
+                    if($_SESSION['role'] > $row['access']){
+                        if(strpos($row['exceptions'], ";".$_SESSION['cname'].";") === FALSE){
+                            $spoiler = 1;
+                        }
+                    }
                     if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
                         echo "<textarea id='wiki-content-edit'>".$row['content']."</textarea>";
-                    }else{
+                    }elseif($spoiler == 0){
                         echo $row['content'];
+                    }else{
+                        echo "YOOOOOO ur not supposed to be here<br>
+                        here's Kasane Teto though:<br>
+                        <a href='https://youtu.be/vx4iWiDQOuk?si=470sf7WY8q7f3OTG&t=30' style='max-width: 100%;'><img src='images/teto-fumo.gif'></a>";
                     }
                 }else{
                     if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){

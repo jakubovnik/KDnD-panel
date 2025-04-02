@@ -8,21 +8,31 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema kdnd
+-- Schema kubakwzcz0796
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema kdnd
+-- Schema kubakwzcz0796
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `kdnd` DEFAULT CHARACTER SET utf8 ;
-USE `kdnd` ;
+CREATE SCHEMA IF NOT EXISTS `kubakwzcz0796` DEFAULT CHARACTER SET utf8 ;
+USE `kubakwzcz0796` ;
 
+DROP TABLE IF EXISTS `kubakwzcz0796`.`wiki` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`special_item` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`options` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`character_image` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`inventory` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`type` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`test` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`character_magic` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`character` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`role` ;
+DROP TABLE IF EXISTS `kubakwzcz0796`.`magic` ;
 -- -----------------------------------------------------
--- Table `kdnd`.`magic`
+-- Table `kubakwzcz0796`.`magic`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`magic` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`magic` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`magic` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `origin` VARCHAR(20) NOT NULL,
@@ -42,11 +52,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`role`
+-- Table `kubakwzcz0796`.`role`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`role` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`role` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`role` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -56,11 +65,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`character`
+-- Table `kubakwzcz0796`.`character`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`character` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`character` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`character` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NULL,
@@ -75,18 +83,17 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`character` (
   INDEX `character_role1_idx` (`role_id` ASC),
   CONSTRAINT `character_role1`
     FOREIGN KEY (`role_id`)
-    REFERENCES `kdnd`.`role` (`id`)
+    REFERENCES `kubakwzcz0796`.`role` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`character_magic`
+-- Table `kubakwzcz0796`.`character_magic`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`character_magic` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`character_magic` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`character_magic` (
   `character_id` INT UNSIGNED NOT NULL,
   `magic_name` VARCHAR(255) NOT NULL,
   `complexity` INT UNSIGNED NOT NULL,
@@ -95,18 +102,17 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`character_magic` (
   PRIMARY KEY (`character_id`, `magic_name`),
   CONSTRAINT `character_magic_character1`
     FOREIGN KEY (`character_id`)
-    REFERENCES `kdnd`.`character` (`id`)
+    REFERENCES `kubakwzcz0796`.`character` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`test`
+-- Table `kubakwzcz0796`.`test`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`test` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`test` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`test` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -115,11 +121,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`type`
+-- Table `kubakwzcz0796`.`type`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`type` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`type` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`type` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -129,11 +134,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`inventory`
+-- Table `kubakwzcz0796`.`inventory`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`inventory` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`inventory` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`inventory` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `type_id` INT UNSIGNED NOT NULL,
@@ -151,46 +155,44 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`inventory` (
   INDEX `inventory_character1_idx` (`character_id` ASC),
   CONSTRAINT `inventory_type1`
     FOREIGN KEY (`type_id`)
-    REFERENCES `kdnd`.`type` (`id`)
+    REFERENCES `kubakwzcz0796`.`type` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `inventory_character1`
     FOREIGN KEY (`character_id`)
-    REFERENCES `kdnd`.`character` (`id`)
+    REFERENCES `kubakwzcz0796`.`character` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`character_image`
+-- Table `kubakwzcz0796`.`character_image`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`character_image` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`character_image` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`character_image` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NULL,
   `type` VARCHAR(20) NULL,
   `image` MEDIUMBLOB NOT NULL,
-  `description` TEXT NOT NULL DEFAULT 'image description',
+  `description` TEXT NOT NULL,
   `character_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `character_id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   INDEX `character_image_character1_idx` (`character_id` ASC),
   CONSTRAINT `character_image_character1`
     FOREIGN KEY (`character_id`)
-    REFERENCES `kdnd`.`character` (`id`)
+    REFERENCES `kubakwzcz0796`.`character` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`options`
+-- Table `kubakwzcz0796`.`options`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`options` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`options` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`options` (
   `character_id` INT UNSIGNED NOT NULL,
   `refresh_inventory` INT UNSIGNED NOT NULL DEFAULT 30000,
   `refresh_magic` INT UNSIGNED NOT NULL DEFAULT 30000,
@@ -199,18 +201,17 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`options` (
   UNIQUE INDEX `character_id_UNIQUE` (`character_id` ASC),
   CONSTRAINT `options_character1`
     FOREIGN KEY (`character_id`)
-    REFERENCES `kdnd`.`character` (`id`)
+    REFERENCES `kubakwzcz0796`.`character` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`special_item`
+-- Table `kubakwzcz0796`.`special_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`special_item` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`special_item` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`special_item` (
   `inventory_id` INT UNSIGNED NOT NULL,
   `enchantment` VARCHAR(300) NULL,
   `enchantment_eq_only` TINYINT NULL,
@@ -221,18 +222,17 @@ CREATE TABLE IF NOT EXISTS `kdnd`.`special_item` (
   UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC),
   CONSTRAINT `special_item_inventory1`
     FOREIGN KEY (`inventory_id`)
-    REFERENCES `kdnd`.`inventory` (`id`)
+    REFERENCES `kubakwzcz0796`.`inventory` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `kdnd`.`wiki`
+-- Table `kubakwzcz0796`.`wiki`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `kdnd`.`wiki` ;
 
-CREATE TABLE IF NOT EXISTS `kdnd`.`wiki` (
+CREATE TABLE IF NOT EXISTS `kubakwzcz0796`.`wiki` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `content` MEDIUMTEXT NULL,
