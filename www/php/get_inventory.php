@@ -17,7 +17,7 @@ $sql = "SELECT  character.id as character_id,
     INNER JOIN `type` ON inventory.type_id=type.id
     INNER JOIN `character` ON inventory.character_id=character.id
     WHERE (is_deleted=0)";
-if($_SESSION['role'] != 1){
+if($_SESSION['role'] != 1 || $_SESSION['edit-mode'] == 0){
     $sql = $sql." AND (inventory.character_id=".$_SESSION['cid'].")";
 }
 if($_POST['sort'] == "default"){
@@ -94,6 +94,7 @@ while($row = $result->fetch_assoc()){
                     echo '<img src="../images/shield.png" alt="equip button" class="item-equip-button" id="item-equip-button-'.$row['id'].'" onclick="set_equipped('.$row['id'].', 1)">';
                 }
             }
+            echo "<span class='item-type-id' id='item-type-id-".$row['id']."' style='display:none;'>".$row['type_id']."</span>";
         echo "</span>";
         echo '<div class="item-numbers">';
             echo '<div class="button" id="decrease-amount-'.$row['id'].'" onclick="decrease_amount('.$row['id'].')" style="background-color: ';

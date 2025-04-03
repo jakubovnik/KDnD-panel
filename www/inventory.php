@@ -2,7 +2,7 @@
 require "php/check_login_true.php";
 require "php/header.php";
 ?>
-    <title>Character's inventory</title>
+    <title>Inventory</title>
 </head>
 <body>
 <div id="all" class="inventory-background">
@@ -11,6 +11,7 @@ require "php/header.php";
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background" style="display: none;">
         <div id="add-item-box">
+            <span id="add-item-id" style="display:none;">-1</span>
             <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text">
             <select name="add-item-type" id="add-item-type" class="add-item-text">
                 <?php
@@ -42,6 +43,7 @@ require "php/header.php";
 const inventory = document.getElementById("inventory");
 const add_item_background = document.getElementById("add-item-background");
 const add_item_box = document.getElementById("add-item-box");// Propably not nescesarry but just in case kept it :P
+const add_item_id = document.getElementById("add-item-id");
 const add_item_name = document.getElementById("add-item-name");
 const add_item_type = document.getElementById("add-item-type");
 const add_item_charge_max = document.getElementById("add-item-charge-max");
@@ -102,12 +104,14 @@ function hide_details(){//doesnt work and i have no idea why |||UPDATE: it works
 var add_item_menu = false; //??????? why does this exist?????? | (its for pressing enter dumbass -_-)
 function reveal_add_item(item_id = -1){
     if(item_id != -1){
+        add_item_id.innerHTML = "" + item_id;
         add_item_name.value = document.getElementById("item-name-"+item_id).innerHTML;
         add_item_charge_max.value = document.getElementById("item-charge-max-"+item_id).innerHTML;
         add_item_description.value = document.getElementById("item-description-"+item_id).innerHTML;
-        add_item_type.style.display = "none";
+        add_item_type.value = document.getElementById("item-type-id-"+item_id).innerHTML;
     }else{
-        add_item_type.style.display = "block";
+        add_item_id.innerHTML = item_id;
+        add_item_type.value = 1;
     }
     add_item_background.style.display = "flex";
     add_item_menu = true;
@@ -119,9 +123,9 @@ function hide_add_item(){
     add_item_background.style.display = "none";
     add_item_menu = false;
 }
-function add_item_request(name, type_id, charges_max, description, item_id=-1, is_favourite=0){
+function add_item_request(name, type_id, charges_max, description, item_id=-1){
     var request = new XMLHttpRequest();
-    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description+"&item_id="+item_id+"&is_favourite="+is_favourite;
+    var posted_text = "name="+name+"&type_id="+type_id+"&charges_max="+charges_max+"&description="+description+"&item_id="+item_id;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
@@ -168,8 +172,10 @@ function add_item(){
         add_item_name.value,
         add_item_type.value,
         add_item_charge_max.value,
-        add_item_description.value
+        add_item_description.value,
+        add_item_id.innerHTML
     );
+    add_item_id.innerHTML = "-1";
     add_item_name.value = "";
     add_item_charge_max.value = "";
     add_item_description.value = "";
@@ -220,36 +226,28 @@ function decrease_amount(id){
     if(target.innerHTML == 1){
         return;
     }
-    if(modify_number_request(id,"amount",target.innerHTML - 1)==0){
-        return;
-    }
+    modify_number_request(id,"amount",target.innerHTML - 1);
     target.innerHTML = target.innerHTML - 1;
 }
 function increase_amount(id){
     const target = document.getElementById("item-amount-"+id);
-    if(modify_number_request(id,"amount",Number(target.innerHTML) + 1)==0){
-        return;
-    }
+    modify_number_request(id,"amount",Number(target.innerHTML) + 1);
     target.innerHTML = Number(target.innerHTML) + 1;
 }
 function decrease_charge(id){
     const target = document.getElementById("item-charge-"+id);
-    if(target.innerHTML == 0){
+    if(target.innerHTML <= 0){
         return;
     }
-    if(modify_number_request(id,"charges",target.innerHTML - 1)==0){
-        return;
-    }
+    modify_number_request(id,"charges",target.innerHTML - 1);
     target.innerHTML = target.innerHTML - 1;
 }
 function increase_charge(id){
     const target = document.getElementById("item-charge-"+id);
-    if(target.innerHTML == document.getElementById("item-charge-max-"+id).innerHTML){
+    if(target.innerHTML >= document.getElementById("item-charge-max-"+id).innerHTML){
         return;
     }
-    if(modify_number_request(id,"charges",Number(target.innerHTML) + 1)==0){
-        return;
-    }
+    modify_number_request(id,"charges",Number(target.innerHTML) + 1);
     target.innerHTML = Number(target.innerHTML) + 1;
 }
 // Functions for when keys are pressed
