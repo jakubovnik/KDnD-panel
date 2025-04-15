@@ -31,7 +31,7 @@ function loginAttempt(){
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
-                setTimeout(function(){ window.location.href = "index.php" }, 1000);
+                setTimeout(function(){ window.location.href = "index.php" }, 700);
                 display_message("Successfully logged in!");
             }
             if(this.responseText == "1"){
@@ -39,6 +39,9 @@ function loginAttempt(){
             }
             if(this.responseText == "2"){
                 display_message("Incorrect password", 1);
+            }
+            if(this.responseText == "3"){
+                window.location.href = "extra/index.php";
             }
         }
     };
