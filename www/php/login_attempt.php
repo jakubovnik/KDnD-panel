@@ -1,13 +1,5 @@
 <?php
 session_start();
-$_SESSION['extra_allowed'] = 0;
-
-if($_POST['cname'] == "epic" && $_POST['password'] == "musical"){
-    $_SESSION['extra_allowed'] = 1;
-    echo "3";
-    exit;
-}
-
 require "dbconnect.php";
 $sql = "SELECT * FROM `character` where `name` = '".$_POST['cname']."'";
 $result = $conn->query($sql);

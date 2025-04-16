@@ -40,9 +40,6 @@ function loginAttempt(){
             if(this.responseText == "2"){
                 display_message("Incorrect password", 1);
             }
-            if(this.responseText == "3"){
-                window.location.href = "extra/index.php";
-            }
         }
     };
     request.open("POST", "php/login_attempt.php", true);
