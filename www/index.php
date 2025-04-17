@@ -59,7 +59,7 @@ require "php/header.php";
         </div>
         <div id="character-visual">
             <?php
-                $sql = "SELECT id, title, description FROM `character_image` WHERE character_id=".$_SESSION['cid']." ORDER BY id";
+                $sql = "SELECT id, title, description FROM `character_image` WHERE character_id=".$_SESSION['cid']." ORDER BY id DESC";
                 $result = $conn->query($sql);
                 $image_count = 0;
                 if($result->num_rows <= 0){

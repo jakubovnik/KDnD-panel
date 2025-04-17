@@ -156,8 +156,11 @@ body{
     max-height: 90vh;
 }
 .character-image{
-    max-width: 90%;
     max-height: 90%;
+    width: 90%;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 .character-image-description{
     max-height: 25%;

@@ -38,7 +38,7 @@ def convert_to_number_or_string(s):
 # cursor = mydb.cursor()
 
 output_file = open("sql/obsidian_export.sql", "w")
-output_file.write("DELETE FROM magic;\n")
+output_file.write("TRUNCATE TABLE `magic`;\n")
 
 # cursor.execute("DELETE FROM magic")
 
