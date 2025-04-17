@@ -32,14 +32,30 @@ require "php/header.php";
                 <div id="character-age">Age: <?php echo $_SESSION['age'] ?></div>
                 <div id="character-role"><?php 
                     require "php/dbconnect.php";
-                    $sql = "SELECT role.name FROM `role` WHERE id=".$_SESSION['role'];
+                    $sql = "SELECT `role`.`name` FROM `role` WHERE id=".$_SESSION['role'];
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                         echo $row['name'];
                     }
                 ?></div>
             </div>
-            <div id="character-description"><?php echo $_SESSION['description']?></div>
+            <div id="character-description">
+                <?php
+                    require "php/dbconnect.php";
+                    $sql = "SELECT `wiki`.`content` FROM `wiki` WHERE `name`='".$_SESSION['cname']."'";
+                    $result = $conn->query($sql);
+                    if($result && $result->num_rows > 0){
+                        $row = $result->fetch_assoc();
+                        if(!empty($row['content'])){
+                            echo $row['content'];
+                        }else{
+                            echo $_SESSION['description'];
+                        }
+                    }else{
+                        echo $_SESSION['description'];
+                    }
+                ?>
+            </div>
         </div>
         <div id="character-visual">
             <?php

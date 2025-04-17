@@ -111,6 +111,9 @@ function reveal_add_item(item_id = -1){
         add_item_type.value = document.getElementById("item-type-id-"+item_id).innerHTML;
     }else{
         add_item_id.innerHTML = item_id;
+        add_item_name.value = "";
+        add_item_charge_max.value = "";
+        add_item_description.value = "";
         add_item_type.value = 1;
     }
     add_item_background.style.display = "flex";

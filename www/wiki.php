@@ -237,7 +237,7 @@ document.addEventListener("keydown", function (event) { // copied from chatgpt (
             let text = input.value;
             if (start !== end) {
                 let selectedText = text.substring(start, end);
-                let replacement = `<a href='?s='>${selectedText}</a>`;
+                let replacement = `<a href='wiki.php?s='>${selectedText}</a>`;
                 // Use execCommand to insert text (keeps it in the undo stack)
                 document.execCommand("insertText", false, replacement);
                 // Move cursor after "?s="
