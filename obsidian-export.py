@@ -174,7 +174,7 @@ for filename in modification_spells:
 spell_amount = 0
 for spell in spells:
     if(spell[2] == "x"):
-        spell[2] = "-152"
+        spell[2] = "0"
     output_file.write('INSERT INTO `magic` (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "'+ spell[10] +'");\n')
     # cursor.execute('INSERT INTO `magic` (`name`, `origin`, `complexity`, `fail_rate`, `cast_time`, `rules`, `effects`, `limits`, `tags`, `other`, `is_mod`) VALUES ("'+ spell[0] +'", "'+ spell[1] +'", "'+ spell[2] +'", "'+ spell[3] +'", "'+ spell[4] +'", "'+ spell[5] +'", "'+ spell[6] +'", "'+ spell[7] +'", "'+ spell[8] +'", "'+ spell[9] +'", "'+ spell[10] +'");')
     spell_amount += 1

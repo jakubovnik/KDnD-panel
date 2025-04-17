@@ -58,7 +58,7 @@ function reveal_details(id){
     }
     document.getElementById("magic-info-"+id).style.display = "flex";
     shown_id = id;
-    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "flex";';} ?>
+    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "flex";';} ?> // ew wtf is this
 }
 function hide_details(){
     if(shown_id == 0){
@@ -118,10 +118,16 @@ const learn_magic_fail = document.getElementById("learn-magic-fail");
 const learn_magic_cast = document.getElementById("learn-magic-cast");
 function reveal_learn_magic(id){
     learn_magic_menu = true;
-    learn_magic_background.style.display = "flex";
+    if(document.getElementById("magic-0"+id)){
+        id = "" + 0 + id;
+    }
     learn_magic_id.innerHTML = "ID: " + id;
     learn_magic_name.innerHTML = document.getElementById("magic-name-"+id).innerHTML;
-    document.getElementById("learn-magic-complexity").focus();
+    learn_magic_complexity.value = document.getElementById("magic-complexity-"+id).innerHTML;
+    learn_magic_fail.value = document.getElementById("magic-fail-"+id).innerHTML.slice(0,-1);
+    learn_magic_cast.value = document.getElementById("magic-cast-"+id).innerHTML.slice(0,-2);
+    learn_magic_background.style.display = "flex";
+    learn_magic_complexity.focus();
 }
 function hide_learn_magic(id){
     learn_magic_menu = false;
