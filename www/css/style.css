@@ -35,6 +35,32 @@ body{
     max-height: 100vh;
     height: 100vh;
 }
+/* navbar stuff --------------------------------------------------------------------------*/
+#navbar{
+    background-color: grey;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0px;
+    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2);
+}
+#navbar *{
+    float: left;
+    color: white;
+    margin: auto;
+    padding: 0.8rem 1rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+#navbar span{
+    color: gold;
+    border-color: white;
+}
+#navbar a:last-child{
+    float: right;
+}
+#navbar a:hover{
+    background-color: rgb(51, 64, 66);
+}
 /* Index stuff ---------------------------------------------------------------------------*/
 #character-info{
     display: flex;
@@ -206,32 +232,6 @@ body{
 .equipped-item-description{
     display: none;
 }
-/* navbar stuff --------------------------------------------------------------------------*/
-#navbar{
-    background-color: grey;
-    overflow: hidden;
-    border-radius: 10px;
-    margin: 0px;
-    box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.2);
-}
-#navbar *{
-    float: left;
-    color: white;
-    margin: auto;
-    padding: 0.8rem 1rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-}
-#navbar span{
-    color: gold;
-    border-color: white;
-}
-#navbar a:last-child{
-    float: right;
-}
-#navbar a:hover{
-    background-color: rgb(51, 64, 66);
-}
 /* Magic exclusive -------------------------------------------------------------------- Magic exclusive */
 #magic-search-inputs{
     width: 100vw;
@@ -255,6 +255,7 @@ body{
     border-radius: 1rem;
     z-index: 1000;
     padding: 0px;
+    padding-left: 3px;
     text-align: center;
 }
 #magic-character-circles-image{
@@ -262,8 +263,16 @@ body{
     width: 2rem;
     margin: 0.5rem;
 }
-.magic-origin, .magic-complexity, .magic-fail, .magic-cast{
+.magic-text{
     text-align: center;
+}
+.magic-name{
+    text-align: start;
+}
+#magic-list{
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    width: 100%;
 }
 #magic-list tr td{
     padding: 10px;
@@ -283,7 +292,7 @@ tr:first-child *{
     align-items: center;
 }
 .magic-learn-button{
-    height: 4vh;
+    height: 3.5vh;
     width: auto;
 }
 #magic-all{
@@ -291,8 +300,8 @@ tr:first-child *{
     flex-direction: row;
     justify-content: space-around;
     height: 85vh;
-    width: 90vw;
-    background-color: aquamarine;
+    width: 95vw;
+    /* background-color: rgb(186, 255, 232); */
     margin: auto;
 }
 #magic-list-container{
@@ -300,17 +309,19 @@ tr:first-child *{
     overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    width: 45vw;
+    width: 50vw;
     height: 85vh;
+    background-color: rgb(186, 203, 182);
+    border-radius: 8px;
 }
 #magic-list-container::-webkit-scrollbar{
     display: none;
 }
-#magic-list{
-    width: max-content;
+.magic{
+    background-color: rgba(211, 211, 211, 0.3);
 }
 .learned-magic{
-    background-color: rgba(0, 0, 255, 0.3);
+    background-color: rgba(0, 0, 255, 0.35);
 }
 #magic-info-container{
     overflow-x: hidden;
@@ -323,7 +334,7 @@ tr:first-child *{
     align-items: center;
     width: 45vw;
     height: 85vh;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 #magic-info-container::-webkit-scrollbar{
     display: none;
