@@ -10,6 +10,7 @@ require "php/header.php";
     <?php require "php/navbar.php";?>
     <div id="create-character-container">
         <div id="character-create-box">
+            <span id="create-id" onclick="edit_character()">-1</span>
             <form action="javascript:void(0);" id="character-create-form">
                 <input type="text" id="create-name" class="character-create-text" name="create-name" placeholder="character name">
                 <input type="text" id="create-password" class="character-create-text" name="create-password" placeholder="password">
@@ -32,7 +33,7 @@ require "php/header.php";
                         $conn->close();
                     ?>
                 </select>
-                <input type="submit" id="character-create-submit" name="character-create-submit" value="Create" onclick="createCharacterAttempt()">
+                <input type="submit" id="character-create-submit" name="character-create-submit" value="Save" onclick="createCharacterAttempt()">
             </form>
         </div>
         <div id="character-list-container">
@@ -43,13 +44,14 @@ require "php/header.php";
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
 
-function createCharacterRequest(name, password, age, circles, description, money, role_id){
+function createCharacterRequest(id, name, password, age, circles, description, money, role_id){
     var request = new XMLHttpRequest();
-    var posted_text = "name="+name+"&password="+password+"&age="+age+"&circles="+circles+"&description="+description+"&money="+money+"&role_id="+role_id;
+    var posted_text = "id="+id+"&name="+name+"&password="+password+"&age="+age+"&circles="+circles+"&description="+description+"&money="+money+"&role_id="+role_id;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
                 display_message("Successfully created "+ name);
+                refresh_characters();
             }else if(this.responseText == "1"){
                 display_message("something went wrong with creating character", 1);
             }else{
@@ -61,6 +63,7 @@ function createCharacterRequest(name, password, age, circles, description, money
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
+var create_id = document.getElementById("create-id");
 var create_name = document.getElementById("create-name");
 var create_password = document.getElementById("create-password");
 var create_age = document.getElementById("create-age");
@@ -110,6 +113,7 @@ function createCharacterAttempt(){
         return;
     }
     createCharacterRequest(
+        create_id.innerHTML,
         create_name.value,
         create_password.value,
         create_age.value,
@@ -118,12 +122,7 @@ function createCharacterAttempt(){
         create_money.value,
         create_role.value
     );
-    create_name.value = "";
-    create_password.value = "";
-    create_age.value = "";
-    create_circles.value = "";
-    create_description.value = "";
-    create_money.value = "";
+    edit_character();
     refresh_characters();
 }
 sort_type = "default";
@@ -144,6 +143,27 @@ function refresh_characters(){
     request.open("POST", "php/get_character_list.php", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
+}
+
+function edit_character(id = "-1"){
+    create_id.innerHTML = id;
+    if(id == "-1"){
+        create_name.value = "";
+        create_password.value = "";
+        create_age.value = "";
+        create_circles.value = "";
+        create_description.value = "";
+        create_money.value = "";
+        create_role.value = 2;
+    }else{
+        create_name.value = document.getElementById("character-list-name-"+id).innerHTML;
+        create_password.value = document.getElementById("character-list-password-"+id).innerHTML;
+        create_age.value = document.getElementById("character-list-age-"+id).innerHTML;
+        create_circles.value = document.getElementById("character-list-circles-"+id).innerHTML;
+        create_description.value = document.getElementById("character-list-description-"+id).innerHTML;
+        create_money.value = document.getElementById("character-list-money-"+id).innerHTML;
+        create_role.value = document.getElementById("character-list-role-id-"+id).innerHTML;
+    }
 }
 
 refresh_characters();

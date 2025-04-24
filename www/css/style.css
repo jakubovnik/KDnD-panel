@@ -277,12 +277,12 @@ body{
 #magic-list tr td{
     padding: 10px;
 }
-tr:first-child{
+#magic-list tr:first-child{
     position: sticky;
     top: 0;
     background-color: rgb(255, 255, 255);
 }
-tr:first-child *{
+#magic-list tr:first-child *{
     padding: 10px;
     font-size: large;
     border-bottom: 3px #2222ff solid;
@@ -878,6 +878,7 @@ tr:first-child *{
     flex-direction: row;
 }
 #character-create-box{
+    position: relative;
     height: 90vh;
     width: 45vw;
     padding-left: 2.5vw;
@@ -904,9 +905,44 @@ tr:first-child *{
 #character-create-submit{
     font-size: 2rem;
 }
+#create-id{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: aliceblue;
+    padding: 8px;
+    border-radius: 4px;
+}
 #character-list-container{
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     width: 50vw;
     height: 90vh;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
-/*FIXME: CSS FROM MAGIC LIST ALSO AFFECTS THIS, CAUSE IT AFFECTS ALL TABLE ELEMENTS*/
+#character-list-container::-webkit-scrollbar{
+    display: none;
+}
+#character-list{
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    width: 100%;
+}
+#character-list tr td{
+    padding: 10px;
+}
+#character-list tr:first-child{
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+}
+#character-list tr:first-child *{
+    padding: 10px;
+    font-size: large;
+    border-bottom: 3px #2222ff solid;
+}
+.character-list-row{
+    background-color: rgba(255, 255, 255, 0.6);
+}
