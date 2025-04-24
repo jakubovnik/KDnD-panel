@@ -8,31 +8,36 @@ require "php/header.php";
 <body>
     <span id="message"></span>
     <?php require "php/navbar.php";?>
-    <div id="character-create-box">
-        <form action="javascript:void(0);" id="character-create-form">
-            <input type="text" id="create-name" class="character-create-text" name="create-name" placeholder="character name">
-            <input type="text" id="create-password" class="character-create-text" name="create-password" placeholder="password">
-            <input type="text" id="create-age" class="character-create-text" name="create-age" placeholder="age">
-            <input type="text" id="create-circles" class="character-create-text" name="create-circles" placeholder="circles">
-            <input type="text" id="create-description" name="create-description" placeholder="character description">
-            <input type="text" id="create-money" class="character-create-text" name="create-money" placeholder="money">
-            <select id="create-role" class="character-create-text" name="create-role">
-                <?php
-                    require "php/dbconnect.php";
-                    $sql = "SELECT * FROM `role` ORDER BY id";
-                    $result = $conn->query($sql);
-                    while($row = $result->fetch_assoc()){
-                        echo '<option value="'.$row['id'].'"';
-                        if($row['id'] == "2"){
-                            echo ' selected';
+    <div id="create-character-container">
+        <div id="character-create-box">
+            <form action="javascript:void(0);" id="character-create-form">
+                <input type="text" id="create-name" class="character-create-text" name="create-name" placeholder="character name">
+                <input type="text" id="create-password" class="character-create-text" name="create-password" placeholder="password">
+                <input type="text" id="create-age" class="character-create-text" name="create-age" placeholder="age">
+                <input type="text" id="create-circles" class="character-create-text" name="create-circles" placeholder="circles">
+                <input type="text" id="create-description" name="create-description" placeholder="character description">
+                <input type="text" id="create-money" class="character-create-text" name="create-money" placeholder="money">
+                <select id="create-role" class="character-create-text" name="create-role">
+                    <?php
+                        require "php/dbconnect.php";
+                        $sql = "SELECT * FROM `role` ORDER BY id";
+                        $result = $conn->query($sql);
+                        while($row = $result->fetch_assoc()){
+                            echo '<option value="'.$row['id'].'"';
+                            if($row['id'] == "2"){
+                                echo ' selected';
+                            }
+                            echo '>'.$row['name'].'</option>';
                         }
-                        echo '>'.$row['name'].'</option>';
-                    }
-                    $conn->close();
-                ?>
-            </select>
-            <input type="submit" id="character-create-submit" name="character-create-submit" value="Create" onclick="createCharacterAttempt()">
-        </form>
+                        $conn->close();
+                    ?>
+                </select>
+                <input type="submit" id="character-create-submit" name="character-create-submit" value="Create" onclick="createCharacterAttempt()">
+            </form>
+        </div>
+        <div id="character-list-container">
+            <table id="character-list"></table>
+        </div>
     </div>
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
@@ -63,6 +68,7 @@ var create_circles = document.getElementById("create-circles");
 var create_description = document.getElementById("create-description");
 var create_money = document.getElementById("create-money");
 var create_role = document.getElementById("create-role");
+create_name.focus();
 function check_form(){
     if(create_name.value == ""){
         display_message("Character needs a name", 1);
@@ -118,8 +124,29 @@ function createCharacterAttempt(){
     create_circles.value = "";
     create_description.value = "";
     create_money.value = "";
+    refresh_characters();
+}
+sort_type = "default";
+function refresh_characters(){
+    const character_list = document.getElementById("character-list"); //TODO: maybe put this in global vars?
+    var request = new XMLHttpRequest();
+    var posted_text = "sort=" + sort_type;
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "1"){
+                display_message("something went wrong when refreshing the character list", 1);
+            }else{
+                character_list.innerHTML = this.responseText;
+                display_message("Character list refreshed", 0, 1000);
+            }
+        }
+    };
+    request.open("POST", "php/get_character_list.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
 }
 
+refresh_characters();
 // setTimeout(() => { // TODO: Remove this. This thing is just for testing
 //     window.location.reload(true);
 // }, 20000);

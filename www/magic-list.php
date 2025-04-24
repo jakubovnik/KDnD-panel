@@ -88,7 +88,7 @@ function updateMagicList(type) { //chatgpt
 }
 var sort_type = "default";
 function refresh_magic(){
-    const magic_all = document.getElementById("magic-all");
+    const magic_all = document.getElementById("magic-all"); //TODO: maybe put this in global vars?
     var request = new XMLHttpRequest();
     var posted_text = "sort=" + sort_type;
     request.onreadystatechange = function(){

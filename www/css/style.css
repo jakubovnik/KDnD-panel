@@ -750,11 +750,14 @@ tr:first-child *{
 }
 #wiki-name{
     font-size: 1.2rem;
-}
-#wiki-name, #wiki-tags{
-    width: 10vw;
+    min-width: 10vw;
+    width: fit-content;
+    max-width: 20vw;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 #wiki-tags{
+    width: 10vw;
     overflow: hidden;
     word-break: keep-all;
 }
@@ -861,11 +864,49 @@ tr:first-child *{
 .lore-exception{
     color: aquamarine;
 }
-/* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
-
 /* Admin stuff --------------------------------------------------------------------------------------- Admin stuff */
 #admin-edit-switch{
     height: 1.3rem;
     width: 1.3rem;
     filter: invert(1);
 }
+/* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
+
+/* Create character stuff --------------------------------------------------------------------------------------- Create character stuff */
+#create-character-container{
+    display: flex;
+    flex-direction: row;
+}
+#character-create-box{
+    height: 90vh;
+    width: 45vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+#character-create-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90vh;
+}
+.character-create-text{
+    height: 5vh;
+    font-size: 1.5rem;
+    text-align: center;
+}
+#create-name{
+    height: 6vh;
+    font-size: 2rem;
+}
+#create-description{
+    height: 4vh;
+}
+#character-create-submit{
+    font-size: 2rem;
+}
+#character-list-container{
+    width: 50vw;
+    height: 90vh;
+    background-color: aqua;
+}
+/*FIXME: CSS FROM MAGIC LIST ALSO AFFECTS THIS, CAUSE IT AFFECTS ALL TABLE ELEMENTS*/
