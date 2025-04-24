@@ -191,7 +191,7 @@ function check_form(){
     }
     return 0;
 }
-// function add_item(){
+// function add_item(){ // TODO: WHY tf is this here?
 //     if(check_form()){
 //         return;
 //     }

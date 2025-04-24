@@ -7,7 +7,7 @@ if($_POST['sort'] == "default"){
 }else{
     $sql_default = $sql_default." ORDER BY ".$_POST['sort'];
 }
-$sql_learned = "SELECT magic.id, character_magic.character_id, character_magic.magic_name, character_magic.complexity, character_magic.fail_rate, character_magic.cast_time 
+$sql_learned = "SELECT magic.id, magic.origin, character_magic.character_id, character_magic.magic_name, character_magic.complexity, character_magic.fail_rate, character_magic.cast_time 
 FROM `character_magic` 
 INNER JOIN `magic` 
 ON magic.name=character_magic.magic_name
@@ -37,7 +37,7 @@ echo "</tr>";
 while($row = $magic_learned->fetch_assoc()){//creating learned magic list
     echo "<tr class='magic learned-magic' id='magic-0".$row['id']."'>";
         echo "<td class='magic-name magic-text' id='magic-name-0".$row['id']."' onclick='reveal_details(".$row['id'].")'>".$row['magic_name']."</td>";
-        echo "<td class='magic-origin magic-text' id='magic-origin-0".$row['id']."'>".$_SESSION['cname']."</td>";
+        echo "<td class='magic-origin magic-text' id='magic-origin-0".$row['id']."'>".$row['origin']."</td>";
         echo "<td class='magic-complexity magic-text' id='magic-complexity-0".$row['id']."'>".$row['complexity']."</td>";
         echo "<td class='magic-fail magic-text' id='magic-fail-0".$row['id']."'>".$row['fail_rate']."%</td>";
         echo "<td class='magic-cast magic-text' id='magic-cast-0".$row['id']."'>".$row['cast_time']." t</td>";

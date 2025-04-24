@@ -280,11 +280,12 @@ body{
 tr:first-child{
     position: sticky;
     top: 0;
-    background-color: gainsboro;
+    background-color: rgb(255, 255, 255);
 }
 tr:first-child *{
     padding: 10px;
     font-size: large;
+    border-bottom: 3px #2222ff solid;
 }
 .magic-learn{
     display:flex;
@@ -309,19 +310,19 @@ tr:first-child *{
     overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    width: 50vw;
+    width: 45vw;
     height: 85vh;
-    background-color: rgb(186, 203, 182);
+    background-color: rgba(186, 203, 182, 0.3);
     border-radius: 8px;
 }
 #magic-list-container::-webkit-scrollbar{
     display: none;
 }
 .magic{
-    background-color: rgba(211, 211, 211, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 .learned-magic{
-    background-color: rgba(0, 0, 255, 0.35);
+    background-color: rgba(125, 125, 255, 0.7);
 }
 #magic-info-container{
     overflow-x: hidden;
@@ -349,6 +350,8 @@ tr:first-child *{
     max-width: 45vw;
     max-height: 85vw;
     background-color: gray;
+    border: 3px rgb(80, 80, 80) solid;
+    border-radius: 5px;
     display: none;
 }
 .magic-detail-name{
@@ -359,9 +362,9 @@ tr:first-child *{
     text-align: center;
 }
 .magic-info span, .magic-info * span{
-    border-color: brown;
-    border-style: solid;
-    border-width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 3px blue solid;
+    border-radius: 3px;
     padding: 6px;
     white-space: pre-wrap;
     min-width: 10vw;
@@ -380,7 +383,8 @@ tr:first-child *{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
 }
 .magic-detail-info *{
     max-width: 15vw;
@@ -426,7 +430,10 @@ tr:first-child *{
     background-color: rgba(16, 36, 67, 0.742);
     max-width: 100%;
 }
-#learn-magic-name, #learn-magic-id{ /* Isn't this thing just .learn-magic-text?*/
+#learn-magic-id{
+    display: none;
+}
+#learn-magic-name{ /* TODO: Isn't this thing just .learn-magic-text?*/
     min-width: 14ch;
     size: 14ch;
     font-size: xx-large;
