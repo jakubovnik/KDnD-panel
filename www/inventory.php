@@ -226,11 +226,11 @@ function set_equipped(id, value){
 }
 function decrease_amount(id){
     const target = document.getElementById("item-amount-"+id);
-    if(target.innerHTML == 1){
+    if(Number(target.innerHTML) == 1){
         return;
     }
-    modify_number_request(id,"amount",target.innerHTML - 1);
-    target.innerHTML = target.innerHTML - 1;
+    modify_number_request(id,"amount",Number(target.innerHTML) - 1);
+    target.innerHTML = Number(target.innerHTML) - 1;
 }
 function increase_amount(id){
     const target = document.getElementById("item-amount-"+id);
@@ -239,15 +239,15 @@ function increase_amount(id){
 }
 function decrease_charge(id){
     const target = document.getElementById("item-charge-"+id);
-    if(target.innerHTML <= 0){
+    if(Number(target.innerHTML) <= 0){
         return;
     }
-    modify_number_request(id,"charges",target.innerHTML - 1);
-    target.innerHTML = target.innerHTML - 1;
+    modify_number_request(id,"charges",Number(target.innerHTML) - 1);
+    target.innerHTML = Number(target.innerHTML) - 1;
 }
 function increase_charge(id){
     const target = document.getElementById("item-charge-"+id);
-    if(target.innerHTML >= document.getElementById("item-charge-max-"+id).innerHTML){
+    if(Number(target.innerHTML) >= Number(document.getElementById("item-charge-max-"+id).innerHTML)){
         return;
     }
     modify_number_request(id,"charges",Number(target.innerHTML) + 1);
