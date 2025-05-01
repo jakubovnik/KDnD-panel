@@ -31,7 +31,8 @@ require "php/header.php";
         <img src="images/add.png" alt="confirm adding item" id="add-item-confirm" onclick="add_item()">
     </div>
     <div id="inventory-search-box">
-        <input type="text" id="item-search-name" onkeyup="updateItemList('name')" placeholder="Search by name">
+        <input type="text" id="item-search" placeholder="Search by name">
+        <button id="search-inventory-type-button" onclick="switch_button()">name</button>
     </div>
     <div id="inventory">
     </div>
@@ -49,10 +50,13 @@ const add_item_type = document.getElementById("add-item-type");
 const add_item_charge_max = document.getElementById("add-item-charge-max");
 const add_item_description = document.getElementById("add-item-description");
 
-
-function refresh_inventory(sort="default"){
+sort = "default";
+search = document.getElementById("item-search");
+search_type_button = document.getElementById("search-inventory-type-button");
+search_type = "inventory.name";
+function refresh_inventory(){
     var request = new XMLHttpRequest();
-    var posted_text = "sort=" + sort;
+    var posted_text = "sort=" + sort + "&search=" + search.value + "&type=" + search_type;
     request.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "1"){
@@ -68,23 +72,23 @@ function refresh_inventory(sort="default"){
     request.send(posted_text);
 }
 
-function updateItemList(type){ //chatgpt
-    const item_list = document.getElementById("inventory");
-    var input, filter, items, a, i, txtValue;
-    input = document.getElementById('item-search-'+type);
-    filter = input.value.toUpperCase();
-    items = item_list.getElementsByClassName('item-box');
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < items.length; i++) {
-        a = items[i].getElementsByClassName("item-"+type)[0];
-        txtValue = a.innerHTML;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            items[i].style.display = "";
-        } else {
-            items[i].style.display = "none";
-        }
-    }
-}
+// function updateItemList(type){ //chatgpt
+//     const item_list = document.getElementById("inventory");
+//     var input, filter, items, a, i, txtValue;
+//     input = document.getElementById('item-search-'+type);
+//     filter = input.value.toUpperCase();
+//     items = item_list.getElementsByClassName('item-box');
+//     // Loop through all list items, and hide those who don't match the search query
+//     for (i = 0; i < items.length; i++) {
+//         a = items[i].getElementsByClassName("item-"+type)[0];
+//         txtValue = a.innerHTML;
+//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//             items[i].style.display = "";
+//         } else {
+//             items[i].style.display = "none";
+//         }
+//     }
+// }
 
 var shown_id = 0;
 function reveal_details(id){
@@ -253,6 +257,22 @@ function increase_charge(id){
     modify_number_request(id,"charges",Number(target.innerHTML) + 1);
     target.innerHTML = Number(target.innerHTML) + 1;
 }
+// Functions for searching through items
+function switch_button(){
+    if(search_type_button.innerHTML == "name"){
+        search_type_button.innerHTML = "type";
+        search_type = "type.name";
+    }else{
+        search_type_button.innerHTML = "name";
+        search_type = "inventory.name";
+    }
+    refresh_inventory();
+}
+fetchInventoryTimeout = setTimeout(refresh_inventory, 1);
+search.addEventListener('keyup', () => {
+    clearTimeout(fetchInventoryTimeout);
+    fetchInventoryTimeout = setTimeout(refresh_inventory, 400);
+});
 // Functions for when keys are pressed
 window.onload=function() {
     document.onkeydown = keypress;
@@ -278,7 +298,7 @@ function keypress(event) {
 // stuff needed after the site loads
 refresh_inventory();
 refresh_interval = setInterval(refresh_inventory, 60000);
-document.getElementById("item-search-name").focus();
+document.getElementById("item-search").focus();
 <?php require "php/js_options.php";?>
 </script>
 </body>

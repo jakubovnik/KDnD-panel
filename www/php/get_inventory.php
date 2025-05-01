@@ -20,6 +20,9 @@ $sql = "SELECT  character.id as character_id,
 if($_SESSION['role'] != 1 || $_SESSION['edit-mode'] == 0){
     $sql = $sql." AND (inventory.character_id=".$_SESSION['cid'].")";
 }
+if($_POST['search'] != ""){
+    $sql = $sql." AND (".$_POST['type']." LIKE '%".$_POST['search']."%')";
+}
 if($_POST['sort'] == "default"){
     $sql = $sql." ORDER BY character.id ASC, inventory.is_favourite DESC, type.name DESC, inventory.name ASC";
 }

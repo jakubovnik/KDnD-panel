@@ -571,7 +571,7 @@ body{
     align-items: center;
     /* width: 100vw; */
 }
-#item-search-name{
+#item-search{
     /* margin: 10px auto 10px auto; */
     margin: 10px;
     width: 15rem;
@@ -584,14 +584,23 @@ body{
     text-align: center;
     font-size: 1rem;
 }
-#item-search-name::placeholder{
+#item-search::placeholder{
     color:rgb(50, 39, 39);
 }
-#item-search-name:focus{
+#item-search:focus{
     outline: none;
     border-color: #4242e294;
     background-color: rgb(177, 255, 255);
 }
+#search-inventory-type-button{
+    font-size: 1.2rem;
+    border: none;
+    border-bottom: 2px solid #2222ff;
+    background-color: rgb(217, 237, 255);
+    border-radius: 4px;
+    color: black;
+}
+/* Add item stuff */
 #add-item-background{
     position: fixed;
     top: 0px;

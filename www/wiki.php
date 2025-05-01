@@ -220,7 +220,7 @@ function switch_button(){
 fetchLoreTimeout = setTimeout(fetch_lore_list, 1);
 search_input.addEventListener('keyup', () => {
     clearTimeout(fetchLoreTimeout);
-    fetchLoreTimeout = setTimeout(fetch_lore_list, 200);
+    fetchLoreTimeout = setTimeout(fetch_lore_list, 300);
 });
 // Here are all the shortcuts
 document.addEventListener("keydown", function (event) { // copied from chatgpt (but also improved by me (somewhat (i guess)))
