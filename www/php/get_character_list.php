@@ -8,14 +8,14 @@ $sql = "SELECT
 $result = $conn->query($sql);
 echo "
 <tr>
-    <th>ID</th>
-    <th>NAME</th>
-    <th>PASS</th>
-    <th>AGE?</th>
-    <th>CX</th>
-    <th>DESC</th>
-    <th>MONEY</th>
-    <th>ROLE</th>
+    <th id='character-list-heading-id'>ID</th>
+    <th id='character-list-heading-name'>NAME</th>
+    <th id='character-list-heading-password'>PASS</th>
+    <th id='character-list-heading-age'>AGE?</th>
+    <th id='character-list-heading-complexity'>CX</th>
+    <th id='character-list-heading-description'>DESC</th>
+    <th id='character-list-heading-money'>MONEY</th>
+    <th id='character-list-heading-role-id'>ROLE</th>
 </tr>
 ";
 while($row = $result->fetch_assoc()){

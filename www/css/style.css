@@ -920,7 +920,6 @@ body{
     scrollbar-width: none;  /* Firefox */
     width: 50vw;
     height: 90vh;
-    /* background-color: aqua; */
 }
 #character-list-container::-webkit-scrollbar{
     display: none;

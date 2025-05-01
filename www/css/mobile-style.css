@@ -862,3 +862,88 @@ tr:first-child{
     width: 1.4rem;
     filter: invert(1);
 }
+
+/* Create character stuff --------------------------------------------------------------------------------------- Create character stuff */
+#create-character-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#character-create-box{
+    position: relative;
+    height: 90vh;
+    width: 95vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+#character-create-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90vh;
+}
+.character-create-text{
+    height: 5vh;
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 90%;
+}
+#create-name{
+    height: 6vh;
+    font-size: 1.5rem;
+}
+#create-description{
+    height: 4vh;
+}
+#character-create-submit{
+    font-size: 2rem;
+}
+#create-id{
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background-color: aliceblue;
+    padding: 8px;
+    border-radius: 4px;
+}
+#character-list-container{
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    width: 95vw;
+    height: 50vh;
+}
+#character-list-container::-webkit-scrollbar{
+    display: none;
+}
+#character-list{
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    width: 100%;
+}
+#character-list tr td{
+    padding: 5px;
+}
+#character-list tr:first-child{
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+}
+#character-list tr:first-child *{
+    padding: 10px;
+    font-size: large;
+    border-bottom: 3px #2222ff solid;
+}
+.character-list-row{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.character-list-row *{
+    text-align: center;
+}
+#character-list-heading-description,
+.character-list-description,
+#character-list-heading-money,
+.character-list-money{
+    display: none;
+}
