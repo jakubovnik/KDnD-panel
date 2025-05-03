@@ -13,6 +13,7 @@ if($_SESSION['role'] == 1){
     echo '<a href="upload-image.php">Upload Image</a>';
     echo '<a href="create-character.php">Create Character</a>';
 }
+echo '<a href="calendar.php">Calendar</a>';
 echo '<a href="options.php">Options</a>';
 echo '<span>logged in as ';
     echo $_SESSION['cname'];
