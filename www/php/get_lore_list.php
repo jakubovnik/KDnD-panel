@@ -9,13 +9,16 @@ $sql = "SELECT
             `exceptions`
         FROM
             `wiki`
-        WHERE ".$_POST['type']." LIKE '%".$_POST['search']."%' 
-        ORDER BY `tags`, `name`;";
+        WHERE ".$_POST['type']." LIKE '%".$_POST['search']."%'";
+if($_SESSION['role'] != 1 || $_SESSION['edit-mode'] != 1){
+    $sql = $sql." AND `name` NOT REGEXP '^[0-9]'";
+}
+$sql = $sql." ORDER BY `tags`, `name`;";
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
     $lore_restricted = "";
     $lore_name = $row['name'];
-    if($_SESSION['role'] > $row['access']){ // TODO: color it so that it clearly shows if user has access or is an exception (also show it to the admin)
+    if($_SESSION['role'] > $row['access']){
         if(strpos($row['exceptions'], ";".$_SESSION['cname'].";") === FALSE){
             $lore_restricted = " lore-restricted";
             // $lore_name = "spoiler"; //This here makes more sense proffesionally, however, it is not as funny as the alternative
