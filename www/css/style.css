@@ -873,6 +873,10 @@ body{
 .lore-exception{
     color: aquamarine;
 }
+/* Calendar stuff ------------------------------------------------------------------------------------ Calendar stuff */
+.with-note{
+    border: 1px black solid;
+}
 /* Admin stuff --------------------------------------------------------------------------------------- Admin stuff */
 #admin-edit-switch{
     height: 1.3rem;

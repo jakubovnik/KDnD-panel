@@ -25,17 +25,25 @@ require "php/header.php";
                         ON character_calendar.character_id=character.id";
             while($row1 = $result1->fetch_assoc()){
                 echo "<form id='calendar-row-".$row1['id']."' class='calendar-row'>";
-                echo 
-                echo "<input type='date' name='calendar-id' id='calendar-id-".$row1['id']."' value='".$row1['date']."'";
+                echo "<input type='text' name='calendar-id' id='calendar-id-".$row1['id']."' class='calendar-id' value='".$row1['id']."' readonly>";
+                echo "<input type='date' name='calendar-date' id='calendar-date-".$row1['id']."' class='calendar-date' value='".$row1['date']."'";
                 if($_SESSION['role'] != 1 || $_SESSION['edit-mode'] != 1){
                     echo " readonly";
                 }echo ">";
-                echo "<div>";
+                echo "<div id='calendar-characters-".$row1['id']."' class='calendar-characters'>";
                 $result2 = $conn->query($sql2);
-                while($row1 = $result2->fetch_assoc()){
-                    echo "<span>";
-                        echo
-                    echo "</span>";
+                while($row2 = $result2->fetch_assoc()){
+                    if($row2['id'] == $row1['id']){
+                        $calendar_character_classes = "calendar-character";
+                        $calendar_note = "";
+                        if($row2['note'] != ""){
+                            $calendar_character_classes = $calendar_character_classes." with-note";
+                            $calendar_note = " title='".$row2['note']."'";
+                        }
+                        echo "<span class='".$calendar_character_classes."'".$calendar_note.">";
+                            echo $row2['name'];
+                        echo "</span>";
+                    }
                 }
                 echo "</div>";
                 echo "</form>";
