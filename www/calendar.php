@@ -4,11 +4,11 @@ require "php/header.php";
 ?>
     <title>Calendar</title>
 </head>
-<body id="all">
+<body id="all" class="calendar-all">
     <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <!-- NOTE: THIS CODE AND SITE ISNT EFFICIENT OR FAST AT ALL (but it doesnt really matter, since its not gonna be used often) -->
-    <button onclick="send_data()">Save</button>
+    <button onclick="send_data()" id="save-calendar-btn">Save</button>
     <div id="calendar-container">
         <?php
             require "php/dbconnect.php";

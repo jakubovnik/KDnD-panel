@@ -886,6 +886,26 @@ body{
 .with-note{
     border: 1px black solid;
 }
+#save-calendar-btn{
+    margin: 1rem;
+    font-size: 2rem;
+}
+#calendar-container{
+    display: flex;
+    flex-direction: column;
+}
+.calendar-row{
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+    background-color: rgb(180, 255, 255);
+}
+.calendar-row *{
+    margin: 0.2rem;
+}
+.calendar-id{
+    display: none;
+}
 /* Admin stuff --------------------------------------------------------------------------------------- Admin stuff */
 #admin-edit-switch{
     height: 1.3rem;
