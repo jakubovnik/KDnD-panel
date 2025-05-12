@@ -35,9 +35,9 @@ require "php/header.php";
                 echo "<div id='calendar-characters-".$row1['id']."' class='calendar-characters'>";
                 $result2 = $conn->query($sql2);
                 while($row2 = $result2->fetch_assoc()){
-                    if($row2['id'] == $row1['id']){
+                    if($row2['id'] == $row1['id'] && $row2['character_id'] != $_SESSION['cid']){
                         $calendar_character_classes = "calendar-character";
-                        $calendar_note = "";
+                        $calendar_note_title = "";
                         if($row2['note'] != ""){
                             $calendar_character_classes = $calendar_character_classes." with-note";
                             $calendar_note_title = " title='".$row2['note']."'";
@@ -91,6 +91,12 @@ require "php/header.php";
             $conn->close();
         ?>
     </div>
+    <?php
+        if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+            echo "<button onclick='add_date()'>add</button>";
+            echo "<button onclick='truncate_dates()'>CLEAR EVERYTHING</button>";
+        }
+    ?>
     <!-- <div id="testing"></div> -->
 
 <script src="js/default.js"></script>
@@ -121,6 +127,25 @@ function load_data(){
     // }
     // document.getElementById("testing").innerHTML = testing_text;
 }
+function truncate_dates(){
+    var request = new XMLHttpRequest();
+    var posted_text = "";
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "0"){
+                display_message("Successfully cleared the calendar");
+                location.reload();
+            }else if(this.responseText == "1"){
+                display_message("something went wrong when clearing the calendar", 1);
+            }else{
+                display_message(this.responseText, 1);//Might return gibberish but not my problem :P
+            }
+        }
+    };
+    request.open("POST", "php/clear_calendar.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
+}
 function send_data(){
     load_data();
     var request = new XMLHttpRequest();
@@ -129,6 +154,7 @@ function send_data(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == "0"){
                 display_message("Successfully saved the calendar");
+                location.reload();
             }else if(this.responseText == "1"){
                 display_message("something went wrong with saving the calendar", 1);
             }else{
@@ -140,6 +166,19 @@ function send_data(){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
+new_id = -1;
+function add_date(){
+    document.getElementById("calendar-container").insertAdjacentHTML("beforeend",  
+        "<form id='calendar-row-"+new_id+"' class='calendar-row'><input type='text' name='calendar-id' id='calendar-id-"+new_id+"' class='calendar-id' value='"+new_id+"'><input type='date' name='calendar-date' id='calendar-date-"+new_id+"' class='calendar-date' value='0000-00-00'><div id='calendar-characters-"+new_id+"' class='calendar-characters'></div><select id='calendar-available-"+new_id+"' class='calendar-available'><option value='0'>NO</option><option value='1'>YES</option><option value='2'>MAYBE</option></select><input type='text' id='calendar-note-"+new_id+"' class='calendar-note'></form>"
+    );
+    new_id = new_id - 1;
+}
+document.addEventListener("keydown", function (event) { // copied from chatgpt (but also improved by me (somewhat (i guess)))
+    if (event.ctrlKey && event.key === "Enter") {
+        event.preventDefault();
+        send_data();
+    }
+});
 
 <?php require "php/js_options.php";?>
 </script>
