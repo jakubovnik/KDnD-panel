@@ -35,6 +35,15 @@ body{
     max-height: 100vh;
     height: 100vh;
 }
+.red-text{
+    color: red;
+}
+.green-text{
+    color: green;
+}
+.blue-text{
+    color: blue;
+}
 /* navbar stuff --------------------------------------------------------------------------*/
 #navbar{
     background-color: grey;

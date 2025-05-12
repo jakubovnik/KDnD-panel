@@ -7,6 +7,8 @@ require "php/header.php";
 <body id="all">
     <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
+    <!-- NOTE: THIS CODE AND SITE ISNT EFFICIENT OR FAST AT ALL (but it doesnt really matter, since its not gonna be used often) -->
+    <button onclick="send_data()">Save</button>
     <div id="calendar-container">
         <?php
             require "php/dbconnect.php";
@@ -38,25 +40,106 @@ require "php/header.php";
                         $calendar_note = "";
                         if($row2['note'] != ""){
                             $calendar_character_classes = $calendar_character_classes." with-note";
-                            $calendar_note = " title='".$row2['note']."'";
+                            $calendar_note_title = " title='".$row2['note']."'";
                         }
-                        echo "<span class='".$calendar_character_classes."'".$calendar_note.">";
+                        switch($row2['available']){
+                            case "0":
+                                $calendar_character_classes = $calendar_character_classes." red-text";
+                                break;
+                            case "1":
+                                $calendar_character_classes = $calendar_character_classes." green-text";
+                                break;
+                            case "2":
+                                $calendar_character_classes = $calendar_character_classes." blue-text";
+                                break;
+                        }
+                        echo "<span class='".$calendar_character_classes."'".$calendar_note_title.">";
                             echo $row2['name'];
                         echo "</span>";
                     }
                 }
                 echo "</div>";
+                $result2 = $conn->query($sql2);
+                $available0 = "";
+                $available1 = "";
+                $available2 = "";
+                $calendar_note = "";
+                while($row2 = $result2->fetch_assoc()){
+                    if($row2['character_id'] == $_SESSION['cid'] && $row2['id'] == $row1['id']){
+                        switch ($row2['available']){
+                            case "0":
+                                $available0 = " selected";
+                                break;
+                            case "1":
+                                $available1 = " selected";
+                                break;
+                            case "2":
+                                $available2 = " selected";
+                                break;
+                        }
+                        $calendar_note = $row2['note'];
+                    }
+                }
+                echo "<select id='calendar-available-".$row1['id']."' class='calendar-available'>";
+                    echo "<option value='0'".$available0.">NO</option>";
+                    echo "<option value='1'".$available1.">YES</option>";
+                    echo "<option value='2'".$available2.">MAYBE</option>";
+                echo "</select>";
+                echo "<input type='text' value='".$calendar_note."' id='calendar-note-".$row1['id']."' class='calendar-note'>";
                 echo "</form>";
             }
             $conn->close();
         ?>
     </div>
+    <!-- <div id="testing"></div> -->
 
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
 <script>
 
+forms = document.getElementsByClassName("calendar-row");
+calendar_data_full = [];
 
+function load_data(){
+    calendar_data_full = [];
+    for(let i = 0; i < forms.length; i++){
+        calendar_data = [];
+        calendar_data_id = ""+forms[i].getElementsByClassName("calendar-id")[0].value;
+        calendar_data.push(calendar_data_id);
+        calendar_data.push(""+document.getElementById("calendar-date-"+calendar_data_id).value);
+        calendar_data.push(""+document.getElementById("calendar-available-"+calendar_data_id).value);
+        calendar_data.push(""+document.getElementById("calendar-note-"+calendar_data_id).value);
+        calendar_data_full.push(calendar_data);
+    }
+    // TODO: remove this, its just for testing
+    // testing_text = "";
+    // for(let i = 0; i < calendar_data_full.length; i++){
+    //     for(let e = 0; e < calendar_data_full[i].length; e++){
+    //         testing_text = testing_text + calendar_data_full[i][e] + "; ";
+    //     }
+    //     testing_text = testing_text+"<br>";
+    // }
+    // document.getElementById("testing").innerHTML = testing_text;
+}
+function send_data(){
+    load_data();
+    var request = new XMLHttpRequest();
+    var posted_text = "data="+encodeURIComponent(JSON.stringify(calendar_data_full));
+    request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            if(this.responseText == "0"){
+                display_message("Successfully saved the calendar");
+            }else if(this.responseText == "1"){
+                display_message("something went wrong with saving the calendar", 1);
+            }else{
+                display_message(this.responseText, 1);//Might return gibberish but not my problem :P
+            }
+        }
+    };
+    request.open("POST", "php/edit_calendar.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(posted_text);
+}
 
 <?php require "php/js_options.php";?>
 </script>

@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 if($_SESSION['role'] != 1){
+    echo "1";
     exit; //TODO: test this thing (admin privelage check)
 }
 require "dbconnect.php";
