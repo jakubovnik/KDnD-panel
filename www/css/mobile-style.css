@@ -36,6 +36,15 @@ body, html{
     padding: 0px;
     margin: 0px;
 }
+.red-text{
+    color: red;
+}
+.green-text{
+    color: green;
+}
+.blue-text{
+    color: blue;
+}
 /* Navbar stuff ------------------------------------------------------------------------- Navbar stuff */
 #navbar-button{
     position: fixed;
@@ -871,6 +880,70 @@ tr:first-child{
 }
 .lore-exception{
     color: aquamarine;
+}
+/* Calendar stuff ------------------------------------------------------------------------------------ Calendar stuff */
+.calendar-id{
+    display: none;
+}
+.calendar-date{
+    font-size: 1.6rem;
+    color: black;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+}
+.calendar-characters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calendar-character{
+    border: 1px transparent solid;
+    text-shadow: 0 1px black;
+    font-size: 1.2rem;
+    padding-left: 2px;
+    padding-right: 3px;
+}
+.with-note{
+    border: 1px black solid;
+}
+.calendar-available{
+    font-size: 1.4rem;
+}
+.calendar-note{
+    font-size: 1.2rem;
+    width: 80vw;
+}
+#save-calendar-btn{
+    font-size: 2rem;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+#calendar-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+}
+.calendar-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.8);
+}
+.calendar-row *{
+    margin: 0.2rem;
+}
+.calendar-add-btn{
+    font-size: 2rem;
+}
+.calendar-danger-btn{
+    font-size: 0.5rem;
+    margin-top: 30rem;
 }
 /* Create Character --------------------------------------------------------------------------- Create Character */
 #character-create-box{

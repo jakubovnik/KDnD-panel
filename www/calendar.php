@@ -40,7 +40,11 @@ require "php/header.php";
                         $calendar_note_title = "";
                         if($row2['note'] != ""){
                             $calendar_character_classes = $calendar_character_classes." with-note";
-                            $calendar_note_title = " title='".$row2['note']."'";
+                            if($_SESSION['style'] == "mobile-style.css"){
+                                $calendar_note_title = " onclick='alert(\"".$row2['note']."\")'";
+                            }else{
+                                $calendar_note_title = " title='".$row2['note']."'";
+                            }
                         }
                         switch($row2['available']){
                             case "0":
@@ -93,11 +97,10 @@ require "php/header.php";
     </div>
     <?php
         if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
-            echo "<button onclick='add_date()'>add</button>";
-            echo "<button onclick='truncate_dates()'>CLEAR EVERYTHING</button>";
+            echo "<button onclick='add_date()' class='calendar-add-btn'>add</button><br>";
+            echo "<button onclick='truncate_dates()' class='calendar-danger-btn'>CLEAR EVERYTHING</button>";
         }
     ?>
-    <!-- <div id="testing"></div> -->
 
 <script src="js/default.js"></script>
 <?php if($_SESSION['style'] == "mobile-style.css"){echo '<script src="js/mobile.js"></script>';}?>
@@ -117,15 +120,6 @@ function load_data(){
         calendar_data.push(""+document.getElementById("calendar-note-"+calendar_data_id).value);
         calendar_data_full.push(calendar_data);
     }
-    // TODO: remove this, its just for testing
-    // testing_text = "";
-    // for(let i = 0; i < calendar_data_full.length; i++){
-    //     for(let e = 0; e < calendar_data_full[i].length; e++){
-    //         testing_text = testing_text + calendar_data_full[i][e] + "; ";
-    //     }
-    //     testing_text = testing_text+"<br>";
-    // }
-    // document.getElementById("testing").innerHTML = testing_text;
 }
 function truncate_dates(){
     var request = new XMLHttpRequest();
