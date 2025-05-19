@@ -79,4 +79,8 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault();
         switch_edit_mode();
     }
+    if (event.ctrlKey && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        location.assign("php/logout.php");
+    }
 });

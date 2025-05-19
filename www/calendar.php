@@ -89,7 +89,7 @@ require "php/header.php";
                     echo "<option value='1'".$available1.">YES</option>";
                     echo "<option value='2'".$available2.">MAYBE</option>";
                 echo "</select>";
-                echo "<input type='text' value='".$calendar_note."' id='calendar-note-".$row1['id']."' class='calendar-note'>";
+                echo "<input type='text' value='".$calendar_note."' id='calendar-note-".$row1['id']."' class='calendar-note' placeholder='Enter note (optional)'>";
                 echo "</form>";
             }
             $conn->close();
