@@ -945,30 +945,28 @@ tr:first-child{
     font-size: 0.5rem;
     margin-top: 30rem;
 }
-/* Create Character --------------------------------------------------------------------------- Create Character */
-#character-create-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-#character-create-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: black;
-    width: 90vw;
-    height: 60vh;
-}
 /* Admin stuff --------------------------------------------------------------------------- Admin stuff */
 #admin-edit-switch{
     height: 1.4rem;
     width: 1.4rem;
     filter: invert(1);
 }
-
+/* Admin links.php ----------------------------------------------------------------------------------------- Admin links.php */
+#admin-links-container{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#admin-links-container *{
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.7);
+    border-radius: 0.5rem;
+}
 /* Create character stuff --------------------------------------------------------------------------------------- Create character stuff */
 #create-character-container{
     display: flex;
@@ -976,6 +974,9 @@ tr:first-child{
     align-items: center;
 }
 #character-create-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     height: 90vh;
     width: 95vw;
@@ -986,6 +987,7 @@ tr:first-child{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     height: 90vh;
 }
 .character-create-text{

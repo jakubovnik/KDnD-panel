@@ -9,12 +9,11 @@ echo '<a href="index.php">Home</a>';
 echo '<a href="inventory.php">Inventory</a>';
 echo '<a href="magic-list.php">Magic List</a>';
 echo '<a href="wiki.php">Lore Wiki</a>';
-if($_SESSION['role'] == 1){
-    echo '<a href="upload-image.php">Upload Image</a>';
-    echo '<a href="create-character.php">Create Character</a>';
-}
 echo '<a href="calendar.php">Calendar</a>';
 echo '<a href="options.php">Options</a>';
+if($_SESSION['role'] == 1){
+    echo '<a href="admin-links.php">Admin Links</a>';
+}
 echo '<span>logged in as ';
     echo $_SESSION['cname'];
 echo '</span>';

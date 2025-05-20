@@ -948,6 +948,67 @@ body{
     width: 1.3rem;
     filter: invert(1);
 }
+/* Admin links.php ----------------------------------------------------------------------------------------- Admin links.php */
+#admin-links-container{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#admin-links-container *{
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.7);
+    border-radius: 0.5rem;
+}
+/* Magic edit ---------------------------------------------------------------------------------------------- Magic edit */
+#edit-magic-id{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.9);
+    border-radius: 0.2rem;
+}
+#edit-magic-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit-magic-row{
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#edit-magic-row-1, #edit-magic-row-2{
+    justify-content: center;
+}
+.edit-magic-text{
+    margin: 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+#edit-magic-row-1 *{
+    font-size: 2rem;
+    padding: 0.2rem;
+}
+.edit-magic-textarea{
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    resize: none;
+    outline: none;
+    width: 20vw;
+    height: 10vh;
+}
+.edit-magic-textarea:focus{
+    background-color: rgba(174, 225, 255, 0.5);
+}
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
 
 /* Create character stuff --------------------------------------------------------------------------------------- Create character stuff */
