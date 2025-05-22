@@ -20,6 +20,7 @@ require "php/header.php";
 
 
 
+<?php require "php/js_options.php";?>
 </script>
 </body>
 </html>

@@ -47,7 +47,7 @@ while($row = $result->fetch_assoc()){
             echo "' id='item-name-".$row['id']."'";
             echo " style='";
             echo "border-color: ";
-            switch ($row['type']) {
+            switch ($row['type']) { // TODO: add column to item type table for the types color
                 case 'misc':
                     echo "rgba(90, 90, 90, 1)";
                     break;

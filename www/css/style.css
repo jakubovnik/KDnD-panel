@@ -967,7 +967,7 @@ body{
 /* Magic edit ---------------------------------------------------------------------------------------------- Magic edit */
 #edit-magic-id{
     font-size: 1.5rem;
-    padding: 0.5rem;
+    padding: 0.8rem;
     margin: 0.8rem;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.9);
@@ -1008,6 +1008,19 @@ body{
 }
 .edit-magic-textarea:focus{
     background-color: rgba(174, 225, 255, 0.5);
+}
+/* Magic edit list */
+.magic-edit-table{
+    height: fit-content;
+}
+.magic-text-hide{
+    display: none;
+}
+.magic-edit .magic-name{
+    font-size: 1.2rem;
+}
+.magic-edit .magic-tags{
+    white-space: pre-wrap;
 }
 /* Upload Image stuff --------------------------------------------------------------------------------------- Upload Image stuff */
 
