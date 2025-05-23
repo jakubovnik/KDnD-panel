@@ -76,6 +76,7 @@ function clear_inputs(){
 }
 
 function load_data(id){
+    if(document.getElementById("magic-"+id) === null){return 1;}
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     edit_magic_id.innerHTML = ""+id;
@@ -94,6 +95,7 @@ function load_data(id){
     }else{
         edit_magic_ismod.checked = true;
     }
+    return 0;
 }
 
 function check_inputs(){
@@ -217,11 +219,22 @@ function refresh_magic(){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
+
+function attempt_load_from_get(){
+    if(getSuperglobal("id") === null){
+        return;
+    }
+    if(load_data(getSuperglobal("id")) == 1){
+        display_message("Magic couldnt be loaded from GET, trying again", 1);
+        load_from_get_timeout = setTimeout(attempt_load_from_get, 500);
+    }
+}
+load_from_get_timeout = setTimeout(attempt_load_from_get, 200);
+
 function set_magic_sorting(sort = "name"){
     sort_type = sort;
     refresh_magic();
 }
-refresh_magic();
 
 function switch_button(){
     if(search_type_button.innerHTML == "name"){

@@ -59,14 +59,24 @@ if($edit_magic == 0){
         echo "</tr>";
     }
     while($row = $magic_default->fetch_assoc()){//creating default magic list
+        $learn_magic_button1 = "";
+        $learn_magic_button2 = "";
+        $learn_magic_button_click = " onclick='reveal_learn_magic(".$row['id'].")'";
+        if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
+            $learn_magic_button1 = "<a class='magic-learn' id='magic-learn-".$row['id']."' href='magic-edit.php?id=".$row['id']."'>";
+            $learn_magic_button2 = "</a>";
+            $learn_magic_button_click = "";
+        }
         echo "<tr class='magic' id='magic-".$row['id']."'>";
             echo "<td class='magic-name magic-text' id='magic-name-".$row['id']."' onclick='reveal_details(".$row['id'].")'>".$row['name']."</td>";
             echo "<td class='magic-origin magic-text' id='magic-origin-".$row['id']."'>".$row['origin']."</td>";
             echo "<td class='magic-complexity magic-text' id='magic-complexity-".$row['id']."'>".$row['complexity']."</td>";
             echo "<td class='magic-fail magic-text' id='magic-fail-".$row['id']."'>".$row['fail_rate']."%</td>";
             echo "<td class='magic-cast magic-text' id='magic-cast-".$row['id']."'>".$row['cast_time']." t</td>";
-            echo "<td class='magic-learn' id='magic-learn-".$row['id']."' onclick='reveal_learn_magic(".$row['id'].")'>";
+            echo "<td class='magic-learn' id='magic-learn-".$row['id']."'".$learn_magic_button_click.">";
+                echo $learn_magic_button1;
                 echo "<img src='../images/idea_1.png' alt='learn magic' class='magic-learn-button' title='Learn this magic'>";
+                echo $learn_magic_button2;
             echo "</td>";
         echo "</tr>";
     }

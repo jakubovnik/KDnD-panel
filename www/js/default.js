@@ -58,6 +58,11 @@ function get_character_id(name, output_element){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(posted_text);
 }
+
+function getSuperglobal(key) {
+    return new URLSearchParams(window.location.search).get(key);
+}
+
 function switch_edit_mode(){
     var request = new XMLHttpRequest();
     var posted_text = "huh=huh";
