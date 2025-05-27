@@ -5,7 +5,7 @@ require "php/header.php";
 ?>
     <title>Magic edit</title>
 </head>
-<body>
+<body id="magic-edit-body">
     <span id="message"></span>
     <?php require "php/navbar.php";?>
     <div id="edit-magic-container">
@@ -37,7 +37,7 @@ require "php/header.php";
             <button id="edit-magic-button" onclick="edit_magic()">Save</button>
         </div>
     </div>
-    <div id="magic-all">
+    <div id="magic-all" class="magic-all-edit">
     </div>
 
 <script src="js/default.js"></script>

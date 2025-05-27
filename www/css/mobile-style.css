@@ -601,13 +601,17 @@ body, html{
 .learned-magic{
     background-color: rgba(125, 255, 255, 0.4);
 }
-.magic-origin, .magic-complexity, .magic-fail, .magic-cast{
+/* .magic-origin, .magic-complexity, .magic-fail, .magic-cast{
+    text-align: center;
+} */
+.magic-text{
     text-align: center;
 }
 .magic-name{
     max-width: 10ch;
+    text-align: start;
 }
-tr:first-child{
+#magic-list tr:first-child{
     position: sticky;
     top: 0;
 }
@@ -966,6 +970,75 @@ tr:first-child{
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.7);
     border-radius: 0.5rem;
+}
+/* Magic edit ---------------------------------------------------------------------------------------------- Magic edit */
+#edit-magic-id{
+    /* font-size: 1.5rem; */
+    /* padding: 0.8rem; */
+    /* margin: 0.8rem; */
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 3px 8px rgba(255, 255, 255, 0.9);
+    border-radius: 0.2rem;
+}
+#edit-magic-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit-magic-row{
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#edit-magic-row-1, #edit-magic-row-2{
+    justify-content: center;
+}
+.edit-magic-text{
+    /* margin: 0.5rem; */
+    text-align: center;
+    /* font-size: 1.2rem; */
+}
+#edit-magic-row-1 *{
+    /* font-size: 2rem; */
+    /* padding: 0.2rem; */
+}
+.edit-magic-textarea{
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    resize: none;
+    outline: none;
+    width: 20vw;
+    height: 10vh;
+}
+.edit-magic-textarea:focus{
+    background-color: rgba(174, 225, 255, 0.5);
+}
+/* Magic edit list */
+#magic-edit-body .magic-all-edit{
+    height: 60vh;
+    width: 92vw;
+    margin: 4vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    justify-content: start;
+    padding: 0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#magic-list-container::-webkit-scrollbar{
+    display: none;
+}
+.magic-text-hide{
+    display: none;
+}
+.magic-edit .magic-name{
+    /* font-size: 1.2rem; */
+}
+.magic-edit .magic-tags{
+    display: none;
 }
 /* Create character stuff --------------------------------------------------------------------------------------- Create character stuff */
 #create-character-container{

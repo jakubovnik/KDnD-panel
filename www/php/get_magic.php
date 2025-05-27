@@ -105,7 +105,7 @@ if($edit_magic == 0){
 }else{
     echo "<table id='magic-list' class='magic-edit-table'>";
     if($_POST['search'] == ""){
-        echo "<tr class='heading-magic'>";
+        echo "<tr class='heading-magic heading-magic-edit'>";
             echo "<th onclick='set_magic_sorting(\"name\")'>Name</th>";
             echo "<th onclick='set_magic_sorting(\"origin\")'>Origin</th>";
             if($_SESSION['style'] == "mobile-style.css"){
@@ -131,10 +131,10 @@ if($edit_magic == 0){
             echo "<td class='magic-cast magic-text' id='magic-cast-".$row['id']."'>".$row['cast_time']." t</td>";
             echo "<td class='magic-ismod magic-text' id='magic-ismod-".$row['id']."'>".$row['is_mod']."</td>";
             echo "<td class='magic-tags magic-text' id='magic-tags-".$row['id']."'>".$row['tags']."</td>";
-            echo "<td class='magic-rules magic-text-hide' id='magic-rules-".$row['id']."'>".$row['rules']."</td>";
-            echo "<td class='magic-effects magic-text-hide' id='magic-effects-".$row['id']."'>".$row['effects']."</td>";
-            echo "<td class='magic-limits magic-text-hide' id='magic-limits-".$row['id']."'>".$row['limits']."</td>";
-            echo "<td class='magic-other magic-text-hide' id='magic-other-".$row['id']."'>".$row['other']."</td>";
+            echo "<td class='magic-rules magic-text-hide' id='magic-rules-".$row['id']."'>".$row['rules']."</td>"; // FIXME: I dont think these ones are even needed +
+            echo "<td class='magic-effects magic-text-hide' id='magic-effects-".$row['id']."'>".$row['effects']."</td>"; // +
+            echo "<td class='magic-limits magic-text-hide' id='magic-limits-".$row['id']."'>".$row['limits']."</td>"; // +
+            echo "<td class='magic-other magic-text-hide' id='magic-other-".$row['id']."'>".$row['other']."</td>"; // +
         echo "</tr>";
     }
     echo "</table>";
