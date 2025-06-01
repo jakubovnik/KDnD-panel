@@ -89,7 +89,8 @@ require "php/header.php";
                     if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
                         echo "<textarea id='wiki-content-edit'>".$row['content']."</textarea>";
                     }elseif($spoiler == 0){
-                        echo $row['content'];
+                        echo $row['content']; // TODO: add images of character here (if the lore is about a character and if there are any images), also add links to follow-up lore
+                        echo '<img src="php/get_character_image.php?image_id=1" style="width: 100%; height:auto;">'; // TODO: remove this line, temp testing
                     }else{
                         echo "YOOOOOO ur, like, fr not supposed to be here. This page contains, like, soooo many spoilers <br>O_O<br> oooOOOOOooooo scaaary.<br>
                         Anyways, here's our lord and saviour, the almighty Kasane Teto:<br>
