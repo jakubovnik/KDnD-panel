@@ -161,8 +161,8 @@ function check_form(){
     if(add_item_charge_max.value == ""){
         display_message("Item needs a max charge (just put 0 if it doesnt have charges)", 1);
         return 1;
-    }else if(!isWholeNumber(add_item_charge_max.value)){
-        display_message("Max charge must be a whole number", 1);
+    }else if(!isPositiveNumber(add_item_charge_max.value)){
+        display_message("Max charge must be a whole positive number", 1);
         return 1;
     }
     if(add_item_description.value == ""){

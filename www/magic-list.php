@@ -174,14 +174,14 @@ function learn_magic(){
     hide_learn_magic();
 }
 function check_form(){
-    if(!isPositiveNumber(learn_magic_complexity.value)){
-        display_message("Complexity must be a whole positive number", 1);
+    if(!isWholeNumber(learn_magic_complexity.value)){
+        display_message("Complexity must be a whole number (should be positive most of the time)", 1);
         return 1;
     }
     if(!isPositiveNumber(learn_magic_fail.value)){
         display_message("Fail rate must be a whole positive number", 1);
         return 1;
-    }else if(learn_magic_fail.value > 100){
+    }else if(learn_magic_fail.value > 100){ // Huh? why tho?? this limits creativity and i dont support my past decision
         display_message("Fail rate cannot be higher than 100");
         return 1;
     }
