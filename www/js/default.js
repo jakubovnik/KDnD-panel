@@ -84,7 +84,7 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault();
         switch_edit_mode();
     }
-    if (event.ctrlKey && event.key.toLowerCase() === "k") {
+    if (event.ctrlKey && event.key.toLowerCase() === "q") {
         event.preventDefault();
         location.assign("php/logout.php");
     }
