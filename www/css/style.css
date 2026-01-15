@@ -506,6 +506,14 @@ body{
     height: 18rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 
                 0 12px 24px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.2s, transform 0.1s;
+    opacity: 1;
+    transform: scale(1);
+    /* This defines the state BEFORE the element is in the DOM */
+    @starting-style {
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }
 .item-box *{
     color: aliceblue;

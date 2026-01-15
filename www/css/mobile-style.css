@@ -70,15 +70,23 @@ body{
     margin-bottom: 0.2rem;
 }
 #navbar{
-    display: none;
+    display: flex;
     position: fixed;
     top: 3.5rem;
     left: 0.5rem;
+    width: 80%;
     flex-direction: column;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     z-index: 1000;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#navbar.hidden{
+    width: 0;
+    opacity: 0;
 }
 #navbar *{
     color: white;
