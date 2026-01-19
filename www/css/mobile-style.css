@@ -482,15 +482,19 @@ body{
 }
 /* Item creation menu */
 #add-item-background{
+    display: flex;
     position: fixed;
-    top: 0px;
+    bottom: 0px;
     left: 0px;
-    height: 100vh;
+    height: 0vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
     z-index: 3000;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 0.1s all ease-in-out;
 }
 #add-item-box{
     display: flex;
@@ -534,7 +538,7 @@ body{
     min-width: 40vw;
 }
 #add-item-hide{
-    position: fixed;
+    position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
     width: 4rem;
@@ -542,7 +546,7 @@ body{
     z-index: 3001;
 }
 #add-item-confirm{
-    position: fixed;
+    position: absolute;
     bottom: 0.5rem;
     left: 0.5rem;
     width: 4rem;
@@ -551,19 +555,22 @@ body{
 }
 /* Magic stuff ------------------------------------------------------- Magic stuff */
 #magic-search-inputs{
-    display: none;
-    /* display: flex; */
+    /* display: none; */
+    display: flex;
     position: absolute;
     z-index: 1000;
     height: 94vh;
-    width: 96vw;
-    padding: 3vh 2vw;
+    width: 0vw;
+    padding: 3vh 0vw;
     top: 0;
-    left: 0;
+    right: 0;
     flex-direction: column;
     justify-content: left;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 0.1s all ease-in-out;
 }
 #magic-search-inputs *{
     margin: 10px;
@@ -681,15 +688,18 @@ body{
     top: 0px;
     left: 0px;
     width: 100vw;
-    height: 100vh;
+    height: 0vh;
     overflow-x: hidden;
     overflow-y: auto;
-    display: none;
+    display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     background-color: rgba(0, 0, 0, 0.85);
     z-index: 2000;
+    transition: 0.1s all ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .magic-info{
     display: flex;
@@ -877,14 +887,17 @@ body{
     margin-bottom: 0.2rem;
 }
 #lore-list-container{
-    display: none;
+    display: block;
     background-color: rgba(0, 0, 0, 0.85);
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100vh;
-    width: 100vw;
+    width: 0vw;
     z-index: 2000;
+    transition: 0.1s all ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
 }
 #lore-search-box{
     display: flex;

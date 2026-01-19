@@ -60,7 +60,7 @@ function reveal_details(id){
     }
     document.getElementById("magic-info-"+id).style.display = "flex";
     shown_id = id;
-    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "flex";';} ?> // ew wtf is this
+    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.height = "100vh";';} ?> // ew wtf is this
 }
 function hide_details(){
     if(shown_id == 0){
@@ -68,7 +68,7 @@ function hide_details(){
     }
     document.getElementById("magic-info-"+shown_id).style.display = "none";
     shown_id = 0;
-    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.display = "none";';} ?>
+    <?php if($_SESSION['style'] == "mobile-style.css"){echo 'document.getElementById("magic-info-container").style.height = "0vh";';} ?>
 }
 
 function updateMagicList(type) { //chatgpt
@@ -113,10 +113,12 @@ function set_magic_sorting(sort = "default"){
 }
 const magic_search_inputs = document.getElementById("magic-search-inputs");
 function show_search(){
-    magic_search_inputs.style.display = "flex";
+    magic_search_inputs.style.width = "96vw";
+    magic_search_inputs.style.padding = "3vh 2vw";
 }
 function hide_search(){
-    magic_search_inputs.style.display = "none";
+    magic_search_inputs.style.width = "0vh";
+    magic_search_inputs.style.padding = "3vh 0vw";
 }
 const magic_search_name = document.getElementById("magic-search-name");
 const magic_search_origin = document.getElementById("magic-search-origin");

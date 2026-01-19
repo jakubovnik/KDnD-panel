@@ -125,11 +125,11 @@ search_type_button = document.getElementById("search-lore-type-button");
 lore_list_container_visible = 0;
 function toggle_lore_list(){
     if(lore_list_container_visible == 0){
-        lore_list_container.style.display = "block";
+        lore_list_container.style.width = "100vw";
         lore_list_container_visible = 1;
         search_input.focus();
     }else{
-        lore_list_container.style.display = "none";
+        lore_list_container.style.width = "0vw";
         lore_list_container_visible = 0;
     }
 }

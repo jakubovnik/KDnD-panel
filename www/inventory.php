@@ -9,7 +9,7 @@ require "php/header.php";
     <?php require "php/navbar.php";?>
     <span id="message" onclick="hide_message()"></span>
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
-    <div id="add-item-background" style="display: none;">
+    <div id="add-item-background">
         <div id="add-item-box">
             <span id="add-item-id" style="display:none;">-1</span>
             <input type="text" placeholder="New Item Name" id="add-item-name" class="add-item-text">
@@ -120,14 +120,14 @@ function reveal_add_item(item_id = -1){
         add_item_description.value = "";
         add_item_type.value = 1;
     }
-    add_item_background.style.display = "flex";
+    add_item_background.style.height = "100vh";
     add_item_menu = true;
     document.getElementById("add-item-name").focus();
     // history.pushState({add_item_menu:true}, "add_item_menu", ) TODO: make it so that the back function on phones responds to this
 }
 function hide_add_item(){
     blurAll();
-    add_item_background.style.display = "none";
+    add_item_background.style.height = "0vh";
     add_item_menu = false;
 }
 function add_item_request(name, type_id, charges_max, description, item_id=-1){

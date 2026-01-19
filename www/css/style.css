@@ -254,6 +254,9 @@ body{
     padding: 5px;
     margin: 5px;
 }
+#magic-search-confirm, #magic-search-cancel{
+    display: none;
+}
 #magic-character-circles{
     display: flex;
     justify-content: center;
@@ -620,15 +623,19 @@ body{
 }
 /* Add item stuff */
 #add-item-background{
-    position: fixed;
+    display: flex;
+    position: absolute;
     top: 0px;
-    left: 0px;
-    height: 100vh;
+    bottom: 0px;
+    height: 0vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.35);
     justify-content: center;
     align-items: center;
     z-index: 3000;
+    transition: 0.15s all ease-in-out;
+    overflow: hidden;
+    white-space: unset;
 }
 #add-item-box{
     display: flex;
