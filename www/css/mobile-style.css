@@ -80,7 +80,7 @@ body{
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     z-index: 1000;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -296,6 +296,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    z-index: 100;
 }
 #item-search{
     margin: 5px;
@@ -551,6 +552,36 @@ body{
 /* Magic stuff ------------------------------------------------------- Magic stuff */
 #magic-search-inputs{
     display: none;
+    /* display: flex; */
+    position: absolute;
+    z-index: 1000;
+    height: 94vh;
+    width: 96vw;
+    padding: 3vh 2vw;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#magic-search-inputs *{
+    margin: 10px;
+    font-size: 1.5rem;
+}
+#magic-search-confirm{
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    top: 40vh;
+    left: 0;
+}
+#magic-search-cancel{
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    top: 40vh;
+    right: 0;
 }
 #magic-all{
     display: flex;
@@ -571,7 +602,7 @@ body{
     right: 0.3rem;
     background-color: silver;
     border-radius: 1rem;
-    z-index: 1000;
+    z-index: 500;
     padding-left: 0.5rem;
     text-align: center;
 }

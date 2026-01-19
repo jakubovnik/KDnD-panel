@@ -14,8 +14,10 @@ require "php/header.php"
         <input type="text" id="magic-search-complexity" onkeyup="updateMagicList('complexity')" placeholder="Search by complexity">
         <input type="text" id="magic-search-fail" onkeyup="updateMagicList('fail')" placeholder="Search by fail rate">
         <input type="text" id="magic-search-cast" onkeyup="updateMagicList('cast')" placeholder="Search by cast time">
+	<img src="images/add.png" id="magic-search-confirm" onclick="hide_search()">
+	<img src="images/cancel.png" id="magic-search-cancel" onclick="clear_search()">
     </div>
-    <div id="magic-character-circles"><?php echo $_SESSION['circles']?><img id="magic-character-circles-image" src="images/complexity.png" alt="complexity image" title="character circles"></div>
+    <div id="magic-character-circles" onclick="show_search()"><?php echo $_SESSION['circles']?><img id="magic-character-circles-image" src="images/complexity.png" alt="complexity image" title="character circles"></div>
     <div id="learn-magic-background" style="display: none;">
         <div id="learn-magic-box">
             <span id="learn-magic-id" class="learn-magic-text"></span>
@@ -88,7 +90,7 @@ function updateMagicList(type) { //chatgpt
 }
 var sort_type = "default";
 function refresh_magic(){
-    const magic_all = document.getElementById("magic-all"); //TODO: maybe put this in global vars?
+    const magic_all = document.getElementById("magic-all"); //TODO: maybe put this in global vars? | why is this even local???
     var request = new XMLHttpRequest();
     var posted_text = "sort=" + sort_type;
     request.onreadystatechange = function(){
@@ -108,6 +110,27 @@ function refresh_magic(){
 function set_magic_sorting(sort = "default"){
     sort_type = sort;
     refresh_magic();
+}
+const magic_search_inputs = document.getElementById("magic-search-inputs");
+function show_search(){
+    magic_search_inputs.style.display = "flex";
+}
+function hide_search(){
+    magic_search_inputs.style.display = "none";
+}
+const magic_search_name = document.getElementById("magic-search-name");
+const magic_search_origin = document.getElementById("magic-search-origin");
+const magic_search_complexity = document.getElementById("magic-search-complexity");
+const magic_search_fail = document.getElementById("magic-search-fail");
+const magic_search_cast = document.getElementById("magic-search-cast");
+function clear_search(){
+    magic_search_name.value = "";
+    magic_search_origin.value = "";
+    magic_search_complexity.value = "";
+    magic_search_fail.value = "";
+    magic_search_cast.value = "";
+    refresh_magic();
+    hide_search();
 }
 var learn_magic_menu = false;
 const learn_magic_background = document.getElementById("learn-magic-background");
