@@ -6,7 +6,6 @@ require "php/header.php";
     <title>Magic edit</title>
 </head>
 <body id="magic-edit-body">
-    <span id="message"></span>
     <?php require "php/navbar.php";?>
     <div id="edit-magic-container">
         <span id="edit-magic-id" onclick="clear_inputs()">-1</span>

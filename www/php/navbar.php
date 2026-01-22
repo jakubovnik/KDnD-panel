@@ -26,4 +26,8 @@ if($_SESSION['role'] == 1 && isset($_SESSION['edit-mode'])){
 }
 echo '<a href="php/logout.php">logout</a>';
 echo '</div>';
+
+// Messages --------------------------------- Messages
+echo '<span id="messages"></span>';
+
 ?>

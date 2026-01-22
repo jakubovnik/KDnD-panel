@@ -7,7 +7,6 @@ require "php/header.php"
 <body>
 <div id='all'>
     <?php require "php/navbar.php";?>
-    <span id="message" onclick="hide_message()"></span>
     <?php
         if(!empty($_POST)){
             if(isset($_POST['options-form-inventory-refresh'])){

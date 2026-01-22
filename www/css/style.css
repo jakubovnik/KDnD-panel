@@ -9,11 +9,16 @@
 *::-webkit-scrollbar{ /*Chrome (i think?)*/
     display: none;
 }
-#message{
-    display: none;
+#messages{
     position: fixed;
     top: 10px;
     right: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+}
+#messages *{
+    max-width: 15vw;
     background-color: white;
     color: green;
     border-color: brown;
@@ -21,8 +26,14 @@
     border-width: 2px;
     border-radius: 5px;
     padding: 20px;
+    margin: 3px;
     text-align: center;
-    z-index: 2000;
+}
+#messages *.error{
+    color: red;
+}
+#messages *.warning{
+    color: blue;
 }
 body{
     padding: 0px;

@@ -6,7 +6,6 @@ require "php/header.php";
     <title>Create character</title>
 </head>
 <body>
-    <span id="message"></span>
     <?php require "php/navbar.php";?>
     <div id="create-character-container">
         <div id="character-create-box">

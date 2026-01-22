@@ -11,7 +11,7 @@ if($result->num_rows > 0){
     }
 }
 if($_SESSION['role'] == 1 && $_SESSION['edit-mode'] == 1){
-    echo "\ndisplay_message(\"Warning, you are currently in edit mode\", 2, 3400);\n";
+    echo "\ndisplay_message(\"Warning, you are currently in edit mode\", 2);\n";
 }
 $conn->close();
 ?>

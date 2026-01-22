@@ -1,30 +1,65 @@
 /* <script src="js/default.js"></script> */
 
-const message = document.getElementById("message");
+const message_box = document.getElementById("messages");
+var new_message_id = 1;
 var show_message = 1;
 var inventory_refresh_interval = 60000;
 var magic_refresh_interval = 60000;
 
-var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
-function display_message(new_message, type=0, time=2000){
+// var message_timeout = setTimeout(() => {message.style.display = "none";}, 2000);
+// function display_message(new_message, type=0, time=2000){
+//     if(show_message == 0){
+//         return;
+//     }
+//     clearTimeout(message_timeout);
+//     message.style.display = "block";
+//     if(type == 0){
+//         message.style.color = "green";
+//     }else if(type == 1){
+//         message.style.color = "red";
+//     }else if(type == 2){
+//         message.style.color = "blue";
+//     }
+//     message.innerHTML = new_message;
+//     message_timeout = setTimeout(() => {message.style.display = "none";}, time);
+// }
+// function hide_message(){
+//     clearTimeout(message_timeout);
+//     message.style.display = "none";
+// }
+var message_timeouts = [];
+function display_message(new_message, type=0, timeout=0){
+    var message_class = "default";
     if(show_message == 0){
-        return;
+	return;
     }
-    clearTimeout(message_timeout);
-    message.style.display = "block";
     if(type == 0){
-        message.style.color = "green";
+	if(timeout == 0){
+	    timeout = 2000;
+	}
     }else if(type == 1){
-        message.style.color = "red";
+	if(timeout == 0){
+	    timeout = 80000;
+	}
+	message_class = "error";
     }else if(type == 2){
-        message.style.color = "blue";
+	if(timeout == 0){
+	    timeout = 4000;
+	}
+	message_class = "warning";
     }
-    message.innerHTML = new_message;
-    message_timeout = setTimeout(() => {message.style.display = "none";}, time);
+    message_box.innerHTML = message_box.innerHTML +
+	'<span id="message-'+new_message_id+'" class="'+message_class+'">' +
+	new_message +
+	'</span>';
+    var temp_message_id = new_message_id;
+    message_timeouts.unshift(setTimeout(() => {remove_message(temp_message_id);}, timeout));
+    new_message_id++;
 }
-function hide_message(){
-    clearTimeout(message_timeout);
-    message.style.display = "none";
+function remove_message(id){ // created this function just to overcome how settimeout works, didnt even work, but fixed it by creating a temp variable 4 lines above this. It is just genuinely stupid. I hate js so much :|
+    var temp_id_name = "message-" + id;
+    document.getElementById(temp_id_name).remove();
+    message_timeouts.pop();
 }
 
 function isPositiveNumber(str) { //copied from chatgpt and works through REGEX (and i have no idea how)

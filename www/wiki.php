@@ -6,7 +6,6 @@ require "php/header.php";
 </head>
 <body id="all">
     <?php require "php/navbar.php";?>
-    <span id="message" onclick="hide_message()"></span>
     <div id="wiki-data">
         <?php
             require "php/dbconnect.php";

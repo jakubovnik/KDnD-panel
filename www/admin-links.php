@@ -6,7 +6,6 @@ require "php/header.php";
     <title>Admin links</title>
 </head>
 <body>
-    <span id="message"></span>
     <?php require "php/navbar.php";?>
     <div id="admin-links-container">
         <a href="create-character.php">Create Character</a>

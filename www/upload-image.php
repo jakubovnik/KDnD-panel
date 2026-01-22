@@ -7,7 +7,6 @@ require "php/header.php";
 </head>
 <body>
     <?php require "php/navbar.php";?>
-    <span id="message" onclick="hide_message()"></span>
     <div>Note that the image should be in a [TODO: INSERT RATIO LATER] ratio</div>
     <div id="character-id"></div>
     <button class="form-button" id="image-upload-character-check" onclick="check_character()">Check Character</button>

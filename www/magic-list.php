@@ -7,7 +7,6 @@ require "php/header.php"
 <body>
 <div id="all">
     <?php require "php/navbar.php";?>
-    <span id="message" onclick="hide_message()"></span>
     <div id="magic-search-inputs">
         <input type="text" id="magic-search-name" onkeyup="updateMagicList('name')" placeholder="Search by name">
         <input type="text" id="magic-search-origin" onkeyup="updateMagicList('origin')" placeholder="Search by origin">

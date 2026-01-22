@@ -6,7 +6,7 @@ require "php/header.php"
     <title>Login with character</title>
 </head>
 <body id="login-body">
-<span id="message"></span>
+<span id="messages"></span>
 <div id="login">
     <div>
     <form action="javascript:void(0);" id="login-form">

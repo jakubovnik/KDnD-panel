@@ -7,7 +7,6 @@ require "php/header.php";
 <body>
 <div id="all" class="inventory-background">
     <?php require "php/navbar.php";?>
-    <span id="message" onclick="hide_message()"></span>
     <img src="images/add.png" alt="add button" id="add-button" onclick="reveal_add_item()">
     <div id="add-item-background">
         <div id="add-item-box">
