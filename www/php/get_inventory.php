@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "dbconnect.php";
+require "dbconnect.php"; // connect to the db
 $sql = "SELECT  character.id as character_id,
                 character.name as character_name,
                 inventory.id, 
@@ -17,17 +17,18 @@ $sql = "SELECT  character.id as character_id,
     INNER JOIN `type` ON inventory.type_id=type.id
     INNER JOIN `character` ON inventory.character_id=character.id
     WHERE (is_deleted=0)";
-if($_SESSION['role'] != 1 || $_SESSION['edit-mode'] == 0){
+
+if($_SESSION['role'] != 1 || $_SESSION['edit-mode'] == 0){ // if not admin AND edit mode, show only users items, otherwise show all items
     $sql = $sql." AND (inventory.character_id=".$_SESSION['cid'].")";
 }
-if($_POST['search'] != ""){
+if($_POST['search'] != ""){ // if search isnt empty, filter by users search
     $sql = $sql." AND (".$_POST['type']." LIKE '%".$_POST['search']."%')";
 }
-if($_POST['sort'] == "default"){
+if($_POST['sort'] == "default"){ // if sort is default, search by character, then favourites, then by type, last alphabetically
     $sql = $sql." ORDER BY character.id ASC, inventory.is_favourite DESC, type.name DESC, inventory.name ASC";
 }
-$result = $conn->query($sql);
-while($row = $result->fetch_assoc()){
+$result = $conn->query($sql); // send query
+while($row = $result->fetch_assoc()){ // looping through all items and creating the elements
     echo "<div class='item-box' id='item-box-".$row['id']."'>";
         echo '<img src="../images/cancel.png" alt="rmv button" class="item-remove-button" id="item-remove-button-'.$row['id'].'" onclick="remove_item('.$row['id'].')">';
         echo '<img src="../images/information.png" alt="description button" class="item-description-button" id="item-description-button-'.$row['id'].'" onclick="reveal_details('.$row['id'].')">';
@@ -47,7 +48,7 @@ while($row = $result->fetch_assoc()){
             echo "' id='item-name-".$row['id']."'";
             echo " style='";
             echo "border-color: ";
-            switch ($row['type']) { // TODO: add column to item type table for the types color
+            switch ($row['type']) { // TODO: add column to item type table for the types color | maybe? this already works (I know its ugly as hell tho)
                 case 'misc':
                     echo "rgba(90, 90, 90, 1)";
                     break;
