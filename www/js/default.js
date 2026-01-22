@@ -39,7 +39,7 @@ function display_message(new_message, type=0, timeout=0){
 	}
     }else if(type == 1){
 	if(timeout == 0){
-	    timeout = 80000;
+	    timeout = 8000;
 	}
 	message_class = "error";
     }else if(type == 2){
