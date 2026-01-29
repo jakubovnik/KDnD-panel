@@ -10,6 +10,7 @@ echo '<a href="inventory.php">Inventory</a>';
 echo '<a href="magic-list.php">Magic List</a>';
 echo '<a href="wiki.php">Lore Wiki</a>';
 echo '<a href="calendar.php">Calendar</a>';
+echo '<a href="trade.php">Trade</a>';
 echo '<a href="options.php">Options</a>';
 if($_SESSION['role'] == 1){
     echo '<a href="admin-links.php">Admin Links</a>';

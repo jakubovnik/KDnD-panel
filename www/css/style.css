@@ -231,10 +231,11 @@ body{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     flex-direction: column;
-    max-height: 70%;
+    height: 90%;
+    width: 90%;
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 2%;
+    right: 5%;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
