@@ -18,7 +18,7 @@
     z-index: 2000;
 }
 #messages *{
-    max-width: 15vw;
+    max-width: 40vw;
     background-color: white;
     color: green;
     border-color: brown;
